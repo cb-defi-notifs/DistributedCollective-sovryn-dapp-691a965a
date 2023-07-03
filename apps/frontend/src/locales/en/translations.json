@@ -69,7 +69,8 @@
         "nav": {
             "borrow": "Borrow",
             "earn": "Earn",
-            "convert": "Convert"
+            "convert": "Convert",
+            "stake": "Stake"
         }
     },
     "footer": {
@@ -359,7 +360,43 @@
         "minimumReceived": "Minimum received",
         "maximumPrice": "Maximum price"
     },
-
+    "stakePage": {
+        "meta": {
+            "title": "Stake - Sovryn"
+        },
+        "statistics": {
+            "title": "Global staking statistics",
+            "totalStakedSov": "Total staked SOV",
+            "totalVotingPower": "Total voting power",
+            "maxStakingApr": "Max staking APR",
+            "maxStakingAprInfo": "This is calculated assuming the initial SOV purchase is made using BTC and all revenues earned are immediately converted to BTC. <0>source</0>",
+            "maxStakingAprInfoCta": "Source"
+        },
+        "personalStatistics": {
+            "title": "Personal staking statistics",
+            "stakedSov": "Staked SOV",
+            "votingPower": "Voting power",
+            "votingPowerInfo": {
+                "line1": "Own voting power",
+                "line2": "Delegated voting power",
+                "line3": "Total personal voting power"
+            },
+            "votingPowerShare": "Voting power share"
+        },
+        "table": {
+            "stakes": "Stakes",
+            "vestingStakes": "Vesting stakes",
+            "stakeButton": "New stake",
+            "adjustButton": "Adjust",
+            "stakeAmount": "Stake amount",
+            "votingPower": "Voting power",
+            "delegate": "Delegate",
+            "endDate": "End date",
+            "noStakes": "You don't have any stakes yet",
+            "noVestingStakes": "You don't have any vesting stakes yet",
+            "notConnected": "Connect wallet to see available data"
+        }
+    },
     "fastBtc": {
         "mainScreen": {
             "title": "Funding",
@@ -430,17 +467,17 @@
             }
         },
         "receive": {
-          "loading": "Loading... this may take up to 30 seconds",
-          "statusScreen": {
-              "statusTitleProcessing": "Transfer processing...",
-              "statusTitleComplete": "Transfer complete",
-              "to": "To",
-              "sending": "Sending",
-              "serviceFee": "Service fee",
-              "receiving": "Receiving",
-              "bitcoinTxId": "Bitcoin TXID",
-              "rootstockTxId": "Rootstock TXID"
-          }
+            "loading": "Loading... this may take up to 30 seconds",
+            "statusScreen": {
+                "statusTitleProcessing": "Transfer processing...",
+                "statusTitleComplete": "Transfer complete",
+                "to": "To",
+                "sending": "Sending",
+                "serviceFee": "Service fee",
+                "receiving": "Receiving",
+                "bitcoinTxId": "Bitcoin TXID",
+                "rootstockTxId": "Rootstock TXID"
+            }
         }
     },
 
@@ -693,10 +730,6 @@
         "borrow": {
             "title": "Borrow",
             "description": "Take out a fixed-interest loan"
-        },
-        "stake": {
-            "title": "Stake",
-            "description": "Earn rewards by staking SOV"
         },
         "vote": {
             "title": "Vote",

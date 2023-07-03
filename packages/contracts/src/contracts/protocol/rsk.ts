@@ -36,4 +36,8 @@ export const rsk: Record<string, AsyncContractConfigData> = {
     getAbi: async () =>
       (await import('../../abis/mocIntegration.json')).default,
   },
+  staking: {
+    address: '0x5684a06CaB22Db16d901fEe2A5C081b4C91eA40e',
+    getAbi: async () => (await import('../../abis/staking.json')).default,
+  },
 };
