@@ -13689,6 +13689,23 @@ export type GetTransactionsQuery = {
   }>;
 };
 
+export type GetVestingContractsQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetVestingContractsQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{
+    __typename?: 'VestingContract';
+    id: string;
+    cliff?: number | null;
+    duration?: number | null;
+    currentBalance: string;
+    type: VestingContractType;
+    createdAtTimestamp: number;
+  }>;
+};
+
 export const GetBitcoinTxIdDocument = gql`
   query getBitcoinTxId($createdAtTx: String) {
     bitcoinTransfers(where: { createdAtTx: $createdAtTx }, first: 1) {
@@ -14095,4 +14112,67 @@ export type GetTransactionsLazyQueryHookResult = ReturnType<
 export type GetTransactionsQueryResult = Apollo.QueryResult<
   GetTransactionsQuery,
   GetTransactionsQueryVariables
+>;
+export const GetVestingContractsDocument = gql`
+  query getVestingContracts($user: String) {
+    vestingContracts(where: { user: $user }) {
+      id
+      cliff
+      duration
+      currentBalance
+      type
+      createdAtTimestamp
+    }
+  }
+`;
+
+/**
+ * __useGetVestingContractsQuery__
+ *
+ * To run a query within a React component, call `useGetVestingContractsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingContractsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingContractsQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetVestingContractsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >(GetVestingContractsDocument, options);
+}
+export function useGetVestingContractsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >(GetVestingContractsDocument, options);
+}
+export type GetVestingContractsQueryHookResult = ReturnType<
+  typeof useGetVestingContractsQuery
+>;
+export type GetVestingContractsLazyQueryHookResult = ReturnType<
+  typeof useGetVestingContractsLazyQuery
+>;
+export type GetVestingContractsQueryResult = Apollo.QueryResult<
+  GetVestingContractsQuery,
+  GetVestingContractsQueryVariables
 >;
