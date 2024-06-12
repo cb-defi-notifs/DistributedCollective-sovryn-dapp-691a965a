@@ -1,5 +1,122 @@
 # @sovryn/ui
 
+## 1.0.26
+
+### Patch Changes
+
+- 5fa0447b: SOV-3938: Fix tooltip positioning
+
+## 1.0.25
+
+### Patch Changes
+
+- 05ffbb51: SOV-4157: Fix maximum value in AmountInput
+
+## 1.0.24
+
+### Patch Changes
+
+- 0cfa22b0: Multiple minor updates to component props
+
+## 1.0.23
+
+### Patch Changes
+
+- 3d6870a1: SOV-3801: Add new icon, extend properties on Table component, prevent onClick events from propagating from Tooltip clicks
+
+## 1.0.22
+
+### Patch Changes
+
+- e24befac: SOV-3389: Context Link component
+
+## 1.0.21
+
+### Patch Changes
+
+- c67169ef: SOV-3392: update Table Row component styling
+
+## 1.0.20
+
+### Patch Changes
+
+- 45f981a4: SOV-3003: Update mobile lending
+
+## 1.0.19
+
+### Patch Changes
+
+- 671278f8: SOV-3435: Vertical tab mobile custom classname
+
+## 1.0.18
+
+### Patch Changes
+
+- 327ac92e: SOV-3333: update vertical tabs style
+
+## 1.0.17
+
+### Patch Changes
+
+- 3787c8e3: fix: SOV-3224 expand table on mobile
+- cb549d3d: SOV-3210: update twitter logo
+
+## 1.0.16
+
+### Patch Changes
+
+- 37382136: SOV-3008: Add bar component with threshold option
+
+## 1.0.15
+
+### Patch Changes
+
+- be97908c: SOV-3022: Update staking loading data
+- ab9b50e7: SOV-3002: fix tooltip positioning
+- 50c278d8: SOV-3073: fix mobile navigation
+- c681ea39: SOV-3303: fix Dropdown horizontal positioning bug
+- b3bf103c: SOV-3139: fix dropdown positioning
+
+## 1.0.14
+
+### Patch Changes
+
+- 35600eda: feat: allow to hide table header row
+
+## 1.0.13
+
+### Patch Changes
+
+- 8d9a3fd4: SOV-2748: Add Calendar to Icon list
+
+## 1.0.12
+
+### Patch Changes
+
+- 4dce45a5: SOV-2615: New rewards page total rewards earned
+- 4dce45a5: Add missing CSS class props to Table components
+
+## 1.0.11
+
+### Patch Changes
+
+- 47ff073f: fix: button text color overrrides
+- 7d536e25: SOV-2820 add dropdown header menu item example to storybook
+- 70123a4f: Fix expanded content in Table / TableRow components
+
+## 1.0.10
+
+### Patch Changes
+
+- 9f54f8a0: fix: add missing className prop for mobile tables
+
+## 1.0.9
+
+### Patch Changes
+
+- c59f619: SOV-2192: convert page v1 update
+- ed5e4f9: SOV-2448: create documentation for Molecules (part 2)
+
 ## 1.0.8
 
 ### Patch Changes

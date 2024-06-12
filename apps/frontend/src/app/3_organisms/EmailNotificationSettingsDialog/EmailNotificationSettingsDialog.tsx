@@ -17,14 +17,20 @@ import {
   ParagraphStyle,
 } from '@sovryn/ui';
 
+import { RSK_CHAIN_ID } from '../../../config/chains';
+
+import { NetworkBanner } from '../../2_molecules/NetworkBanner/NetworkBanner';
 import { useNotificationContext } from '../../../contexts/NotificationContext';
+import { useRequiredChain } from '../../../hooks/chain/useRequiredChain';
 import { useAccount } from '../../../hooks/useAccount';
+import { useChainStore } from '../../../hooks/useChainStore';
 import { translations } from '../../../locales/i18n';
+import { isRskChain } from '../../../utils/chain';
 import {
   getServicesConfig,
-  parseJwt,
   signMessage,
   validateEmail,
+  validateJwt,
 } from '../../../utils/helpers';
 import {
   NotificationUser,
@@ -50,8 +56,10 @@ type EmailNotificationSettingsDialogProps = {
 const EmailNotificationSettingsDialogComponent: React.FC<
   EmailNotificationSettingsDialogProps
 > = ({ isOpen, onClose }) => {
+  const { invalidChain } = useRequiredChain();
   const { account, eip1193Provider: provider } = useAccount();
   const { addNotification } = useNotificationContext();
+  const { currentChainId } = useChainStore();
 
   const [notificationToken, setNotificationToken] = useState<string | null>(
     null,
@@ -111,25 +119,28 @@ const EmailNotificationSettingsDialogComponent: React.FC<
       !notificationToken ||
       !isValidEmail ||
       (!email && !notificationUser?.isEmailConfirmed) ||
-      (email === notificationUser?.email && !haveSubscriptionsBeenUpdated),
+      (email === notificationUser?.email && !haveSubscriptionsBeenUpdated) ||
+      invalidChain,
     [
-      email,
-      isValidEmail,
       loading,
       notificationToken,
-      notificationUser,
+      isValidEmail,
+      email,
+      notificationUser?.isEmailConfirmed,
+      notificationUser?.email,
       haveSubscriptionsBeenUpdated,
+      invalidChain,
     ],
   );
 
   const shouldFetchToken = useMemo(
-    () => isOpen && !notificationToken,
-    [isOpen, notificationToken],
+    () => isOpen && !notificationToken && isRskChain(currentChainId),
+    [isOpen, notificationToken, currentChainId],
   );
 
   const shouldFetchUser = useMemo(
-    () => notificationToken && isOpen,
-    [isOpen, notificationToken],
+    () => notificationToken && isOpen && isRskChain(currentChainId),
+    [isOpen, notificationToken, currentChainId],
   );
 
   const wasAccountDisconnected = useMemo(
@@ -186,28 +197,31 @@ const EmailNotificationSettingsDialogComponent: React.FC<
       return;
     }
 
-    const timestamp = new Date();
-    const message = `Login to backend on: ${timestamp}`;
+    const storedToken = getStoredToken(account);
+    if (storedToken && validateJwt(storedToken)) {
+      setNotificationToken(storedToken);
+      setNotificationWallet(account);
+      return;
+    }
 
-    const { data: alreadyUser } = await axios.get(
-      `${userEndpoint}/isUser/${account}`,
-    );
+    const timestamp = new Date();
+    const message = `Login to Sovryn on: ${timestamp}`;
 
     return signMessage(provider, message)
       .then(signedMessage =>
         axios
-          .post(`${userEndpoint}${alreadyUser ? 'auth' : 'register'}`, {
+          .post(`${userEndpoint}auth`, {
             signedMessage,
             message,
             walletAddress: account,
-            ...(alreadyUser
-              ? ''
-              : { subscriptions: defaultSubscriptionsArray }),
+            // create default subscriptions for new users
+            subscriptions: defaultSubscriptionsArray,
           })
           .then(res => {
             if (res.data && res.data.token) {
               setNotificationToken(res.data.token);
               setNotificationWallet(account);
+              storeToken(account, res.data.token);
             }
           }),
       )
@@ -278,37 +292,36 @@ const EmailNotificationSettingsDialogComponent: React.FC<
       return;
     }
 
-    const userId = parseJwt(notificationToken)?.sub;
-
-    if (!userId) {
+    if (!validateJwt(notificationToken)) {
+      getToken();
       return;
     }
 
     setLoading(true);
 
-    const promise = axios.get(`${userEndpoint}${userId}`, {
+    const promise = axios.get(userEndpoint, {
       headers: {
         Authorization: 'bearer ' + notificationToken,
       },
     });
 
     handleUserDataResponse(promise);
-  }, [account, handleUserDataResponse, notificationToken]);
+  }, [account, getToken, handleUserDataResponse, notificationToken]);
 
   const updateUser = useCallback(() => {
     if (!account || !notificationToken) {
       return;
     }
 
-    const userId = parseJwt(notificationToken)?.sub;
-    if (!userId) {
+    if (!validateJwt(notificationToken)) {
+      getToken();
       return;
     }
 
     setLoading(true);
 
     if (email?.length === 0) {
-      const promise = axios.delete(`${userEndpoint}${userId}`, {
+      const promise = axios.delete(userEndpoint, {
         headers: {
           Authorization: 'bearer ' + notificationToken,
         },
@@ -317,7 +330,7 @@ const EmailNotificationSettingsDialogComponent: React.FC<
       handleUserDelete(promise);
     } else {
       const promise = axios.put(
-        `${userEndpoint}${account}`,
+        userEndpoint,
         {
           walletAddress: account,
           email: email || undefined,
@@ -335,6 +348,7 @@ const EmailNotificationSettingsDialogComponent: React.FC<
   }, [
     account,
     email,
+    getToken,
     handleUserDataResponse,
     handleUserDelete,
     notificationToken,
@@ -356,47 +370,50 @@ const EmailNotificationSettingsDialogComponent: React.FC<
         title={t(translations.emailNotificationsDialog.dialogTitle)}
       />
       <DialogBody className="p-6">
-        <div className="p-6 bg-gray-90">
-          <Paragraph style={ParagraphStyle.tall}>
-            {t(translations.emailNotificationsDialog.title)}
-          </Paragraph>
-          <FormGroup
-            className="mt-6 mb-4"
-            label={t(translations.emailNotificationsDialog.emailInputLabel)}
-            errorLabel={errorLabel}
-          >
-            <Input
-              value={email}
-              onChangeText={setEmail}
-              placeholder={t(
-                translations.emailNotificationsDialog.emailInputPlaceholder,
-              )}
-              disabled={isEmailInputDisabled}
-              dataAttribute="alert-signup-email"
-            />
-          </FormGroup>
-
-          <Subscriptions
-            isDisabled={areSubscriptionsDisabled}
-            dataAttribute="alert-signup-sub"
-          />
-        </div>
-
-        <div className="mt-4 flex flex-col items-center">
-          {hasUnsavedChanges && (
-            <Paragraph className="text-error mb-2">
-              {t(translations.emailNotificationsDialog.unsavedChanges)}
+        <NetworkBanner requiredChainId={RSK_CHAIN_ID}>
+          <div className="p-6 bg-gray-90">
+            <Paragraph style={ParagraphStyle.tall}>
+              {t(translations.emailNotificationsDialog.title)}
             </Paragraph>
-          )}
 
-          <Button
-            onClick={updateUser}
-            text={t(translations.common.buttons.save)}
-            disabled={isSubmitDisabled}
-            className="w-full"
-            dataAttribute="alert-signup-save"
-          />
-        </div>
+            <FormGroup
+              className="mt-6 mb-4"
+              label={t(translations.emailNotificationsDialog.emailInputLabel)}
+              errorLabel={errorLabel}
+            >
+              <Input
+                value={email}
+                onChangeText={setEmail}
+                placeholder={t(
+                  translations.emailNotificationsDialog.emailInputPlaceholder,
+                )}
+                disabled={isEmailInputDisabled}
+                dataAttribute="alert-signup-email"
+              />
+            </FormGroup>
+
+            <Subscriptions
+              isDisabled={areSubscriptionsDisabled}
+              dataAttribute="alert-signup-sub"
+            />
+          </div>
+
+          <div className="mt-4 flex flex-col items-center">
+            {hasUnsavedChanges && (
+              <Paragraph className="text-error mb-2">
+                {t(translations.emailNotificationsDialog.unsavedChanges)}
+              </Paragraph>
+            )}
+
+            <Button
+              onClick={updateUser}
+              text={t(translations.common.buttons.save)}
+              disabled={isSubmitDisabled}
+              className="w-full"
+              dataAttribute="alert-signup-save"
+            />
+          </div>
+        </NetworkBanner>
       </DialogBody>
     </Dialog>
   );
@@ -412,3 +429,11 @@ export const EmailNotificationSettingsDialog: React.FC<
     />
   </EmailNotificationSettingsContextProvider>
 );
+
+function getStoredToken(account: string) {
+  return localStorage.getItem(`notification-token-${account}`);
+}
+
+function storeToken(account: string, token: string) {
+  localStorage.setItem(`notification-token-${account}`, token);
+}

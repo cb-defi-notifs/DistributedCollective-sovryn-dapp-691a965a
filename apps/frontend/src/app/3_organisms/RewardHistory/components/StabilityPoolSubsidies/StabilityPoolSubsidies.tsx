@@ -16,7 +16,7 @@ import {
   Table,
 } from '@sovryn/ui';
 
-import { chains, defaultChainId } from '../../../../../config/chains';
+import { RSK_CHAIN_ID } from '../../../../../config/chains';
 
 import { AmountRenderer } from '../../../../2_molecules/AmountRenderer/AmountRenderer';
 import { ExportCSV } from '../../../../2_molecules/ExportCSV/ExportCSV';
@@ -33,6 +33,7 @@ import { useNotificationContext } from '../../../../../contexts/NotificationCont
 import { useAccount } from '../../../../../hooks/useAccount';
 import { useMaintenance } from '../../../../../hooks/useMaintenance';
 import { translations } from '../../../../../locales/i18n';
+import { getChainById } from '../../../../../utils/chain';
 import { zeroClient } from '../../../../../utils/clients';
 import {
   SovDistribution,
@@ -41,8 +42,8 @@ import {
 } from '../../../../../utils/graphql/zero/generated';
 import { dateFormat } from '../../../../../utils/helpers';
 import { fromWei } from '../../../../../utils/math';
-import { RewardHistoryProps } from '../../types';
-import { rewardHistoryOptions } from '../../utils';
+import { RewardHistoryProps } from '../../RewardHistory.types';
+import { rewardHistoryOptions } from '../../RewardHistory.utils';
 import { useGetStabilityPoolSubsidies } from './hooks/useGetStabilityPoolSubsidies';
 
 const pageSize = DEFAULT_HISTORY_FRAME_PAGE_SIZE;
@@ -51,7 +52,7 @@ const generateRowTitle = (tx: SovDistribution) => (
   <Paragraph size={ParagraphSize.small} className="text-left">
     {t(
       translations.subsidyHistory.stabilityPoolOperation
-        .claimStabilityPoolSubsidy,
+        .withdrawStabilityPoolSubsidy,
     )}
     {' - '}
     {dateFormat(tx.timestamp)}
@@ -67,7 +68,7 @@ export const StabilityPoolSubsidies: FC<RewardHistoryProps> = ({
   const { checkMaintenance, States } = useMaintenance();
 
   const [page, setPage] = useState(0);
-  const chain = chains.find(chain => chain.id === defaultChainId);
+  const chain = getChainById(RSK_CHAIN_ID);
 
   const [orderOptions, setOrderOptions] = useState<OrderOptions>({
     orderBy: 'timestamp',
@@ -117,7 +118,7 @@ export const StabilityPoolSubsidies: FC<RewardHistoryProps> = ({
         cellRenderer: () =>
           t(
             translations.subsidyHistory.stabilityPoolOperation
-              .claimStabilityPoolSubsidy,
+              .withdrawStabilityPoolSubsidy,
           ),
       },
       {
@@ -181,9 +182,10 @@ export const StabilityPoolSubsidies: FC<RewardHistoryProps> = ({
       timestamp: dateFormat(tx.timestamp),
       stabilityPoolOperation: t(
         translations.subsidyHistory.stabilityPoolOperation
-          .claimStabilityPoolSubsidy,
+          .withdrawStabilityPoolSubsidy,
       ),
       amount: fromWei(tx.amount || ''),
+      token: SOV,
       transactionID: tx.id,
     }));
   }, [account, addNotification, getSovDistribution]);
@@ -202,6 +204,7 @@ export const StabilityPoolSubsidies: FC<RewardHistoryProps> = ({
           value={selectedHistoryType}
           onChange={onChangeRewardHistory}
           options={rewardHistoryOptions}
+          className="min-w-36 w-full lg:w-auto"
         />
         <div className="flex-row items-center ml-2 gap-4 hidden lg:inline-flex">
           <ExportCSV
@@ -227,6 +230,7 @@ export const StabilityPoolSubsidies: FC<RewardHistoryProps> = ({
           isLoading={loading}
           className="bg-gray-80 text-gray-10 lg:px-6 lg:py-4"
           noData={t(translations.common.tables.noData)}
+          loadingData={t(translations.common.tables.loading)}
           dataAttribute="subsidy-history-reward-table"
         />
         <Pagination

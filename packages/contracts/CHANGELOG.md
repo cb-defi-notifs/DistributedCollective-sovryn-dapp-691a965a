@@ -1,5 +1,132 @@
 # @sovryn/contracts
 
+## 1.1.4
+
+### Patch Changes
+
+- 54bcf1e2: SOV-4193: Add POWA testnet address for RSK
+
+## 1.1.3
+
+### Patch Changes
+
+- e3348041: Add StakingRewardsOS contract on BOB
+
+## 1.1.2
+
+### Patch Changes
+
+- b702399f: SOV-4057: POWA Claim Page
+- 312a7f0d: SOV-4075: POWA/RBTC Pool
+
+## 1.1.1
+
+### Patch Changes
+
+- 309ce36e: chore: add merkle distributor
+
+## 1.1.0
+
+### Minor Changes
+
+- 0cfa22b0: Major refactoring for BOB chain launch
+- 0cfa22b0: Major refactoring to support multichain functionality
+  BoB chain contract definitions
+
+### Patch Changes
+
+- a65dbc6f: SOV-4023: Rune Bridge BOB support
+
+## 1.0.20
+
+### Patch Changes
+
+- e76f1662: SOV-3871: Staking Rewards OS contracts and UI
+
+## 1.0.19
+
+### Patch Changes
+
+- f9006e45: SOV-3283: add fixed rate mynt converter
+
+## 1.0.18
+
+### Patch Changes
+
+- ce99d264: SOV-3234: add loan token logic and settings contract definitions
+
+## 1.0.17
+
+### Patch Changes
+
+- 37382136: SOV-3239 / SOV-3009: Add bitocracy contracts
+
+## 1.0.16
+
+### Patch Changes
+
+- 35600eda: feat: contracts exports ethers contract instance too
+
+## 1.0.15
+
+### Patch Changes
+
+- 26a9feb5: SOV-2756: Clean up Babelfish token config
+
+## 1.0.14
+
+### Patch Changes
+
+- 8d9a3fd4: SOV-3143: Fix repaying tiny position
+- 8d9a3fd4: SOV-2748: Update test utils for contracts package
+- 8d9a3fd4: SOV-2989: Develop D2 Borrow page - Extend loan modal
+- 8d9a3fd4: SOV-2747: Add lend token contracts
+
+## 1.0.13
+
+### Patch Changes
+
+- 4dce45a5: SOV-2612: New contracts for Rewards/Staking
+
+## 1.0.12
+
+### Patch Changes
+
+- 337470d8: SOV-2789: URL/Query parameters are not getting reset when changing pair
+
+## 1.0.11
+
+### Patch Changes
+
+- 9f54f8a0: fix: use correct DLLR loan token contract address
+- 9f54f8a0: SOV-2739: Develop D2 Lend page - Lend modal
+- 9f54f8a0: SOV-2804: fix lending modals
+- 9f54f8a0: chore: add LoanToken abi
+
+## 1.0.10
+
+### Patch Changes
+
+- 7dc2757: SOV-2812: new FastBTC bridge contract address
+- Updated dependencies [5e4d946]
+  - @sovryn/ethers-provider@1.0.2
+
+## 1.0.9
+
+### Patch Changes
+
+- 253f8d3: SOV-2431: add moc integration swap route
+- c1b42ea: chore: change fastbtc testnet contract address
+- 5ad11c0: SOV-2711: Update RIF logo
+
+## 1.0.8
+
+### Patch Changes
+
+- c59f619: SOV-2192: convert page v1 update
+- c59f619: SOV-2430: add price feed contract
+- e59acaa: SOV-2710: change swap network address
+
 ## 1.0.7
 
 ### Patch Changes

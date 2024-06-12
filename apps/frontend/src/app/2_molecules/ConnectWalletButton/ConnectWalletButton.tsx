@@ -1,5 +1,6 @@
-import React, { FC, PropsWithChildren, useCallback, useState } from 'react';
+import React, { FC, PropsWithChildren, useCallback } from 'react';
 
+import classNames from 'classnames';
 import { t } from 'i18next';
 import { nanoid } from 'nanoid';
 import { Link } from 'react-router-dom';
@@ -12,11 +13,13 @@ import {
   WalletIdentity,
 } from '@sovryn/ui';
 
-import { EmailNotificationSettingsDialog } from '../../3_organisms/EmailNotificationSettingsDialog/EmailNotificationSettingsDialog';
 import { useNotificationContext } from '../../../contexts/NotificationContext';
+import { useCurrentChain } from '../../../hooks/useChainStore';
 import { translations } from '../../../locales/i18n';
+import { sharedState } from '../../../store/rxjs/shared-state';
+import { isRskChain } from '../../../utils/chain';
 
-export type ConnectWalletButtonProps = {
+type ConnectWalletButtonProps = {
   onConnect: () => void;
   onDisconnect: () => void;
   address: string | undefined;
@@ -35,8 +38,8 @@ export const ConnectWalletButton: FC<
   className,
   dataAttribute,
 }) => {
-  const [open, setOpen] = useState(false);
   const { addNotification } = useNotificationContext();
+  const chainId = useCurrentChain();
 
   const onCopyAddress = useCallback(() => {
     addNotification({
@@ -47,6 +50,11 @@ export const ConnectWalletButton: FC<
       id: nanoid(),
     });
   }, [addNotification]);
+
+  const handleSettingsClick = useCallback(
+    () => sharedState.actions.openEmailNotificationSettingsDialog(),
+    [],
+  );
 
   if (!address) {
     return (
@@ -67,8 +75,16 @@ export const ConnectWalletButton: FC<
           address={address}
           dataAttribute={dataAttribute}
           className={className}
+          dropdownClassName="z-[10000000]"
           content={
             <Menu className="mb-4">
+              <Link to="/portfolio" className="no-underline">
+                <MenuItem
+                  text={t(translations.connectWalletButton.portfolio)}
+                  className="no-underline"
+                  dataAttribute={`${dataAttribute}-menu-portfolio`}
+                />
+              </Link>
               <Link to="/rewards" className="no-underline">
                 <MenuItem
                   text={t(translations.connectWalletButton.rewards)}
@@ -83,9 +99,12 @@ export const ConnectWalletButton: FC<
                 />
               </Link>
               <MenuItem
-                text={t(translations.connectWalletButton.settings)}
-                onClick={() => setOpen(true)}
-                dataAttribute={`${dataAttribute}-menu-settings`}
+                text={t(translations.connectWalletButton.notifications)}
+                onClick={handleSettingsClick}
+                dataAttribute={`${dataAttribute}-menu-notifications`}
+                className={classNames({
+                  hidden: !isRskChain(chainId),
+                })}
               />
             </Menu>
           }
@@ -93,10 +112,6 @@ export const ConnectWalletButton: FC<
             copyAddress: t(translations.connectWalletButton.copyAddress),
             disconnect: t(translations.connectWalletButton.disconnect),
           }}
-        />
-        <EmailNotificationSettingsDialog
-          isOpen={open}
-          onClose={() => setOpen(false)}
         />
       </>
     );

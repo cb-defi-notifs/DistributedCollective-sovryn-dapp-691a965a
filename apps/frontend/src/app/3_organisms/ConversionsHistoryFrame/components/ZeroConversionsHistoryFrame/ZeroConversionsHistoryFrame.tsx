@@ -9,7 +9,6 @@ import React, {
 import { t } from 'i18next';
 import { nanoid } from 'nanoid';
 
-import { SupportedTokens } from '@sovryn/contracts';
 import {
   Table,
   OrderOptions,
@@ -22,10 +21,12 @@ import {
   DEFAULT_HISTORY_FRAME_PAGE_SIZE,
   EXPORT_RECORD_LIMIT,
 } from '../../../../../constants/general';
+import { getTokenDisplayName } from '../../../../../constants/tokens';
 import { useNotificationContext } from '../../../../../contexts/NotificationContext';
 import { useAccount } from '../../../../../hooks/useAccount';
 import { useBlockNumber } from '../../../../../hooks/useBlockNumber';
 import { translations } from '../../../../../locales/i18n';
+import { COMMON_SYMBOLS } from '../../../../../utils/asset';
 import { zeroClient } from '../../../../../utils/clients';
 import {
   Redemption,
@@ -102,12 +103,15 @@ export const ZeroConversionsHistoryFrame: React.FC<PropsWithChildren> = ({
       timestamp: dateFormat(redemption.transaction.timestamp),
       transactionType: t(translations.conversionsHistory.redeem),
       sent: redemption.tokensActuallyRedeemed.length
-        ? `${redemption.tokensActuallyRedeemed} ${SupportedTokens.zusd}`
+        ? redemption.tokensActuallyRedeemed
         : '-',
+      sentToken: getTokenDisplayName(COMMON_SYMBOLS.ZUSD),
       received: redemption.collateralRedeemed.length
-        ? `${redemption.collateralRedeemed} ${BITCOIN}`
+        ? redemption.collateralRedeemed
         : '-',
-      redemptionFee: `${redemption.fee} ${BITCOIN}`,
+      receivedToken: BITCOIN,
+      redemptionFee: redemption.fee,
+      redemptionFeeToken: BITCOIN,
       TXID: redemption.transaction.id,
     }));
   }, [account, addNotification, getConversions]);
@@ -126,6 +130,7 @@ export const ZeroConversionsHistoryFrame: React.FC<PropsWithChildren> = ({
           isLoading={loading}
           className="bg-gray-80 text-gray-10 lg:px-6 lg:py-4"
           noData={t(translations.common.tables.noData)}
+          loadingData={t(translations.common.tables.loading)}
           dataAttribute="zero-conversions-history-table"
         />
       }

@@ -16,7 +16,7 @@ import {
   Table,
 } from '@sovryn/ui';
 
-import { chains, defaultChainId } from '../../../../../config/chains';
+import { RSK_CHAIN_ID } from '../../../../../config/chains';
 
 import { AmountRenderer } from '../../../../2_molecules/AmountRenderer/AmountRenderer';
 import { ExportCSV } from '../../../../2_molecules/ExportCSV/ExportCSV';
@@ -33,6 +33,7 @@ import { useNotificationContext } from '../../../../../contexts/NotificationCont
 import { useAccount } from '../../../../../hooks/useAccount';
 import { useMaintenance } from '../../../../../hooks/useMaintenance';
 import { translations } from '../../../../../locales/i18n';
+import { getChainById } from '../../../../../utils/chain';
 import { zeroClient } from '../../../../../utils/clients';
 import {
   StabilityDepositChange,
@@ -41,10 +42,10 @@ import {
   useGetStabilityDepositChangesLazyQuery,
 } from '../../../../../utils/graphql/zero/generated';
 import { dateFormat } from '../../../../../utils/helpers';
-import { RewardHistoryProps } from '../../types';
-import { rewardHistoryOptions } from '../../utils';
+import { RewardHistoryProps } from '../../RewardHistory.types';
+import { rewardHistoryOptions } from '../../RewardHistory.utils';
 import { useGetStabilityPoolRewards } from './hooks/useGetStabilityPoolRewards';
-import { getTransactionType, renderCollateralChange } from './utils';
+import { getTransactionType } from './utils';
 
 const pageSize = DEFAULT_HISTORY_FRAME_PAGE_SIZE;
 
@@ -64,7 +65,7 @@ export const StabilityPoolRewards: FC<RewardHistoryProps> = ({
   const { addNotification } = useNotificationContext();
 
   const [page, setPage] = useState(0);
-  const chain = chains.find(chain => chain.id === defaultChainId);
+  const chain = getChainById(RSK_CHAIN_ID);
 
   const [orderOptions, setOrderOptions] = useState<OrderOptions>({
     orderBy: 'sequenceNumber',
@@ -169,10 +170,9 @@ export const StabilityPoolRewards: FC<RewardHistoryProps> = ({
 
     return list.map(tx => ({
       timestamp: dateFormat(tx.transaction.timestamp),
-      collateralGain: renderCollateralChange(tx.collateralGain || ''),
-      stabilityDepositOperation: getTransactionType(
-        tx.stabilityDepositOperation,
-      ),
+      transactionType: getTransactionType(tx.stabilityDepositOperation),
+      amount: tx.collateralGain,
+      token: BITCOIN,
       transactionID: tx.transaction.id,
     }));
   }, [account, addNotification, getStabilityDeposit]);
@@ -192,6 +192,7 @@ export const StabilityPoolRewards: FC<RewardHistoryProps> = ({
           value={selectedHistoryType}
           onChange={onChangeRewardHistory}
           options={rewardHistoryOptions}
+          className="min-w-36 w-full lg:w-auto"
         />
         <div className="flex-row items-center ml-2 gap-4 hidden lg:inline-flex">
           <ExportCSV
@@ -217,6 +218,7 @@ export const StabilityPoolRewards: FC<RewardHistoryProps> = ({
           isLoading={loading}
           className="bg-gray-80 text-gray-10 lg:px-6 lg:py-4"
           noData={t(translations.common.tables.noData)}
+          loadingData={t(translations.common.tables.loading)}
           dataAttribute="reward-history-table"
         />
         <Pagination

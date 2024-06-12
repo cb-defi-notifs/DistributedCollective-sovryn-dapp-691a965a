@@ -14,8 +14,13 @@ export const TableMobile = <RowType extends RowObject>({
   onRowClick,
   dataAttribute,
   noData,
+  loadingData,
   isLoading,
   className,
+  expandedContent,
+  mobileRenderer,
+  subtitleRenderer,
+  flatMode,
 }: TableProps<RowType>) => (
   <div className={classNames(styles.wrapper, className)}>
     {rows &&
@@ -23,26 +28,23 @@ export const TableMobile = <RowType extends RowObject>({
       rows.map((row, index) => (
         <TableMobileRow
           key={rowKey?.(row) || JSON.stringify(row)}
-          title={rowTitle?.(row) || index}
+          titleRenderer={rowTitle}
           columns={columns}
           row={row}
+          index={index}
           onRowClick={onRowClick}
           dataAttribute={dataAttribute}
+          expandedContent={expandedContent}
+          renderer={mobileRenderer}
+          subtitleRenderer={subtitleRenderer}
+          flatMode={flatMode}
         />
       ))}
 
     {(!rows || rows.length === 0) && (
-      <>
-        {isLoading ? (
-          Array.from(Array(4).keys()).map(i => (
-            <div key={i} className={styles.noData}>
-              <span className={styles.loading} />
-            </div>
-          ))
-        ) : (
-          <div className={styles.noData}>{noData ? noData : 'No data'}</div>
-        )}
-      </>
+      <div className={isLoading ? styles.loading : styles.noData}>
+        {isLoading ? loadingData || 'Loading data…' : noData || 'No data'}
+      </div>
     )}
   </div>
 );

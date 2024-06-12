@@ -1,5 +1,587 @@
 # frontend
 
+## 1.1.6
+
+### Patch Changes
+
+- e58ad2ab: SOV-4154: BOB Market Making - always show LP Fee Rate and Last Price
+- 5bdfda1c: SOV-4193: Fix hardcoded conversion
+- 7aee0cf4: SOV-4159: Add slashed SOV data to Staking history
+- 7b62c35f: SOV-4191: Raise the Gas Limit for OSSOV withdrawals
+- Updated dependencies [54bcf1e2]
+  - @sovryn/contracts@1.1.4
+
+## 1.1.5
+
+### Patch Changes
+
+- 76dae6ee: Bump fastbtc-in fees
+
+## 1.1.4
+
+### Patch Changes
+
+- 7b1a27d3: SOV-3982: Fix button location Rewards page
+- b31fedd1: SOV-4166: Fix for TVL RSK label
+- 865976cb: SOV-4161: Reset quote error
+- Updated dependencies [5fa0447b]
+- Updated dependencies [a53308e1]
+  - @sovryn/ui@1.0.26
+  - @sovryn/sdk@1.0.5
+
+## 1.1.3
+
+### Patch Changes
+
+- 44807e74: SOV-3813: Fix rounding issue on the dashboard
+- 6797b953: SOV-4139: BoB Spice leaderboard
+- cf0db3ba: SOV-4079: Fix staking extend timestamp
+- 5af37b02: SOV-3959: TEMP patch to prevent future LM "dead vestings"
+- e3348041: General POWA & Spice updates
+- 6797b953: Fix claim page date
+- Updated dependencies [e3348041]
+- Updated dependencies [05ffbb51]
+  - @sovryn/contracts@1.1.3
+  - @sovryn/ui@1.0.25
+
+## 1.1.2
+
+### Patch Changes
+
+- b702399f: SOV-4057: POWA Claim Page
+- 312a7f0d: SOV-4075: POWA/RBTC Pool
+- 98b527d4: Fix claim page date
+- Updated dependencies [b702399f]
+- Updated dependencies [312a7f0d]
+  - @sovryn/contracts@1.1.2
+  - @sovryn/sdk@1.0.3
+
+## 1.1.1
+
+### Patch Changes
+
+- b566d2c1: fix: routers
+- Updated dependencies [a9f57ae0]
+- Updated dependencies [309ce36e]
+- Updated dependencies [b566d2c1]
+  - @sovryn/sdex@0.3.11
+  - @sovryn/contracts@1.1.1
+  - @sovryn/sdk@1.0.1
+
+## 1.1.0
+
+### Minor Changes
+
+- 0cfa22b0: BOB chain Market Making and Swaps
+
+### Patch Changes
+
+- d006ef6a: SOV-4063: Fix bitcoin os rewards visibility
+- a65dbc6f: SOV-4023: Rune Bridge BOB support
+- Updated dependencies [a65dbc6f]
+- Updated dependencies [0cfa22b0]
+- Updated dependencies [0cfa22b0]
+- Updated dependencies [0cfa22b0]
+- Updated dependencies [0cfa22b0]
+- Updated dependencies [0cfa22b0]
+- Updated dependencies [0cfa22b0]
+  - @sovryn/contracts@1.1.0
+  - @sovryn/sdk@1.0.0
+  - @sovryn/utils@0.0.2
+  - @sovryn/ui@1.0.24
+
+## 1.0.57
+
+### Patch Changes
+
+- 2473bdd8: SOV-4066: update promotional banners on Landing page
+
+## 1.0.56
+
+### Patch Changes
+
+- 7c3a4abf: SOV-4022: Runes bridge UI
+
+## 1.0.55
+
+### Patch Changes
+
+- 1fbe6a0c: SOV-4047: update copy on Leaderboard page
+
+## 1.0.54
+
+### Patch Changes
+
+- 4a66523f: SOV-4016: update banner promo
+
+## 1.0.53
+
+### Patch Changes
+
+- e76f1662: SOV-3871: Staking Rewards OS contracts and UI
+- Updated dependencies [e76f1662]
+  - @sovryn/contracts@1.0.20
+
+## 1.0.52
+
+### Patch Changes
+
+- 6d5ba110: SOV-3985: Refactor POWA menu display
+  Update dapp Favicon
+
+## 1.0.51
+
+### Patch Changes
+
+- 3ffea217: SOV-3964: open links in SIP proposals in a new browser tab
+- 0c16d474: SOV-3917: New voting power is now shown correctly when extending an existing stake
+- 0061ffe3: SOV-3870: Replace ZUSD with DLLR in Ecosystem Statistics
+
+## 1.0.50
+
+### Patch Changes
+
+- 8a310501: SOV-3978: Leaderboard copy adjustments
+
+## 1.0.49
+
+### Patch Changes
+
+- d9f276a7: SOV-3963: Use name() to identify SIP proposal as non-executable
+
+## 1.0.48
+
+### Patch Changes
+
+- 50f7724d: SOV-3935: Competition leaderboard
+
+## 1.0.47
+
+### Patch Changes
+
+- 3d6870a1: SOV-3827: Protocol Data Page
+- 865fa7ba: SOV-3823: Fix markdown display on Bitocracy
+- Updated dependencies [3d6870a1]
+  - @sovryn/ui@1.0.23
+
+## 1.0.46
+
+### Patch Changes
+
+- bcc17cc9: SOV-3822: replace staking rewards wiki link
+- 5ffe098c: Add new assets to Lending/Borrowing, Convert, and Market Making pages
+- 2b3c0303: SOV-3869: Portfolio - add ZUSD and update Protocol Deposits title
+- a31fedbf: SOV-3653: Fix LP reward display
+- Updated dependencies [5ffe098c]
+  - @sovryn/sdk@0.0.8
+
+## 1.0.45
+
+### Patch Changes
+
+- e66342d2: SOV-3719: Portfolio page
+- 4c4b6383: fix: missing prefix in AmountRenderer when countUp prop is used
+- SOV-3561: Re-enable EIP-2612 support
+
+## 1.0.44
+
+### Patch Changes
+
+- ea09cef2: SOV-3590: fix promo card click
+- 2f4a41f8: SOV-3727: Adjust staking rewards claim
+- be01a806: SOV-3736: fix AMM pool “LP fee rate“
+
+## 1.0.43
+
+### Patch Changes
+
+- e833d9fa: SOV-3716: Close top navigation menus automatically when switching to Landing page
+- fb5e9527: SOV-3737: Update language used on Landing page promo cards
+- 2c73437e: SOV-3677: Raise the Gas Limit for Stability Pool
+
+## 1.0.42
+
+### Patch Changes
+
+- a11440c5: SOV-3615: Landing page initial config
+- 163aa12f: SOV-3563: switch on/off APR/24h issue
+- 5c7c11da: SOV-3628: Long SIP text now breaks onto multiple lines
+- a11440c5: SOV-3527: change page titles
+- a11440c5: SOV-3632: Banner Carousel
+- a11440c5: SOV-3535: Show correct values with fixed conversion rate routes
+
+## 1.0.41
+
+### Patch Changes
+
+- 34f8b686: SOV-3654: add lowercase address in staking delegate
+- 71f57ff2: SOV-3641: MM: Fix Return Rate on the MM page
+- 5ae2703c: SOV-3527: change page titles
+- 00d55f43: SOV-3550: proposal title formatting
+- d4013865: SOV-3535: Show correct values with fixed conversion rate routes
+
+## 1.0.40
+
+### Patch Changes
+
+- 6705fa2f: SOV-3464: Proposals - fix timer formatting
+- 48b04374: SOV-3416: Use mempool.space instead of BlockCypher for bitcoin block explorer links
+  Fix broken localisations in history tables
+
+## 1.0.39
+
+### Patch Changes
+
+- dfbdc975: SOV-3466: Fix current Proposal parameter value mobile styles
+- 4987d37e: Market Making page
+
+## 1.0.38
+
+### Patch Changes
+
+- 4b901463: SOV-3560: disable permit functionality for DLLR
+- 1d44cce6: SOV-3457: Show treasury proposal executable details
+
+## 1.0.37
+
+### Patch Changes
+
+- cb660fb1: SOV-3390: Fixed Rate Borrow - add ability to increase debt without adding collateral
+- Updated dependencies [e24befac]
+  - @sovryn/ui@1.0.22
+
+## 1.0.36
+
+### Patch Changes
+
+- 2a0049c2: SOV-3369: Add Enkrypt Wallet to list of browser wallets
+- f9006e45: SOV-3283: add fixed rate mynt converter
+- edacb4b7: SOV-3361: Fix Bitocracy page voting data refresh
+- 42c092e7: SOV-3371: update maintenance mode state for Zero - Open LOC
+- e6103e06: SOV-3475: Tooltip copy update
+- 4509411d: SOV-3372: clean up Sovryn Alpha links in dapp candybox menu
+- Updated dependencies [f9006e45]
+- Updated dependencies [c67169ef]
+  - @sovryn/contracts@1.0.19
+  - @sovryn/sdk@0.0.7
+  - @sovryn/ui@1.0.21
+
+## 1.0.35
+
+### Patch Changes
+
+- b231e8d4: SOV-3333: improve wallet discovery in wallet connection flow
+- 8abf5e42: SOV-3324: fix nav menu toggle
+- 45f981a4: SOV-3003: Update mobile lending
+- 87a209c1: fix: refresh vote block
+- 60ce6933: SOV-3323 lend my lending balance
+- ce99d264: Bitocracy: New Proposal flow
+- Updated dependencies [45f981a4]
+- Updated dependencies [ce99d264]
+  - @sovryn/ui@1.0.20
+  - @sovryn/contracts@1.0.18
+
+## 1.0.34
+
+### Patch Changes
+
+- fba20d8d: SOV-3422: increase suggested gas limit for claiming rewards
+- 23feeada: SOV-3345: Codebase cleanup
+
+## 1.0.33
+
+### Patch Changes
+
+- 23671b25: SOV-3375: fix broken localisations
+- 6765a49f: SOV-3061: Refactor Borrow page
+- dec66af7: SOV-3240: remove analytics scripts
+- bf2ab891: SOV-3223: Close menu when menu option is clicked
+- 49f155da: SOV-3285: use Convert page as default landing page
+- 812601fa: SOV-3172: Extend Borrow Dialog automatically closes when transaction completes
+- Updated dependencies [3787c8e3]
+- Updated dependencies [cb549d3d]
+  - @sovryn/ui@1.0.17
+
+## 1.0.32
+
+### Patch Changes
+
+- 1210dc50: SOV-3364: Fix broken localizations
+
+## 1.0.31.1
+
+- 2832d32e: Fix Trezor Wallet connection
+
+## 1.0.31
+
+### Patch Changes
+
+- 8c3d97eb: SOV-3289: Resolve issue with iWRBTC Rewards not being shown or claimable from Rewards page
+- 37382136: Bitocracy page
+- Updated dependencies [37382136]
+  - @sovryn/contracts@1.0.17
+  - @sovryn/ui@1.0.16
+
+## 1.0.30
+
+### Patch Changes
+
+- be97908c: SOV-3022: Update staking loading data
+- 8edd408b: SOV-3074: fix decimal places on total rewards tooltip
+- 541b98dd: SOV-3197: Increase gas limit for delegating vesting stake
+- 93998577: SOV-3136: update lend page text
+- 50c278d8: SOV-3073: fix mobile navigation
+- 68bfa997: SOV-3065: Pull minimum collateral ratios from subgraph
+- c916f49d: SOV-3137: Stability pool updates
+- b3bf103c: SOV-3139: fix dropdown positioning
+- c10084fe: SOV-3034: rewards page banner update
+- Updated dependencies [be97908c]
+- Updated dependencies [ab9b50e7]
+- Updated dependencies [50c278d8]
+- Updated dependencies [c681ea39]
+- Updated dependencies [b3bf103c]
+  - @sovryn/ui@1.0.15
+
+## 1.0.29
+
+### Patch Changes
+
+- 35600eda: feat: claim all rewards with single tx
+- ef1cc8b3: SOV-2787: updated notification service api
+- Updated dependencies [35600eda]
+- Updated dependencies [35600eda]
+  - @sovryn/ui@1.0.14
+  - @sovryn/contracts@1.0.16
+
+## 1.0.28
+
+### Patch Changes
+
+- 26a9feb5: SOV-2756: Clean up Babelfish token config
+- 774b032b: SOV-3021: Fix earned tooltip layout
+- 2347b43c: SOV-2993: Vesting reward history
+- 0b72c502: SOV-2992: lending withdraw with max amount issue
+- df04edaa: SOV-2913: vesting delegate history
+- aad41527: SOV-2942: fix adjust stake data refresh
+- 0cd49a90: SOV-3077: Prevent reward SOV claiming and force user to withdraw unclaimed SOV if the LM vesting contracts has too many liquid stakes
+- Updated dependencies [26a9feb5]
+  - @sovryn/contracts@1.0.15
+
+## 1.0.27
+
+### Patch Changes
+
+- 8d9a3fd4: SOV-3171: borrow history export order
+- 8d9a3fd4: SOV-2747: Borrow page skeleton
+- 8d9a3fd4: SOV-2800: Borrow - Maintenance mode states
+- 8d9a3fd4: SOV-3143: Fix repaying tiny position
+- f88ff42b: SOV-2754: Update token amount output component
+- 8d9a3fd4: SOV-3089: Fix Loan modal titles
+- 8d9a3fd4: SOV-2747: Borrow page
+- 8d9a3fd4: SOV-2829: Borrow page initial config
+- 8d9a3fd4: SOV-2749: add adjust loan dialog
+- 8d9a3fd4: SOV-2989: Develop D2 Borrow page - Extend loan modal
+- 8d9a3fd4: SOV-3031: borrow ui tweaks
+- 8d9a3fd4: SOV-2755: add fixed-interest notifications
+- 8d9a3fd4: SOV-2747: Finalize Borrow page
+- 8d9a3fd4: SOV-2748: Borrow page - New loan modal
+- 8d9a3fd4: SOV-3145: Fix extend modal allowance
+- 8d9a3fd4: SOV-3151: update createLoan label
+- 8d9a3fd4: SOV-2750: Borrow Transaction History
+- 8d9a3fd4: SOV-2941: Update Borrow history
+- 8d9a3fd4: SOV-2995: update open loans table
+- Updated dependencies [8d9a3fd4]
+- Updated dependencies [8d9a3fd4]
+- Updated dependencies [8d9a3fd4]
+- Updated dependencies [f88ff42b]
+- Updated dependencies [8d9a3fd4]
+- Updated dependencies [8d9a3fd4]
+  - @sovryn/contracts@1.0.14
+  - @sovryn/ui@1.0.13
+  - @sovryn/sdk@0.0.6
+
+## 1.0.26
+
+### Patch Changes
+
+- 7b207c2f: SOV-3025: fix reward link redirect on Stake page
+- ba836902: SOV-3018/SOV-3020: Fix Funding CSV export fields
+- 73fbbb9e: SOV-2921: improve zero redemption conversion route
+- 629f39e3: SOV-2862: Fix delegate address display reset after extending Stake
+- fdf82ac7: Update maintenance state ids
+- 0af72eb9: SOV-3019: fix issue with total numbers
+- Updated dependencies [73fbbb9e]
+  - @sovryn/sdk@0.0.5
+
+## 1.0.25
+
+### Patch Changes
+
+- e2c28c68: Restore broken Open Zero LoC button
+
+## 1.0.24
+
+### Patch Changes
+
+- 3f56ef6e: SOV-2988: Update Get Started button location
+- 698be28a: SOV-2935: Update sovryn-onboard version - resolves issue with WalletConnect and Gnosis Safe
+
+## 1.0.23
+
+### Patch Changes
+
+- fc8568a6: Fix Total Staked SOV stat on Staking page
+
+## 1.0.22
+
+### Patch Changes
+
+- 4dce45a5: SOV-2873: fix new delegate address is missing tooltip
+- 4dce45a5: SOV-2914: Fix unstake history CSV export
+- 4dce45a5: SOV-2612: New Rewards page - Stability pool and Staking rewards
+- 4dce45a5: SOV-2830: Fix vesting stakes information remains displayed with disconnected wallet
+- 4dce45a5: SOV-2875 & SOV-2876: Fix Staking pagination
+- 4dce45a5: SOV-2602: Staking maintenance mode states
+- 4dce45a5: SOV-2788: Make empty state message to be italic in staking page.
+- 4dce45a5: SOV-2820: add dropdown earn menu
+- 4dce45a5: SOV-2919: Fix Buy SOV CTA
+- 4dce45a5: SOV-2915: Fix token name in staking-related history tables
+- 4dce45a5: SOV-2613: Reward page - general layout and folder structure
+- 4dce45a5: SOV-2598: create stake page
+- 4dce45a5: SOV-2803 fix: use correct staking contract
+- 4dce45a5: SOV-2802: Fix vesting stakes voting power
+- 4dce45a5: SOV-2615: New rewards page total rewards earned
+- 4dce45a5: SOV-2858: Fix staked SOV section in personal statistics
+- 4dce45a5: SOV-2863: Update staking stats on new block
+- 4dce45a5: SOV-3016: Fix incorrect undercollateralized error
+- 4dce45a5: SOV-2886: fix vesting table available balance not showing
+- 4dce45a5: SOV-2877: fix personal staking statistics
+- 4dce45a5: SOV-2811: update delegate comp
+- 4dce45a5: SOV-3017: broken rewards banner links
+- 4dce45a5: SOV-2878: Fix "Estimated gas fee exceeds BTC balance" error false positives
+- 4dce45a5: SOV-2613: Reward page - folder structure adjustments
+- 4dce45a5: SOV-2918: Use BE endpoint for Max APR Redash call
+- 4dce45a5: SOV-2805: Staking and Rewards page UX updates
+- 4dce45a5: SOV-2878: Fix gas fee error message
+- 4dce45a5: SOV-2775: Multicall implementation for Rewards page
+- 4dce45a5: SOV-2603: Staking and staking rewards history table
+- 4dce45a5: SOV-2808: update delegate logic
+- 4dce45a5: SOV-3006: Fix vesting unlocked balance
+- 4dce45a5: SOV-2845: stake layout mobile updates
+- 4dce45a5: SOV-2982: Hide FISH vesting contracts from Vesting rewards
+- Updated dependencies [4dce45a5]
+- Updated dependencies [4dce45a5]
+- Updated dependencies [4dce45a5]
+- Updated dependencies [4dce45a5]
+  - @sovryn/contracts@1.0.13
+  - @sovryn/ui@1.0.12
+
+## 1.0.21
+
+### Patch Changes
+
+- 337470d8: SOV-2789: URL/Query parameters are not getting reset when changing pair
+- eab48d8b: SOV-2975: Fix submenu items refresh
+- 70123a4f: SOV-2966 / SOV-2967: lend UI tweaks
+- 642be4e4: SOV-2771: Remove trailing zero on Convert page
+- dcb9f9de: SOV-2915: History tables - separate token name in CSV exports
+- 47ff073f: SOV-2801 move fund wallet button to the header
+- Updated dependencies [337470d8]
+- Updated dependencies [47ff073f]
+- Updated dependencies [7d536e25]
+- Updated dependencies [70123a4f]
+  - @sovryn/contracts@1.0.12
+  - @sovryn/ui@1.0.11
+
+## 1.0.20
+
+### Patch Changes
+
+- 60909e24: SOV-2976: Fix min collateral ratio for lending pools
+- f282992a: SOV-2820: fix earn page redirect
+
+## 1.0.19
+
+### Patch Changes
+
+- 9f54f8a0: SOV-2741: Lending history (Lend base branch)
+- 9f54f8a0: SOV-2739: Develop D2 Lend page - Lend modal
+- 9f54f8a0: SOV-2964: Fix new lend APY calculation
+- 9f54f8a0: SOV-2804: fix lending modals
+- 9f54f8a0: SOV-2965: Fix Lend CSV export
+- 9f54f8a0: SOV-2740: lending adjust modal
+- 9f54f8a0: SOV-2738: Develop D2 Lend page
+- 9f54f8a0: SOV-2963: Fix AmountInput exceptions
+- Updated dependencies [9f54f8a0]
+- Updated dependencies [9f54f8a0]
+- Updated dependencies [9f54f8a0]
+- Updated dependencies [9f54f8a0]
+- Updated dependencies [9f54f8a0]
+  - @sovryn/ui@1.0.10
+  - @sovryn/contracts@1.0.11
+
+## 1.0.18
+
+### Patch Changes
+
+- 5e4d946: SOV-2728: Split suggested wallet RPC URLs
+- 4835797: SOV-2730: Update Convert -> AMM Swap gas limit
+- Updated dependencies [7dc2757]
+- Updated dependencies [5e4d946]
+  - @sovryn/contracts@1.0.10
+  - @sovryn/ethers-provider@1.0.2
+
+## 1.0.17
+
+### Patch Changes
+
+- 913c1fa: SOV-2766: Fix conversions failing using "max" button
+
+## 1.0.16
+
+### Patch Changes
+
+- ba7f845: SOV-2708: Update Convert page to enable linking to specific pairs
+- 253f8d3: SOV-2431: add moc integration swap route
+- 44213c2: SOV-2686: Add Defiant
+- 0445241: SOV-2677: Convert page - reset data on disconnect
+- 2783ec1: SOV-2669: change login signature message
+- 32c2e95: SOV-2670: HW wallets integration adjustments
+- Updated dependencies [253f8d3]
+- Updated dependencies [c1b42ea]
+- Updated dependencies [5ad11c0]
+  - @sovryn/contracts@1.0.9
+  - @sovryn/sdk@0.0.3
+
+## 1.0.15
+
+### Patch Changes
+
+- fc0614e: SOV-2484: add loading state for fastbtc deposit address request
+- d782fe1: SOV-2525: History table v1.2 updates
+- 3761f15: feat: asset convert history
+- c59f619: SOV-2192: convert page v1 update
+- c59f619: Convert update v1
+- 23c8554: SOV-2606: bump dependencies to support WalletConnect v2
+- ce71003: SOV-2480: csv rewards order
+- dd998b5: SOV-2437: Reward Page - Wallet Disconnect Data Reset
+- 3328bf9: SOV-2490: fastBTC address validation
+- d76bcf3: SOV-2436: Stability Pool Page - Wallet Disconnect Data Reset
+- 49add84: SOV-2483: Fix Max button on FastBTC "send" amount
+- 8ce7c9a: SOV-2392: wrong pending icon
+- b25f563: SOV-2444: prevent withdraw while there are troves with ICR < MCR
+- Updated dependencies [c59f619]
+- Updated dependencies [c59f619]
+- Updated dependencies [c59f619]
+- Updated dependencies [c59f619]
+- Updated dependencies [c59f619]
+- Updated dependencies [c59f619]
+- Updated dependencies [e59acaa]
+- Updated dependencies [ed5e4f9]
+  - @sovryn/contracts@1.0.8
+  - @sovryn/sdk@0.0.2
+  - @sovryn/ui@1.0.9
+
 ## 1.0.14
 
 ### Patch Changes

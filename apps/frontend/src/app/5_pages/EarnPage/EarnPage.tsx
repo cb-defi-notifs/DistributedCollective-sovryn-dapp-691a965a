@@ -9,7 +9,6 @@ import {
   EthersLiquity,
   ReadableEthersLiquityWithStore,
 } from '@sovryn-zero/lib-ethers';
-import { SupportedTokens } from '@sovryn/contracts';
 import {
   AmountInput,
   Button,
@@ -18,7 +17,6 @@ import {
   ErrorBadge,
   ErrorLevel,
   Heading,
-  HelperButton,
   Paragraph,
   ParagraphSize,
   Select,
@@ -30,14 +28,14 @@ import {
 } from '@sovryn/ui';
 import { Decimal } from '@sovryn/utils';
 
+import { RSK_CHAIN_ID } from '../../../config/chains';
+
 import { AmountRenderer } from '../../2_molecules/AmountRenderer/AmountRenderer';
 import { AssetRenderer } from '../../2_molecules/AssetRenderer/AssetRenderer';
 import { MaxButton } from '../../2_molecules/MaxButton/MaxButton';
-import {
-  CRITICAL_COLLATERAL_RATIO,
-  MINIMUM_COLLATERAL_RATIO,
-} from '../../3_organisms/ZeroLocForm/constants';
+import { NetworkBanner } from '../../2_molecules/NetworkBanner/NetworkBanner';
 import { TOKEN_RENDER_PRECISION } from '../../../constants/currencies';
+import { useRequiredChain } from '../../../hooks/chain/useRequiredChain';
 import { useAccount } from '../../../hooks/useAccount';
 import { useAmountInput } from '../../../hooks/useAmountInput';
 import { useAssetBalance } from '../../../hooks/useAssetBalance';
@@ -45,8 +43,9 @@ import { useBlockNumber } from '../../../hooks/useBlockNumber';
 import { useMaintenance } from '../../../hooks/useMaintenance';
 import { useGetRBTCPrice } from '../../../hooks/zero/useGetRBTCPrice';
 import { useGetTroves } from '../../../hooks/zero/useGetTroves';
+import { useUnderCollateralizedTrovesExist } from '../../../hooks/zero/useUnderCollateralizedTrovesExist';
 import { translations } from '../../../locales/i18n';
-import { calculateCollateralRatio } from '../../../utils/helpers';
+import { COMMON_SYMBOLS } from '../../../utils/asset';
 import { formatValue, decimalic } from '../../../utils/math';
 import { tokenList } from './EarnPage.types';
 import { useGetSubsidiesAPR } from './hooks/useGetSubsidiesAPR';
@@ -61,21 +60,29 @@ const EarnPage: FC = () => {
   const [poolBalance, setPoolBalance] = useState(Decimal.ZERO);
   const [ZUSDInStabilityPool, setZUSDInStabilityPool] = useState(Decimal.ZERO);
   const [rewardsAmount, setRewardsAmount] = useState(Decimal.ZERO);
-  const [token, setToken] = useState<SupportedTokens>(SupportedTokens.dllr);
+  const [token, setToken] = useState<string>(COMMON_SYMBOLS.ZUSD);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const { apy } = useGetSubsidiesAPR();
 
   const { account } = useAccount();
   const { value: block } = useBlockNumber();
   const { price } = useGetRBTCPrice();
-  const [isRecoveryMode, setIsRecoveryMode] = useState(false);
-  const [isUnderCollateralized, setIsUnderCollateralized] = useState(false);
-
   const {
     data: troves,
     loading: loadingTroves,
     refetch: refetchTroves,
   } = useGetTroves();
+  const { invalidChain } = useRequiredChain();
+
+  const [shouldCheckTroves, setShouldCheckTroves] = useState(true);
+  const underCollateralizedTrovesExist =
+    useUnderCollateralizedTrovesExist(troves);
+
+  const isUnderCollateralized = useMemo(
+    () => shouldCheckTroves && underCollateralizedTrovesExist,
+    [shouldCheckTroves, underCollateralizedTrovesExist],
+  );
 
   const { liquity } = useLoaderData() as {
     liquity: EthersLiquity;
@@ -116,13 +123,6 @@ const EarnPage: FC = () => {
     if (!account) {
       return;
     }
-
-    liquity.getTotal().then(result => {
-      if (price) {
-        const recoveryMode = result.collateralRatioIsBelowCritical(price);
-        setIsRecoveryMode(recoveryMode);
-      }
-    });
 
     liquity
       .getStabilityDeposit(account)
@@ -174,15 +174,15 @@ const EarnPage: FC = () => {
   );
 
   const onTokenChange = useCallback(
-    (value: SupportedTokens) => {
+    (value: string) => {
       setToken(value);
       setAmount('');
     },
     [setAmount],
   );
 
-  const { weiBalance: zusdWeiBalance } = useAssetBalance(SupportedTokens.zusd);
-  const { weiBalance: dllrWeiBalance } = useAssetBalance(SupportedTokens.dllr);
+  const { weiBalance: zusdWeiBalance } = useAssetBalance(COMMON_SYMBOLS.ZUSD);
+  const { weiBalance: dllrWeiBalance } = useAssetBalance(COMMON_SYMBOLS.DLLR);
 
   useEffect(() => {
     if (
@@ -190,14 +190,14 @@ const EarnPage: FC = () => {
       Number(zusdWeiBalance) > 0 &&
       Number(dllrWeiBalance) === 0
     ) {
-      setToken(SupportedTokens.zusd);
+      setToken(COMMON_SYMBOLS.ZUSD);
     } else {
-      setToken(SupportedTokens.dllr);
+      setToken(COMMON_SYMBOLS.DLLR);
     }
   }, [dllrWeiBalance, zusdWeiBalance, isDeposit, isLoading]);
 
   const getAssetRenderer = useCallback(
-    (token: SupportedTokens) => (
+    (token: string) => (
       <AssetRenderer showAssetLogo asset={token} assetClassName="font-medium" />
     ),
     [],
@@ -263,7 +263,7 @@ const EarnPage: FC = () => {
     return (
       <AmountRenderer
         value={newPoolBalance}
-        suffix={SupportedTokens.zusd}
+        suffix={COMMON_SYMBOLS.ZUSD}
         precision={TOKEN_RENDER_PRECISION}
       />
     );
@@ -296,7 +296,7 @@ const EarnPage: FC = () => {
   );
 
   const isInMaintenance = useMemo(
-    () => actionLocked || (dllrLocked && token === SupportedTokens.dllr),
+    () => actionLocked || (dllrLocked && token === COMMON_SYMBOLS.DLLR),
     [actionLocked, dllrLocked, token],
   );
 
@@ -308,14 +308,16 @@ const EarnPage: FC = () => {
       Number(amount) <= 0 ||
       !isValidAmount ||
       isInMaintenance ||
-      isUnderCollateralized,
+      isUnderCollateralized ||
+      invalidChain,
     [
       account,
       amount,
+      loadingTroves,
       isValidAmount,
       isInMaintenance,
-      loadingTroves,
       isUnderCollateralized,
+      invalidChain,
     ],
   );
 
@@ -342,31 +344,9 @@ const EarnPage: FC = () => {
 
   useEffect(() => {
     if (index !== 1 || isInMaintenance) {
-      setIsUnderCollateralized(false);
-      return;
+      setShouldCheckTroves(false);
     }
-
-    if (troves?.troves) {
-      const isLowTroveExists = troves.troves.reduce(
-        (acc, { collateral, debt }) => {
-          const collateralRatio = calculateCollateralRatio(
-            decimalic(collateral),
-            decimalic(debt),
-            decimalic(price),
-          );
-
-          const isRatioBelowThreshold = isRecoveryMode
-            ? collateralRatio.lt(CRITICAL_COLLATERAL_RATIO.mul(100))
-            : collateralRatio.lt(MINIMUM_COLLATERAL_RATIO.mul(100));
-
-          return acc || isRatioBelowThreshold;
-        },
-        false,
-      );
-
-      setIsUnderCollateralized(isLowTroveExists);
-    }
-  }, [troves, index, price, isRecoveryMode, isInMaintenance]);
+  }, [index, isInMaintenance]);
 
   useEffect(() => {
     if (!account) {
@@ -380,141 +360,139 @@ const EarnPage: FC = () => {
       <Helmet>
         <title>{t(translations.earnPage.meta.title)}</title>
       </Helmet>
-      <div className="w-full flex flex-col items-center text-gray-10 mt-9 sm:mt-24">
-        <Heading className="text-base sm:text-2xl">
-          {t(pageTranslations.title)}
-        </Heading>
-        <Paragraph
-          size={ParagraphSize.base}
-          className="mt-2.5 sm:mt-4 sm:text-base"
+      <div className="w-full flex flex-col items-center text-gray-10">
+        <NetworkBanner
+          requiredChainId={RSK_CHAIN_ID}
+          childClassName="flex flex-col items-center text-gray-10"
         >
-          {t(pageTranslations.subtitle)}
-        </Paragraph>
+          <Heading className="text-base sm:text-2xl">
+            {t(pageTranslations.title)}
+          </Heading>
+          <Paragraph
+            size={ParagraphSize.base}
+            className="mt-2.5 sm:mt-4 sm:text-base"
+          >
+            {t(pageTranslations.subtitle)}
+          </Paragraph>
 
-        <div className="mt-12 w-full p-0 sm:border sm:border-gray-50 sm:rounded sm:w-[28rem] sm:p-6 sm:bg-gray-90">
-          <div className="w-full flex flex-row justify-between items-center mb-4">
-            <Tabs
-              size={TabSize.small}
-              type={TabType.secondary}
-              items={actions}
-              onChange={setIndex}
-              index={index}
-              className={classNames({
-                invisible: poolBalance.isZero(),
-              })}
-            />
+          <div className="mt-12 w-full p-0 sm:border sm:border-gray-50 sm:rounded sm:w-[28rem] sm:p-6 sm:bg-gray-90">
+            <div className="w-full flex flex-row justify-between items-center mb-4">
+              <Tabs
+                size={TabSize.small}
+                type={TabType.secondary}
+                items={actions}
+                onChange={setIndex}
+                index={index}
+                className={classNames({
+                  invisible: poolBalance.isZero(),
+                })}
+              />
 
-            <MaxButton
-              onClick={onMaximumAmountClick}
-              value={maximumAmount}
-              token={token}
-              dataAttribute="earn-max-button"
-            />
-          </div>
+              <MaxButton
+                onClick={onMaximumAmountClick}
+                value={maximumAmount}
+                token={token}
+                dataAttribute="earn-max-button"
+              />
+            </div>
 
-          <div className="w-full flex flex-row justify-between items-center gap-3 mt-3.5">
-            <AmountInput
-              value={amountInput}
-              onChangeText={setAmount}
-              label={t(translations.common.amount)}
-              min={0}
-              max={maximumAmount.toString()}
-              disabled={!account || isUnderCollateralized}
-              invalid={!isValidAmount}
-              className="w-full flex-grow-0 flex-shrink"
-              dataAttribute="earn-amount-input"
-              placeholder="0"
-            />
+            <div className="w-full flex flex-row justify-between items-center gap-3 mt-3.5">
+              <AmountInput
+                value={amountInput}
+                onChangeText={setAmount}
+                label={t(translations.common.amount)}
+                min={0}
+                max={maximumAmount.toString()}
+                disabled={!account || isUnderCollateralized}
+                invalid={!isValidAmount}
+                className="w-full flex-grow-0 flex-shrink"
+                dataAttribute="earn-amount-input"
+                placeholder="0"
+              />
 
-            <Select
-              value={token}
-              onChange={onTokenChange}
-              options={tokenOptions}
-              labelRenderer={() => getAssetRenderer(token)}
-              className="min-w-[6.7rem]"
-              dataAttribute="earn-token-select"
-            />
-          </div>
-          {!isValidAmount && account && (
-            <ErrorBadge
-              level={ErrorLevel.Critical}
-              message={t(pageTranslations.form.invalidAmountError)}
-              dataAttribute="earn-amount-input-error"
-            />
-          )}
+              <Select
+                value={token}
+                onChange={onTokenChange}
+                options={tokenOptions}
+                labelRenderer={() => getAssetRenderer(token)}
+                className="min-w-[6.7rem]"
+                dataAttribute="earn-token-select"
+              />
+            </div>
+            {!isValidAmount && account && (
+              <ErrorBadge
+                level={ErrorLevel.Critical}
+                message={t(pageTranslations.form.invalidAmountError)}
+                dataAttribute="earn-amount-input-error"
+              />
+            )}
 
-          <SimpleTable className="mt-3">
-            <SimpleTableRow
-              label={
-                <span className="flex items-center gap-1">
-                  {t(pageTranslations.subsidiesRewardRate)}
-                  <HelperButton
-                    content={t(pageTranslations.subsidiesRewardRateInfo)}
+            <SimpleTable className="mt-3">
+              <SimpleTableRow
+                label={t(pageTranslations.subsidiesRewardRate)}
+                valueClassName={classNames('transition-colors', {
+                  'text-primary-10': !isAmountZero,
+                })}
+                value={`${formatValue(apy, 2)}% ${t(pageTranslations.apr)}`}
+              />
+            </SimpleTable>
+
+            <SimpleTable className="mt-3">
+              <SimpleTableRow
+                label={t(pageTranslations.currentPoolBalance)}
+                value={
+                  <AmountRenderer
+                    value={poolBalance}
+                    suffix={COMMON_SYMBOLS.ZUSD}
+                    precision={TOKEN_RENDER_PRECISION}
                   />
-                </span>
-              }
-              valueClassName={classNames('transition-colors', {
-                'text-primary-10': !isAmountZero,
+                }
+              />
+              <SimpleTableRow
+                label={t(pageTranslations.currentPoolShare)}
+                value={`${formatValue(poolShare, 4)} %`}
+              />
+            </SimpleTable>
+            <SimpleTable className="mt-3">
+              <SimpleTableRow
+                label={t(pageTranslations.newPoolBalance)}
+                valueClassName={classNames('transition-colors', {
+                  'text-primary-10': !isAmountZero,
+                })}
+                value={newPoolBalanceLabel}
+              />
+              <SimpleTableRow
+                label={t(pageTranslations.newPoolShare)}
+                valueClassName={classNames('transition-colors', {
+                  'text-primary-10': !isAmountZero,
+                })}
+                value={newPoolShare}
+              />
+            </SimpleTable>
+            <Button
+              type={ButtonType.reset}
+              style={ButtonStyle.primary}
+              text={t(commonTranslations.buttons.confirm)}
+              className={classNames('w-full mt-8', {
+                'opacity-30 cursor-not-allowed bg-primary': isSubmitDisabled,
               })}
-              value={`${formatValue(apy, 2)}% APY`}
+              onClick={handleSubmit}
+              dataAttribute="earn-submit"
             />
-          </SimpleTable>
-
-          <SimpleTable className="mt-3">
-            <SimpleTableRow
-              label={t(pageTranslations.currentPoolBalance)}
-              value={
-                <AmountRenderer
-                  value={poolBalance}
-                  suffix={SupportedTokens.zusd}
-                  precision={TOKEN_RENDER_PRECISION}
-                />
-              }
-            />
-            <SimpleTableRow
-              label={t(pageTranslations.currentPoolShare)}
-              value={`${formatValue(poolShare, 4)} %`}
-            />
-          </SimpleTable>
-          <SimpleTable className="mt-3">
-            <SimpleTableRow
-              label={t(pageTranslations.newPoolBalance)}
-              valueClassName={classNames('transition-colors', {
-                'text-primary-10': !isAmountZero,
-              })}
-              value={newPoolBalanceLabel}
-            />
-            <SimpleTableRow
-              label={t(pageTranslations.newPoolShare)}
-              valueClassName={classNames('transition-colors', {
-                'text-primary-10': !isAmountZero,
-              })}
-              value={newPoolShare}
-            />
-          </SimpleTable>
-          <Button
-            type={ButtonType.reset}
-            style={ButtonStyle.primary}
-            text={t(commonTranslations.buttons.confirm)}
-            className={classNames('w-full mt-8', {
-              'opacity-30 cursor-not-allowed bg-primary': isSubmitDisabled,
-            })}
-            onClick={handleSubmit}
-            dataAttribute="earn-submit"
-          />
-          {isInMaintenance && (
-            <ErrorBadge
-              level={ErrorLevel.Warning}
-              message={t(translations.maintenanceMode.featureDisabled)}
-            />
-          )}
-          {isUnderCollateralized && (
-            <ErrorBadge
-              level={ErrorLevel.Critical}
-              message={t(translations.earnPage.form.undercollateralized)}
-            />
-          )}
-        </div>
+            {isInMaintenance && (
+              <ErrorBadge
+                level={ErrorLevel.Warning}
+                message={t(translations.maintenanceMode.featureDisabled)}
+              />
+            )}
+            {isUnderCollateralized && (
+              <ErrorBadge
+                level={ErrorLevel.Critical}
+                message={t(translations.earnPage.form.undercollateralized)}
+              />
+            )}
+          </div>
+        </NetworkBanner>
       </div>
     </>
   );

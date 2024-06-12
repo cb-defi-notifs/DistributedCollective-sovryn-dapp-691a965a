@@ -20,6 +20,7 @@ export const useHandleSubscriptions = () => {
     setStabilityPoolToggle,
     setSystemToggle,
     setServerSubscriptionsState,
+    setBitocracyToggle,
   } = useEmailNotificationSettingsContext();
 
   const resetSubscriptions = useCallback(() => {
@@ -28,17 +29,32 @@ export const useHandleSubscriptions = () => {
     setLiquidationsToggle(false);
     setStabilityPoolToggle(false);
     setSystemToggle(false);
+    setBitocracyToggle(false);
   }, [
     resetSubscriptionsState,
     setMarginCallsToggle,
     setLiquidationsToggle,
     setStabilityPoolToggle,
     setSystemToggle,
+    setBitocracyToggle,
   ]);
+
+  const withDefaultSubscriptions = useCallback(
+    (subscriptions: Notification[]) =>
+      defaultSubscriptionsArray.map(
+        item =>
+          subscriptions.find(
+            subscription => subscription.notification === item.notification,
+          ) ?? item,
+      ),
+    [],
+  );
 
   const parseSubscriptionsResponse = useCallback(
     (subscriptions: Notification[]) => {
-      const parsedSubscriptions: Notification[] = subscriptions
+      const parsedSubscriptions: Notification[] = withDefaultSubscriptions(
+        subscriptions,
+      )
         .filter(item =>
           Object.values(NotificationMessageType).includes(item.notification),
         )
@@ -62,21 +78,42 @@ export const useHandleSubscriptions = () => {
       setSystemToggle(
         isSubscribedToGroup(AlertGroup.System, parsedSubscriptions),
       );
+      setBitocracyToggle(
+        isSubscribedToGroup(AlertGroup.BitocracyVote, parsedSubscriptions),
+      );
     },
     [
+      withDefaultSubscriptions,
       setSubscriptions,
+      setServerSubscriptionsState,
       setMarginCallsToggle,
       setLiquidationsToggle,
       setStabilityPoolToggle,
       setSystemToggle,
-      setServerSubscriptionsState,
+      setBitocracyToggle,
     ],
   );
 
   const updateSubscriptions = useCallback(
     (group: AlertGroup) => {
-      const oldSubscriptionsState =
-        subscriptions.length > 0 ? subscriptions : defaultSubscriptionsArray;
+      let oldSubscriptionsState =
+        subscriptions.length === 0
+          ? defaultSubscriptionsArray
+          : defaultSubscriptionsArray.map(
+              item =>
+                subscriptions.find(
+                  subscription =>
+                    subscription.notification === item.notification,
+                ) ?? item,
+            );
+
+      // fixes bug which caused group to always be disabled,
+      // when new subscription type is added to the group and it's not subscribed to
+      const checked = oldSubscriptionsState
+        .filter(item =>
+          AlertGroupToNotificationsMapping[group].includes(item.notification),
+        )
+        .some(item => !item.isSubscribed);
 
       const newSubscriptionsState = oldSubscriptionsState.map(item => {
         if (
@@ -84,10 +121,9 @@ export const useHandleSubscriptions = () => {
         ) {
           return {
             notification: item.notification,
-            isSubscribed: !item.isSubscribed,
+            isSubscribed: checked,
           };
         }
-
         return item;
       });
 
@@ -116,6 +152,11 @@ export const useHandleSubscriptions = () => {
     setSystemToggle(prevValue => !prevValue);
   }, [updateSubscriptions, setSystemToggle]);
 
+  const bitocracyToggleHandler = useCallback(() => {
+    updateSubscriptions(AlertGroup.BitocracyVote);
+    setBitocracyToggle(prevValue => !prevValue);
+  }, [updateSubscriptions, setBitocracyToggle]);
+
   return {
     resetSubscriptions,
     parseSubscriptionsResponse,
@@ -123,5 +164,6 @@ export const useHandleSubscriptions = () => {
     liquidationsToggleHandler,
     stabilityPoolToggleHandler,
     systemToggleHandler,
+    bitocracyToggleHandler,
   };
 };

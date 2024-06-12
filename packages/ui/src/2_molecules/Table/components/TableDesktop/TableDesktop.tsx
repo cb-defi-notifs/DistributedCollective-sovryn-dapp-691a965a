@@ -20,16 +20,23 @@ import { OrderDirectionIcon } from './components/OrderDirectionIcon/OrderDirecti
 // No React.FC, since doesn't support Generic PropTypes
 export const TableDesktop = <RowType extends RowObject>({
   className,
+  rowClassName,
   columns,
   rows,
   rowKey,
   noData,
+  loadingData,
   onRowClick,
   dataAttribute,
   isClickable,
   orderOptions,
   setOrderOptions,
   isLoading,
+  expandedContent,
+  expandedClassNames = '',
+  preventExpandOnClickClass,
+  hideHeader = false,
+  expandedIndex,
 }: TableProps<RowType>) => {
   const [selectedIndex, setSelectedIndex] = useState<number>();
   useEffect(() => {
@@ -73,43 +80,45 @@ export const TableDesktop = <RowType extends RowObject>({
       className={classNames(styles.table, className)}
       {...applyDataAttr(dataAttribute)}
     >
-      <thead>
-        <tr>
-          {columns.map(column => (
-            <th
-              key={column.id.toString()}
-              className={classNames(
-                styles.header,
-                column.align && [styles[`text${column.align}`]],
-                column.className,
-              )}
-            >
-              <span className={styles.headerContent}>
-                <span
-                  onClick={() => onHeaderClick(column)}
-                  className={classNames(styles.title, {
-                    [styles.sortable]: column.sortable,
-                  })}
-                >
-                  <>
-                    {column.title || column.id}
-                    {column.sortable && (
-                      <OrderDirectionIcon
-                        orderBy={orderOptions?.orderBy}
-                        orderDirection={orderOptions?.orderDirection}
-                        id={column.id.toString()}
-                        className={styles.icon}
-                      />
-                    )}
-                  </>
-                </span>
+      {hideHeader === false && (
+        <thead>
+          <tr>
+            {columns.map(column => (
+              <th
+                key={column.id.toString()}
+                className={classNames(
+                  styles.header,
+                  column.align && [styles[`text${column.align}`]],
+                  column.className,
+                )}
+              >
+                <span className={styles.headerContent}>
+                  <span
+                    onClick={() => onHeaderClick(column)}
+                    className={classNames(styles.title, {
+                      [styles.sortable]: column.sortable,
+                    })}
+                  >
+                    <>
+                      {column.title || column.id}
+                      {column.sortable && (
+                        <OrderDirectionIcon
+                          orderBy={orderOptions?.orderBy}
+                          orderDirection={orderOptions?.orderDirection}
+                          id={column.id.toString()}
+                          className={styles.icon}
+                        />
+                      )}
+                    </>
+                  </span>
 
-                {isValidElement(column.filter) && column.filter}
-              </span>
-            </th>
-          ))}
-        </tr>
-      </thead>
+                  {isValidElement(column.filter) && column.filter}
+                </span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+      )}
       <tbody className={styles.body}>
         {rows &&
           rows.length >= 1 &&
@@ -123,8 +132,12 @@ export const TableDesktop = <RowType extends RowObject>({
               isSelected={index === selectedIndex}
               dataAttribute={dataAttribute}
               isClickable={isClickable}
-              className={styles.row}
+              className={classNames(styles.row, rowClassName)}
               size={TableRowSize.large}
+              expandedContent={expandedContent}
+              expandedClassNames={expandedClassNames}
+              preventExpandOnClickClass={preventExpandOnClickClass}
+              expandedRow={expandedIndex === index}
             />
           ))}
         {(!rows || rows.length === 0) && (
@@ -137,24 +150,13 @@ export const TableDesktop = <RowType extends RowObject>({
               ))}
             </tr>
 
-            {isLoading ? (
-              Array.from(Array(4).keys()).map(i => (
-                <Fragment key={i}>
-                  <tr className={rowStyles.row}>
-                    <td className={styles.noData} colSpan={999}>
-                      <span className={styles.loading} />
-                    </td>
-                  </tr>
-                  <tr className={styles.spacer}></tr>
-                </Fragment>
-              ))
-            ) : (
-              <tr className={rowStyles.row}>
-                <td className={styles.noData} colSpan={999}>
-                  {noData ? noData : 'No data'}
-                </td>
-              </tr>
-            )}
+            <tr className={rowStyles.row}>
+              <td className={styles.loading} colSpan={999}>
+                {isLoading
+                  ? loadingData || 'Loading data…'
+                  : noData || 'No data'}
+              </td>
+            </tr>
           </>
         )}
       </tbody>

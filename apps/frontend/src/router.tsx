@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { createBrowserRouter, createHashRouter } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  createHashRouter,
+  redirect,
+} from 'react-router-dom';
 
 import { PageContainer } from './app/4_templates';
 import { EmailVerificationStateContainer } from './app/4_templates/EmailVerificationStateContainer/EmailVerificationStateContainer';
@@ -12,6 +16,7 @@ import { EmailUnsubscribedPage } from './app/5_pages/EmailUnsubscribedPage/Email
 import { EmailVerifiedPage } from './app/5_pages/EmailVerifiedPage/EmailVerifiedPage';
 import { ErrorPage } from './app/5_pages/ErrorPage/ErrorPage';
 import { zeroPageLoader } from './app/5_pages/ZeroPage/loader';
+import { CrocContextProvider } from './contexts/CrocContext';
 import { isIPFSBuild } from './utils/helpers';
 import { loadable } from './utils/loadable';
 
@@ -33,6 +38,45 @@ const TermsOfUse = loadable(
 const RewardsPage = loadable(
   () => import('./app/5_pages/RewardsPage/RewardsPage'),
 );
+const LendPage = loadable(() => import('./app/5_pages/LendPage/LendPage'));
+const MarketMakingPage = loadable(
+  () => import('./app/5_pages/MarketMakingPage/MarketMakingPage'),
+);
+const StakePage = loadable(() => import('./app/5_pages/StakePage/StakePage'));
+const BorrowPage = loadable(
+  () => import('./app/5_pages/BorrowPage/BorrowPage'),
+);
+const BitocracyPage = loadable(
+  () => import('./app/5_pages/BitocracyPage/BitocracyPage'),
+);
+const ProposalPage = loadable(
+  () => import('./app/5_pages/ProposalPage/ProposalPage'),
+);
+const LandingPage = loadable(
+  () => import('./app/5_pages/LandingPage/LandingPage'),
+);
+const PortfolioPage = loadable(
+  () => import('./app/5_pages/PortfolioPage/PortfolioPage'),
+);
+const ProtocolDataPage = loadable(
+  () => import('./app/5_pages/ProtocolDataPage/ProtocolDataPage'),
+);
+
+const LeaderboardPage = loadable(
+  () => import('./app/5_pages/LeaderboardPage/LeaderboardPage'),
+);
+
+const LeaderboardPointsPage = loadable(
+  () => import('./app/5_pages/LeaderboardPointsPage/LeaderboardPointsPage'),
+);
+
+const ClaimLpPage = loadable(
+  () => import('./app/5_pages/ClaimLpPage/ClaimLpPage'),
+);
+
+const ClaimPowaPage = loadable(
+  () => import('./app/5_pages/ClaimPowaPage/ClaimPowaPage'),
+);
 
 const routes = [
   {
@@ -46,23 +90,50 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        element: <Zero />,
         index: true,
-        loader: zeroPageLoader,
-      },
-      {
-        path: '/borrow',
-        element: <Zero />,
-        loader: zeroPageLoader,
-      },
-      {
-        path: '/earn',
-        element: <EarnPage />,
-        loader: earnPageLoader,
+        element: <LandingPage />,
       },
       {
         path: '/convert',
         element: <ConvertPage />,
+      },
+      {
+        path: '/borrow/line-of-credit',
+        element: <Zero />,
+        loader: zeroPageLoader,
+      },
+      {
+        path: '/borrow/fixed-interest',
+        element: <BorrowPage />,
+      },
+      {
+        path: '/borrow',
+        loader: () => redirect('/borrow/fixed-interest'),
+      },
+      {
+        path: '/earn/stability-pool',
+        element: <EarnPage />,
+        loader: earnPageLoader,
+      },
+      {
+        path: '/earn/lend',
+        element: <LendPage />,
+      },
+      {
+        path: '/earn/market-making',
+        element: <MarketMakingPage />,
+      },
+      {
+        path: '/earn',
+        loader: () => redirect('/earn/lend'),
+      },
+      {
+        path: '/bitocracy',
+        element: <BitocracyPage />,
+      },
+      {
+        path: '/bitocracy/:id',
+        element: <ProposalPage />,
       },
       {
         path: '/history',
@@ -72,6 +143,39 @@ const routes = [
         path: '/rewards',
         element: <RewardsPage />,
         loader: zeroPageLoader,
+      },
+      {
+        path: '/portfolio',
+        element: (
+          <CrocContextProvider>
+            <PortfolioPage />
+          </CrocContextProvider>
+        ),
+        loader: zeroPageLoader,
+      },
+      {
+        path: '/earn/staking',
+        element: <StakePage />,
+      },
+      {
+        path: '/powa',
+        element: <LeaderboardPage />,
+      },
+      {
+        path: '/bob-lp-points',
+        element: <LeaderboardPointsPage />,
+      },
+      {
+        path: '/stats',
+        element: <ProtocolDataPage />,
+      },
+      {
+        path: '/claim-lp',
+        element: <ClaimLpPage />,
+      },
+      {
+        path: '/claim-POWA',
+        element: <ClaimPowaPage />,
       },
     ],
   },

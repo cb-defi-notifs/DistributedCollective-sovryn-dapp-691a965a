@@ -3,24 +3,29 @@ import { useEffect } from 'react';
 
 import classNames from 'classnames';
 
-import { getTokenDetails, SupportedTokens } from '@sovryn/contracts';
+import { getAssetData, getAssetDataByAddress } from '@sovryn/contracts';
+import { ChainId, ChainIds } from '@sovryn/ethers-provider';
 import { applyDataAttr } from '@sovryn/ui';
 
-import { getTokenDisplayName } from '../../../constants/tokens';
 import styles from './AssetRenderer.module.css';
 
 type AssetRendererProps = {
   /**
    * The asset that will be rendered and it's required.
    */
-  asset: SupportedTokens;
+  asset?: string;
+  chainId?: ChainId;
+  /**
+   * The asset address.
+   */
+  address?: string;
   /**
    * Whether to show the asset logo or not.
+   * @default false
    * */
   showAssetLogo?: boolean;
   /**
    * Applied classNames to the asset element.
-   * @default false
    * */
   assetClassName?: string;
   /**
@@ -28,28 +33,57 @@ type AssetRendererProps = {
    * */
   className?: string;
   /**
+   * Applied classNames to the asset logo element.
+   * */
+  logoClassName?: string;
+  /**
    * Applied data attribute to the outer element.
    * */
   dataAttribute?: string;
+  /**
+   * Whether to show the asset long name.
+   * */
+  showLongName?: boolean;
+  /**
+   * Applied classNames to the asset long name element.
+   * */
+  assetLongNameClassName?: string;
 };
 
 export const AssetRenderer: FC<AssetRendererProps> = ({
   asset,
+  chainId = ChainIds.RSK_MAINNET,
+  address,
   showAssetLogo,
   assetClassName,
   className,
   dataAttribute,
+  logoClassName,
 }) => {
+  const [token, setToken] = useState(asset);
   const [logo, setLogo] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    const getLogo = async () =>
-      await getTokenDetails(asset)
-        .then(item => setLogo(item.icon))
+    if (asset && !address) {
+      getAssetData(asset, chainId)
+        .then(item => {
+          setLogo(item.icon);
+          setToken(item.symbol);
+        })
         .catch(() => setLogo(''));
+    }
+  }, [address, asset, chainId, showAssetLogo]);
 
-    showAssetLogo && getLogo();
-  }, [asset, showAssetLogo]);
+  useEffect(() => {
+    if (address && !asset) {
+      getAssetDataByAddress(address, chainId)
+        .then(item => {
+          setLogo(item.icon);
+          setToken(item.symbol);
+        })
+        .catch(() => setLogo(''));
+    }
+  }, [address, asset, chainId, showAssetLogo]);
 
   return (
     <div
@@ -58,13 +92,15 @@ export const AssetRenderer: FC<AssetRendererProps> = ({
     >
       {showAssetLogo && logo && (
         <div
-          className={styles.assetLogo}
+          className={classNames(styles.assetLogo, logoClassName)}
           dangerouslySetInnerHTML={{ __html: logo }}
         />
       )}
-      <span className={classNames(styles.asset, assetClassName)}>
-        {getTokenDisplayName(asset)}
-      </span>
+      {token && (
+        <span className={classNames(styles.asset, assetClassName)}>
+          {token}
+        </span>
+      )}
     </div>
   );
 };

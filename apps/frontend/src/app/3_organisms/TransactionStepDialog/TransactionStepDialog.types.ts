@@ -8,6 +8,7 @@ import {
   ethers,
 } from 'ethers';
 
+import { AssetDetailsData } from '@sovryn/contracts';
 import { PermitTransactionResponse } from '@sovryn/sdk';
 import { StatusType } from '@sovryn/ui';
 
@@ -24,24 +25,34 @@ export type TransactionStepData = {
   config: TransactionConfig;
 };
 
-export type Transaction = {
-  title: string;
-  subtitle?: string;
-  request: TransactionRequest;
-  onStart?: (hash: string) => void;
-  onComplete?: (result: string | PermitTransactionResponse) => void;
-  onChangeStatus?: (status: StatusType) => void;
-  updateHandler?: (
+export type TransactionCallbacks = {
+  onStart: (hash: string) => void;
+  onComplete: (result: string | PermitTransactionResponse) => void;
+  onChangeStatus: (status: StatusType) => void;
+};
+
+export type TransactionUpdateHandler = {
+  updateHandler: (
     request: TransactionRequest,
     receipts: TransactionReceipt[],
   ) => TransactionRequest | Promise<TransactionRequest>;
 };
+
+export type Transaction = {
+  title: string;
+  subtitle?: string;
+  request: TransactionRequest;
+} & Partial<TransactionCallbacks> &
+  Partial<TransactionUpdateHandler>;
 
 export enum TransactionType {
   signMessage = 'sign',
   signTypedData = 'signTypedData',
   signTransaction = 'signTransaction',
   signTransactionData = 'signTransactionData',
+  /**
+   * @deprecated Use `signTypedData` instead.
+   */
   signPermit = 'signPermit',
 }
 
@@ -56,9 +67,12 @@ export type SignTypedDataRequest = {
   signer: JsonRpcSigner;
   domain: TypedDataDomain;
   types: Record<string, Array<TypedDataField>>;
-  value: Record<string, any>;
+  values: Record<string, any>;
 };
 
+/**
+ * @deprecated Use TypedDataTransactionRequest instead
+ */
 export type SignPermitRequest = {
   type: TransactionType.signPermit;
   signer: JsonRpcSigner;
@@ -73,6 +87,7 @@ export type SignPermitRequest = {
 export type SignTransactionRequest = {
   type: TransactionType.signTransaction;
   contract: ethers.Contract;
+  assetDetailsData?: AssetDetailsData;
   fnName: string;
   args: any[];
   value?: BigNumberish;
@@ -106,5 +121,5 @@ export enum TransactionReceiptStatus {
 export type TransactionReceipt = {
   status: TransactionReceiptStatus;
   request: TransactionRequest;
-  response?: string | PermitTransactionResponse;
+  response?: string;
 };

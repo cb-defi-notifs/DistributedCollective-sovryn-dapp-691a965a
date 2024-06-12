@@ -1,10 +1,10 @@
+import { assets } from './assets';
 import { loanTokens } from './loan-tokens';
 import { protocol } from './protocol';
-import { tokens } from './tokens';
 import { zero } from './zero';
 
 export const contracts = {
-  tokens,
+  assets,
   loanTokens,
   protocol,
   zero,

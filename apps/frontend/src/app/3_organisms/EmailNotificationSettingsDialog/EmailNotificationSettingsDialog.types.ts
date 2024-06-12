@@ -21,6 +21,10 @@ export enum NotificationMessageType {
   ZeroRecovery = 'ZeroRecovery',
   ZeroRedemptionFull = 'ZeroRedemptionFull',
   ZeroRedemptionPartial = 'ZeroRedemptionPartial',
+  LoanMarginCall = 'LoanMarginCall',
+  LoanLiquidation = 'LoanLiquidation',
+  LoanMarginCallUndercollateralized = 'LoanMarginCallUndercollateralized',
+  BitocracyVote = 'BitocracyVote',
 }
 
 export enum AlertGroup {
@@ -28,6 +32,7 @@ export enum AlertGroup {
   Liquidations = 'Liquidations',
   StabilityPool = 'StabilityPool',
   System = 'System',
+  BitocracyVote = 'BitocracyVote',
 }
 
 export const AlertGroupToNotificationsMapping: Record<
@@ -39,18 +44,22 @@ export const AlertGroupToNotificationsMapping: Record<
     NotificationMessageType.ZeroCcr,
     NotificationMessageType.ZeroCriticalIcrNormal,
     NotificationMessageType.ZeroCriticalIcrRecovery,
+    NotificationMessageType.LoanMarginCall,
+    NotificationMessageType.LoanMarginCallUndercollateralized,
   ],
   Liquidations: [
     NotificationMessageType.ZeroLiquidation,
     NotificationMessageType.ZeroLiquidationSurplus,
     NotificationMessageType.ZeroRedemptionFull,
     NotificationMessageType.ZeroRedemptionPartial,
+    NotificationMessageType.LoanLiquidation,
   ],
   StabilityPool: [NotificationMessageType.ZeroGain],
   System: [
     NotificationMessageType.ZeroLowTcr,
     NotificationMessageType.ZeroRecovery,
   ],
+  BitocracyVote: [NotificationMessageType.BitocracyVote],
 };
 
 export type Notification = {
@@ -101,6 +110,22 @@ export const defaultSubscriptionsArray: Notification[] = [
   },
   {
     notification: NotificationMessageType.ZeroRedemptionPartial,
+    isSubscribed: false,
+  },
+  {
+    notification: NotificationMessageType.LoanMarginCall,
+    isSubscribed: false,
+  },
+  {
+    notification: NotificationMessageType.LoanMarginCallUndercollateralized,
+    isSubscribed: false,
+  },
+  {
+    notification: NotificationMessageType.LoanLiquidation,
+    isSubscribed: false,
+  },
+  {
+    notification: NotificationMessageType.BitocracyVote,
     isSubscribed: false,
   },
 ];

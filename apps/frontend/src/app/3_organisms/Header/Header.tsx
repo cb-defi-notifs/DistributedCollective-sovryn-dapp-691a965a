@@ -1,57 +1,42 @@
-import React, { FC, useCallback, useMemo, useReducer } from 'react';
+import React, { FC, useCallback, useReducer } from 'react';
 
 import { t } from 'i18next';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { SupportedTokens } from '@sovryn/contracts';
 import {
   Button,
   ButtonStyle,
   Header as UIHeader,
   Icon,
   IconNames,
-  applyDataAttr,
-  noop,
 } from '@sovryn/ui';
 
 import { ConnectWalletButton } from '../../2_molecules';
-import { NavLink } from '../../2_molecules/NavLink/NavLink';
+import { NetworkPicker } from '../../2_molecules/NetworkPicker/NetworkPicker';
 import { SovrynLogo } from '../../2_molecules/SovrynLogo/SovrynLogo';
-import { RSK_FAUCET } from '../../../constants/general';
 import { useWalletConnect, useWrongNetworkCheck } from '../../../hooks';
-import { useAssetBalance } from '../../../hooks/useAssetBalance';
+import { useCurrentChain } from '../../../hooks/useChainStore';
 import { translations } from '../../../locales/i18n';
-import { sharedState } from '../../../store/rxjs/shared-state';
-import { isMainnet, isTestnetFastBtcEnabled } from '../../../utils/helpers';
+import { isBobChain } from '../../../utils/chain';
+import { isRskChain } from '../../../utils/chain';
+import { menuItemsMapping } from './Header.constants';
+import { BridgeMenuItem } from './components/BridgeMenuItem/BridgeMenuItem';
+import { NavItem } from './components/NavItem/NavItem';
 import { ProductLinks } from './components/ProductLinks/ProductLinks';
 
 export const Header: FC = () => {
+  const chainId = useCurrentChain();
+  const navigate = useNavigate();
   const [isOpen, toggle] = useReducer(v => !v, false);
   const { connectWallet, disconnectWallet, account, pending } =
     useWalletConnect();
   useWrongNetworkCheck();
-
-  const { pathname } = useLocation();
-
-  const { balance } = useAssetBalance(SupportedTokens.rbtc);
-
-  const hasRbtcBalance = useMemo(() => Number(balance) !== 0, [balance]);
-
-  const enableFastBtc = useMemo(
-    () => isMainnet() || (!isMainnet() && isTestnetFastBtcEnabled()),
-    [],
-  );
 
   const handleNavClick = useCallback(() => {
     if (isOpen) {
       toggle();
     }
   }, [isOpen]);
-
-  const handleFastBtcClick = useCallback(
-    () => sharedState.actions.openFastBtcDialog(),
-    [],
-  );
 
   return (
     <>
@@ -78,58 +63,47 @@ export const Header: FC = () => {
           />
         }
         menuItems={
-          <ol className="flex flex-col gap-4 lg:flex-row">
-            <NavLink
-              to="/"
-              end
-              onClick={handleNavClick}
-              {...applyDataAttr('dapp-menu-borrow')}
-            >
-              {t(translations.header.nav.borrow)}
-            </NavLink>
-            <NavLink
-              to="/earn"
-              onClick={handleNavClick}
-              {...applyDataAttr('dapp-menu-earn')}
-            >
-              {t(translations.header.nav.earn)}
-            </NavLink>
-            <NavLink
-              to="/convert"
-              onClick={handleNavClick}
-              {...applyDataAttr('dapp-menu-convert')}
-            >
-              {t(translations.header.nav.convert)}
-            </NavLink>
+          <ol className="flex flex-col gap-4 lg:flex-row w-full lg:w-auto">
+            {menuItemsMapping.map((item, index) => (
+              <li key={index}>
+                <NavItem item={item} onClick={toggle} />
+              </li>
+            ))}
             <ProductLinks />
+            {isBobChain(chainId) && (
+              <Button
+                text={t(translations.header.nav.claimLp)}
+                style={ButtonStyle.primary}
+                className="bg-[#24BFB74D]/[0.3] border-[#24BFB74D]/[0.3] hover:bg-[#24BFB74D]"
+                onClick={() => navigate('/claim-lp')}
+              />
+            )}
           </ol>
         }
         secondaryContent={
-          (account || pathname !== '/') && (
-            <div className="relative">
-              <ConnectWalletButton
-                onConnect={connectWallet}
-                onDisconnect={disconnectWallet}
-                address={account}
-                pending={pending}
-                dataAttribute="dapp-header-connect"
-              />
-            </div>
-          )
+          <div className="relative flex flex-row gap-4">
+            <NetworkPicker />
+            <ConnectWalletButton
+              onConnect={connectWallet}
+              onDisconnect={disconnectWallet}
+              address={account}
+              pending={pending}
+              dataAttribute="dapp-header-connect"
+            />
+          </div>
         }
         extraContent={
-          account &&
-          hasRbtcBalance && (
-            <Button
-              text={t(translations.header.funding)}
-              style={ButtonStyle.secondary}
-              dataAttribute="dapp-header-funding"
-              onClick={enableFastBtc ? handleFastBtcClick : noop}
-              href={enableFastBtc ? '' : RSK_FAUCET}
-              hrefExternal={true}
-              className="text-gray-10"
-            />
-          )
+          <div className="flex space-x-4 items-center">
+            {isRskChain(chainId) && (
+              <Button
+                text={t(translations.header.nav.claimPowa)}
+                style={ButtonStyle.primary}
+                className="bg-[#24BFB74D]/[0.3] border-[#24BFB74D]/[0.3] hover:bg-[#24BFB74D]"
+                onClick={() => navigate('/claim-POWA')}
+              />
+            )}
+            {account && <BridgeMenuItem dataAttribute="dapp-header-bridges" />}
+          </div>
         }
       />
     </>

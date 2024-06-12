@@ -16,11 +16,12 @@ import {
   NotificationType,
 } from '@sovryn/ui';
 
-import { masset } from '../../../../5_pages/ConvertPage/ConvertPage.types';
+import { MASSET } from '../../../../5_pages/ConvertPage/ConvertPage.constants';
 import {
   DEFAULT_HISTORY_FRAME_PAGE_SIZE,
   EXPORT_RECORD_LIMIT,
 } from '../../../../../constants/general';
+import { getTokenDisplayName } from '../../../../../constants/tokens';
 import { useNotificationContext } from '../../../../../contexts/NotificationContext';
 import { useAccount } from '../../../../../hooks/useAccount';
 import { useBlockNumber } from '../../../../../hooks/useBlockNumber';
@@ -100,12 +101,20 @@ export const MyntConversionsHistoryFrame: React.FC<PropsWithChildren> = ({
           : t(translations.conversionsHistory.burn),
       sent:
         tx.type === ConversionType.Incoming
-          ? `${tx.bassetQuantity} ${tx.bAsset.symbol}`
-          : `${tx.massetQuantity} ${masset.toUpperCase()}`,
+          ? tx.bassetQuantity
+          : tx.massetQuantity,
+      sentToken:
+        tx.type === ConversionType.Incoming
+          ? getTokenDisplayName(tx.bAsset.symbol || '')
+          : MASSET.toUpperCase(),
       received:
         tx.type === ConversionType.Incoming
-          ? `${tx.massetQuantity} ${masset.toUpperCase()}`
-          : `${tx.bassetQuantity} ${tx.bAsset.symbol}`,
+          ? tx.massetQuantity
+          : tx.bassetQuantity,
+      receivedToken:
+        tx.type === ConversionType.Incoming
+          ? MASSET.toUpperCase()
+          : getTokenDisplayName(tx.bAsset.symbol || ''),
       TXID: tx.transaction.id,
     }));
   }, [account, addNotification, getConversions]);
@@ -124,6 +133,7 @@ export const MyntConversionsHistoryFrame: React.FC<PropsWithChildren> = ({
           isLoading={loading}
           className="bg-gray-80 text-gray-10 lg:px-6 lg:py-4"
           noData={t(translations.common.tables.noData)}
+          loadingData={t(translations.common.tables.loading)}
           dataAttribute="mynt-conversions-history-table"
         />
       }

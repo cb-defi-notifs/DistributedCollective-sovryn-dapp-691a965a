@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
+import { t } from 'i18next';
 import { nanoid } from 'nanoid';
-import { useTranslation } from 'react-i18next';
 
 import {
   NotificationType,
@@ -12,6 +12,7 @@ import {
 } from '@sovryn/ui';
 
 import { ExportCSV } from '../../2_molecules/ExportCSV/ExportCSV';
+import { BITCOIN } from '../../../constants/currencies';
 import {
   DEFAULT_HISTORY_FRAME_PAGE_SIZE,
   EXPORT_RECORD_LIMIT,
@@ -26,19 +27,19 @@ import {
   BitcoinTransfer_OrderBy,
   useGetFundingLazyQuery,
 } from '../../../utils/graphql/rsk/generated';
-import { useGetFundingHistory } from './hooks/useGetFundingHistory';
-import { FundingHistoryType } from './types';
+import { dateFormat } from '../../../utils/helpers';
+import { FundingHistoryType } from './FundingHistoryFrame.types';
 import {
   columnsConfig,
   generateRowTitle,
   parseData,
   transactionTypeRenderer,
-} from './utils';
+} from './FundingHistoryFrame.utils';
+import { useGetFundingHistory } from './hooks/useGetFundingHistory';
 
 const pageSize = DEFAULT_HISTORY_FRAME_PAGE_SIZE;
 
 export const FundingHistoryFrame: FC = () => {
-  const { t } = useTranslation();
   const { account } = useAccount();
   const { addNotification } = useNotificationContext();
   const { value: block } = useBlockNumber();
@@ -119,30 +120,37 @@ export const FundingHistoryFrame: FC = () => {
       });
     }
 
-    const fundingData: FundingHistoryType[] = funding.reduce(
-      (acc: FundingHistoryType[], item) => {
-        const rows = parseData(item as BitcoinTransfer);
+    const fundingData = funding.reduce((acc: FundingHistoryType[], item) => {
+      const rows = parseData(item as BitcoinTransfer);
+      // make sure rows has at least 2 elements before using spread operator
+      if (rows.length >= 2) {
+        acc.push(
+          {
+            ...rows[0],
+            received: `${rows[0].received}`,
+            serviceFee: `${rows[0].serviceFee}`,
+            type: transactionTypeRenderer(rows[0]),
+          },
+          {
+            ...rows[1],
+            sent: `${rows[1].sent}`,
+            type: transactionTypeRenderer(rows[1]),
+          },
+        );
+      }
+      return acc;
+    }, []);
 
-        // make sure rows has at least 2 elements before using spread operator
-        if (rows.length >= 2) {
-          acc.push(
-            {
-              ...rows[0],
-              type: transactionTypeRenderer(rows[0]),
-            },
-            {
-              ...rows[1],
-              type: transactionTypeRenderer(rows[1]),
-            },
-          );
-        }
-        return acc;
-      },
-      [],
-    );
-
-    return fundingData;
-  }, [t, account, addNotification, getFundingHistory, orderOptions]);
+    return fundingData.map(({ ...item }) => ({
+      timestamp: dateFormat(item.timestamp),
+      type: item.type,
+      sent: item.sent,
+      received: item.received,
+      serviceFee: item.serviceFee,
+      token: BITCOIN,
+      txHash: item.txHash,
+    }));
+  }, [account, addNotification, getFundingHistory, orderOptions]);
 
   useEffect(() => {
     setPage(0);
@@ -152,7 +160,7 @@ export const FundingHistoryFrame: FC = () => {
     <>
       <ExportCSV
         getData={exportData}
-        filename="transactions"
+        filename="funding"
         className="mb-7 hidden lg:inline-flex"
         disabled={!funding || funding.length === 0}
       />
@@ -166,6 +174,7 @@ export const FundingHistoryFrame: FC = () => {
           isLoading={loading}
           className="bg-gray-80 text-gray-10 lg:px-6 lg:py-4"
           noData={t(translations.common.tables.noData)}
+          loadingData={t(translations.common.tables.loading)}
           dataAttribute="funding-history-table"
         />
         <Pagination

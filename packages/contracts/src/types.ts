@@ -1,4 +1,6 @@
-import { ContractInterface } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
+
+import type { Contract, ContractInterface, Signer } from 'ethers';
 
 import type { ChainId } from '@sovryn/ethers-provider';
 
@@ -7,9 +9,13 @@ import { contracts } from './contracts';
 export type ContractGroup = keyof typeof contracts;
 export type ContractNetworkName = keyof typeof contracts[ContractGroup];
 
+/** @deprecated */
+export type SupportedTokens = string;
+
 export type ContractConfigData = {
   address: string;
   abi: ContractInterface;
+  contract: (signerOrProvider?: Signer | Provider) => Contract;
 };
 
 export type AsyncContractConfigData = {
@@ -25,35 +31,18 @@ export type ContractData = {
   name: string;
 };
 
-export enum SupportedTokens {
-  rbtc = 'rbtc',
-  wrbtc = 'wrbtc',
-  zusd = 'zusd',
-  xusd = 'xusd',
-  dllr = 'dllr',
-  sov = 'sov',
-  doc = 'doc',
-  rdoc = 'rdoc',
-  bnbs = 'bnbs',
-  eths = 'eths',
-  fish = 'babelfish',
-  moc = 'moc',
-  rif = 'rif',
-  bpro = 'bpro',
-  rusdt = 'rusdt',
-  mynt = 'mynt',
-}
-
-export type TokenBaseInfo = {
-  symbol: SupportedTokens;
-  decimalPrecision: number;
+export type AssetDetails = {
+  symbol: string;
+  address: string;
+  decimals: number;
   getIcon: () => Promise<string>;
+  name?: string;
+  isNative?: boolean;
+  description?: string;
 };
 
-export type TokenDetailsData = {
-  address: string;
-  abi: ContractInterface;
-  symbol: SupportedTokens;
-  decimalPrecision: number;
+export type AssetDetailsData = Omit<AssetDetails, 'getIcon'> & {
   icon?: string;
+  abi: ContractInterface;
+  contract: (signerOrProvider?: Signer | Provider) => Contract;
 };

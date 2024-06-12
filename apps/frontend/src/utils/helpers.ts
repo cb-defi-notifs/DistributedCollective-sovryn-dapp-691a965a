@@ -1,18 +1,29 @@
+import { RefObject } from 'react';
+
+import { Network } from 'bitcoin-address-validation';
 import dayjs from 'dayjs';
-import { providers, TypedDataDomain, TypedDataField } from 'ethers';
+import { BigNumber, providers } from 'ethers';
 import resolveConfig from 'tailwindcss/resolveConfig';
 
 import { EIP1193Provider } from '@sovryn/onboard-common';
 import tailwindConfig from '@sovryn/tailwindcss-config';
 import { Decimalish } from '@sovryn/utils';
+import { Decimal } from '@sovryn/utils';
 
+import { RSK_CHAIN_ID } from '../config/chains';
+
+import { MS } from '../constants/general';
 import {
-  BTC_EXPLORER,
-  RSK_EXPLORER,
+  AMM_SERVICE,
+  GRAPH_WRAPPER,
   SERVICES_CONFIG,
 } from '../constants/infrastructure';
+import { BOB } from '../constants/infrastructure/bob';
+import { BTC } from '../constants/infrastructure/btc';
+import { RSK } from '../constants/infrastructure/rsk';
 import { ALPHA_LINKS, BITOCRACY_LINKS, GITHUB_LINKS } from '../constants/links';
 import { Environments } from '../types/global';
+import { COMMON_SYMBOLS, findAsset } from './asset';
 import { decimalic } from './math';
 
 export const prettyTx = (
@@ -25,27 +36,12 @@ export const prettyTx = (
   return `${start} ··· ${end}`;
 };
 
-export const signTypedData = async (
-  provider: EIP1193Provider,
-  domain: TypedDataDomain,
-  types: Record<string, Array<TypedDataField>>,
-  data: Record<string, any>,
-) => {
-  // A Signer MUST always make sure, that if present, the "from" field
-  //  matches the Signer, before sending or signing a transaction
-  // A Signer SHOULD always wrap private information (such as a private
-  //  key or mnemonic) in a function, so that console.log does not leak
-  //  the data
-  const signer = new providers.Web3Provider(provider);
-  const signature = await signer
-    .getSigner()
-    ._signTypedData(domain, types, data);
-  return signature;
-};
-
 export const currentNetwork: Environments = !!process.env.REACT_APP_NETWORK
   ? (process.env.REACT_APP_NETWORK as Environments)
   : Environments.Mainnet;
+
+export const currentBtcNetwork: Network =
+  currentNetwork === Environments.Mainnet ? Network.mainnet : Network.testnet;
 
 export const isMainnet = () =>
   process.env.REACT_APP_NETWORK === Environments.Mainnet;
@@ -61,22 +57,44 @@ export const getServicesConfig = () =>
   SERVICES_CONFIG[isMainnet() ? Environments.Mainnet : Environments.Testnet];
 
 export const getRskExplorerUrl = () =>
-  RSK_EXPLORER[isMainnet() ? 'mainnet' : 'testnet'];
+  RSK.explorer[isMainnet() ? 'mainnet' : 'testnet'];
+
+export const getBobExplorerUrl = () =>
+  BOB.explorer[isMainnet() ? 'mainnet' : 'testnet'];
 
 export const getBtcExplorerUrl = () =>
-  BTC_EXPLORER[isMainnet() ? 'mainnet' : 'testnet'];
+  BTC.explorer[isMainnet() ? 'mainnet' : 'testnet'];
 
 export const getD1Url = () =>
   isStaging()
     ? ALPHA_LINKS.STAGING
     : ALPHA_LINKS[isMainnet() ? Environments.Mainnet : Environments.Testnet];
 
+export const generateD1Link = (path: string) => {
+  const URI = getD1Url();
+  return `${URI}${path}`;
+};
+
 export const getBitocracyUrl = () =>
   BITOCRACY_LINKS[isMainnet() ? Environments.Mainnet : Environments.Testnet];
 
+export const getGraphWrapperUrl = () =>
+  GRAPH_WRAPPER[isMainnet() ? Environments.Mainnet : Environments.Testnet];
+
+export const getAmmServiceUrl = () =>
+  AMM_SERVICE[isMainnet() ? Environments.Mainnet : Environments.Testnet];
+
 export const dateFormat = (timestamp: number) => {
-  const stamp = dayjs.tz(Number(timestamp) * 1e3, 'UTC');
-  return stamp.format(`YYYY-MM-DD HH:MM:ss +UTC`);
+  const stamp = dayjs.tz(Number(timestamp) * MS, 'UTC');
+  return stamp.format(`YYYY-MM-DD HH:mm:ss +UTC`);
+};
+
+export const getNextDay = (day: number) => {
+  if (day < 1 || day > 7) {
+    throw new Error('Invalid day, must be integer in range 1-7');
+  }
+
+  return dayjs().utc().startOf('week').add(1, 'week').day(day).format('MMMM D');
 };
 
 export const signMessage = async (
@@ -96,6 +114,18 @@ export const validateEmail = (email: string) => {
   return re.test(email);
 };
 
+export const validateURL = (link: string) => {
+  const protocolRelativeUrl =
+    // eslint-disable-next-line no-useless-escape
+    /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/;
+
+  const url =
+    // eslint-disable-next-line no-useless-escape
+    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+
+  return protocolRelativeUrl.test(link) || url.test(link);
+};
+
 export const parseJwt = (token: string) => {
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -111,9 +141,11 @@ export const parseJwt = (token: string) => {
   return JSON.parse(jsonPayload);
 };
 
-export const valueIsDefined = <T>(
-  entry: [string, T | undefined],
-): entry is [string, T] => entry[1] !== undefined;
+export const validateJwt = (token: string) => {
+  const parsedToken = parseJwt(token);
+  const now = Date.now() / 1000;
+  return parsedToken?.exp > now;
+};
 
 export const composeGas = (priceInGwei: Decimalish, limitInWei: Decimalish) =>
   decimalic(priceInGwei)
@@ -146,3 +178,38 @@ export const calculateCollateralRatio = (
   debt: Decimalish,
   price: Decimalish,
 ) => decimalic(collateral).mul(price).div(debt).mul(100);
+
+export const removeTrailingZerosFromString = (value: string) =>
+  value.includes('.') ? value.replace(/\.?0+$/, '') : value;
+
+export const isBtcBasedAsset = (asset: string) =>
+  [COMMON_SYMBOLS.BTC, COMMON_SYMBOLS.WBTC, 'RBTC', 'WRBTC'].includes(
+    asset.toUpperCase(),
+  );
+
+export const isBitpro = (asset: string) =>
+  [COMMON_SYMBOLS.BPRO, 'BITPRO', 'BITP'].includes(asset.toUpperCase());
+
+export const areValuesIdentical = (
+  firstValue: Decimal,
+  secondValue: Decimal,
+) => {
+  const epsilon = 0.0000000000001;
+
+  return Math.abs(firstValue.sub(secondValue).toNumber()) < epsilon;
+};
+
+export const renderTokenSymbol = (token: string) =>
+  findAsset(token, RSK_CHAIN_ID).symbol;
+
+export const generateNonce = () =>
+  BigNumber.from(Math.floor(Date.now() + Math.random() * 100));
+
+export const scrollToElement = (ref: RefObject<any>) => {
+  if (ref.current) {
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};

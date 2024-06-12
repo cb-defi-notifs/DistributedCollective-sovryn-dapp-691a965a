@@ -2467,6 +2467,131 @@ export enum CrossTransfer_OrderBy {
   Votes = 'votes',
 }
 
+export type DebugItem = {
+  __typename?: 'DebugItem';
+  amount?: Maybe<Scalars['BigDecimal']>;
+  emittedBy: Scalars['Bytes'];
+  formattedAmount?: Maybe<Scalars['BigDecimal']>;
+  id: Scalars['ID'];
+  timestamp: Scalars['Int'];
+  totalStaked?: Maybe<Scalars['BigDecimal']>;
+  totalVested?: Maybe<Scalars['BigDecimal']>;
+  transaction: Transaction;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type DebugItem_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  amount?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  amount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  emittedBy?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  emittedBy_not?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  formattedAmount?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  formattedAmount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_not?: InputMaybe<Scalars['BigDecimal']>;
+  formattedAmount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  totalStaked?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_gt?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_gte?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  totalStaked_lt?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_lte?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_not?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  totalVested?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_gt?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_gte?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  totalVested_lt?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_lte?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_not?: InputMaybe<Scalars['BigDecimal']>;
+  totalVested_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  type_contains?: InputMaybe<Scalars['String']>;
+  type_contains_nocase?: InputMaybe<Scalars['String']>;
+  type_ends_with?: InputMaybe<Scalars['String']>;
+  type_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  type_gt?: InputMaybe<Scalars['String']>;
+  type_gte?: InputMaybe<Scalars['String']>;
+  type_in?: InputMaybe<Array<Scalars['String']>>;
+  type_lt?: InputMaybe<Scalars['String']>;
+  type_lte?: InputMaybe<Scalars['String']>;
+  type_not?: InputMaybe<Scalars['String']>;
+  type_not_contains?: InputMaybe<Scalars['String']>;
+  type_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  type_not_ends_with?: InputMaybe<Scalars['String']>;
+  type_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  type_not_in?: InputMaybe<Array<Scalars['String']>>;
+  type_not_starts_with?: InputMaybe<Scalars['String']>;
+  type_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  type_starts_with?: InputMaybe<Scalars['String']>;
+  type_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum DebugItem_OrderBy {
+  Amount = 'amount',
+  EmittedBy = 'emittedBy',
+  FormattedAmount = 'formattedAmount',
+  Id = 'id',
+  Timestamp = 'timestamp',
+  TotalStaked = 'totalStaked',
+  TotalVested = 'totalVested',
+  Transaction = 'transaction',
+  Type = 'type',
+}
+
 export type Deposit = {
   __typename?: 'Deposit';
   amount: Scalars['BigDecimal'];
@@ -3017,6 +3142,163 @@ export enum FeeType {
   Borrowing = 'Borrowing',
   Lending = 'Lending',
   Trading = 'Trading',
+}
+
+export type GovernorContract = {
+  __typename?: 'GovernorContract';
+  guardian: Scalars['Bytes'];
+  /**
+   * Address of the governance contract
+   *
+   */
+  id: Scalars['ID'];
+  /**
+   * Majority percentage.
+   *
+   */
+  majorityPercentageVotes: Scalars['Int'];
+  /**
+   * The maximum number of actions that can be included in a proposal.
+   *
+   */
+  proposalMaxOperations: Scalars['Int'];
+  proposals: Array<Proposal>;
+  /**
+   * Percentage of current total voting power require to vote.
+   *
+   */
+  quorumPercentageVotes: Scalars['Int'];
+  staking: Scalars['Bytes'];
+  timelock: Scalars['Bytes'];
+  /**
+   * Timestamp when this contract has created a proposal and was loaded into the graph.
+   *
+   */
+  timestamp: Scalars['Int'];
+  type: GovernorType;
+  /**
+   * The delay before voting on a proposal may take place, once proposed, in blocks.
+   *
+   */
+  votingDelay: Scalars['Int'];
+  /**
+   * The duration of voting on a proposal, in blocks.
+   *
+   */
+  votingPeriod: Scalars['Int'];
+};
+
+export type GovernorContractProposalsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Proposal_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Proposal_Filter>;
+};
+
+export type GovernorContract_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  guardian?: InputMaybe<Scalars['Bytes']>;
+  guardian_contains?: InputMaybe<Scalars['Bytes']>;
+  guardian_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  guardian_not?: InputMaybe<Scalars['Bytes']>;
+  guardian_not_contains?: InputMaybe<Scalars['Bytes']>;
+  guardian_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  majorityPercentageVotes?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_gt?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_gte?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_in?: InputMaybe<Array<Scalars['Int']>>;
+  majorityPercentageVotes_lt?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_lte?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_not?: InputMaybe<Scalars['Int']>;
+  majorityPercentageVotes_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  proposalMaxOperations?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_gt?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_gte?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_in?: InputMaybe<Array<Scalars['Int']>>;
+  proposalMaxOperations_lt?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_lte?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_not?: InputMaybe<Scalars['Int']>;
+  proposalMaxOperations_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  proposals_?: InputMaybe<Proposal_Filter>;
+  quorumPercentageVotes?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_gt?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_gte?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_in?: InputMaybe<Array<Scalars['Int']>>;
+  quorumPercentageVotes_lt?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_lte?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_not?: InputMaybe<Scalars['Int']>;
+  quorumPercentageVotes_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  staking?: InputMaybe<Scalars['Bytes']>;
+  staking_contains?: InputMaybe<Scalars['Bytes']>;
+  staking_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  staking_not?: InputMaybe<Scalars['Bytes']>;
+  staking_not_contains?: InputMaybe<Scalars['Bytes']>;
+  staking_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  timelock?: InputMaybe<Scalars['Bytes']>;
+  timelock_contains?: InputMaybe<Scalars['Bytes']>;
+  timelock_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  timelock_not?: InputMaybe<Scalars['Bytes']>;
+  timelock_not_contains?: InputMaybe<Scalars['Bytes']>;
+  timelock_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  type?: InputMaybe<GovernorType>;
+  type_in?: InputMaybe<Array<GovernorType>>;
+  type_not?: InputMaybe<GovernorType>;
+  type_not_in?: InputMaybe<Array<GovernorType>>;
+  votingDelay?: InputMaybe<Scalars['Int']>;
+  votingDelay_gt?: InputMaybe<Scalars['Int']>;
+  votingDelay_gte?: InputMaybe<Scalars['Int']>;
+  votingDelay_in?: InputMaybe<Array<Scalars['Int']>>;
+  votingDelay_lt?: InputMaybe<Scalars['Int']>;
+  votingDelay_lte?: InputMaybe<Scalars['Int']>;
+  votingDelay_not?: InputMaybe<Scalars['Int']>;
+  votingDelay_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  votingPeriod?: InputMaybe<Scalars['Int']>;
+  votingPeriod_gt?: InputMaybe<Scalars['Int']>;
+  votingPeriod_gte?: InputMaybe<Scalars['Int']>;
+  votingPeriod_in?: InputMaybe<Array<Scalars['Int']>>;
+  votingPeriod_lt?: InputMaybe<Scalars['Int']>;
+  votingPeriod_lte?: InputMaybe<Scalars['Int']>;
+  votingPeriod_not?: InputMaybe<Scalars['Int']>;
+  votingPeriod_not_in?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export enum GovernorContract_OrderBy {
+  Guardian = 'guardian',
+  Id = 'id',
+  MajorityPercentageVotes = 'majorityPercentageVotes',
+  ProposalMaxOperations = 'proposalMaxOperations',
+  Proposals = 'proposals',
+  QuorumPercentageVotes = 'quorumPercentageVotes',
+  Staking = 'staking',
+  Timelock = 'timelock',
+  Timestamp = 'timestamp',
+  Type = 'type',
+  VotingDelay = 'votingDelay',
+  VotingPeriod = 'votingPeriod',
+}
+
+export enum GovernorType {
+  Admin = 'Admin',
+  Other = 'Other',
+  Owner = 'Owner',
 }
 
 /**
@@ -4202,6 +4484,7 @@ export type LiquidityPool = {
    *
    */
   conversionFee?: Maybe<Scalars['BigInt']>;
+  conversions?: Maybe<Array<PoolVolumeItem>>;
   createdAtBlockNumber?: Maybe<Scalars['Int']>;
   createdAtTimestamp?: Maybe<Scalars['Int']>;
   createdAtTransaction: Transaction;
@@ -4246,6 +4529,18 @@ export type LiquidityPoolConnectorTokensArgs = {
   orderDirection?: InputMaybe<OrderDirection>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LiquidityPoolToken_Filter>;
+};
+
+/**
+ * AMM Pool (sometimes referred to as a Converter)
+ *
+ */
+export type LiquidityPoolConversionsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<PoolVolumeItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PoolVolumeItem_Filter>;
 };
 
 /**
@@ -4422,6 +4717,7 @@ export type LiquidityPool_Filter = {
   conversionFee_lte?: InputMaybe<Scalars['BigInt']>;
   conversionFee_not?: InputMaybe<Scalars['BigInt']>;
   conversionFee_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  conversions_?: InputMaybe<PoolVolumeItem_Filter>;
   createdAtBlockNumber?: InputMaybe<Scalars['Int']>;
   createdAtBlockNumber_gt?: InputMaybe<Scalars['Int']>;
   createdAtBlockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -4620,6 +4916,7 @@ export enum LiquidityPool_OrderBy {
   Activated = 'activated',
   ConnectorTokens = 'connectorTokens',
   ConversionFee = 'conversionFee',
+  Conversions = 'conversions',
   CreatedAtBlockNumber = 'createdAtBlockNumber',
   CreatedAtTimestamp = 'createdAtTimestamp',
   CreatedAtTransaction = 'createdAtTransaction',
@@ -4877,6 +5174,145 @@ export type LoanTradeArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<Trade_Filter>;
 };
+
+export type LoanParamsSetup = {
+  __typename?: 'LoanParamsSetup';
+  collateralToken: Token;
+  id: Scalars['ID'];
+  loanToken: Token;
+  maintenanceMargin: Scalars['BigDecimal'];
+  maxLoanTerm: Scalars['Int'];
+  minInitialMargin: Scalars['BigDecimal'];
+  owner: Scalars['Bytes'];
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+};
+
+export type LoanParamsSetup_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  collateralToken?: InputMaybe<Scalars['String']>;
+  collateralToken_?: InputMaybe<Token_Filter>;
+  collateralToken_contains?: InputMaybe<Scalars['String']>;
+  collateralToken_contains_nocase?: InputMaybe<Scalars['String']>;
+  collateralToken_ends_with?: InputMaybe<Scalars['String']>;
+  collateralToken_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  collateralToken_gt?: InputMaybe<Scalars['String']>;
+  collateralToken_gte?: InputMaybe<Scalars['String']>;
+  collateralToken_in?: InputMaybe<Array<Scalars['String']>>;
+  collateralToken_lt?: InputMaybe<Scalars['String']>;
+  collateralToken_lte?: InputMaybe<Scalars['String']>;
+  collateralToken_not?: InputMaybe<Scalars['String']>;
+  collateralToken_not_contains?: InputMaybe<Scalars['String']>;
+  collateralToken_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  collateralToken_not_ends_with?: InputMaybe<Scalars['String']>;
+  collateralToken_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  collateralToken_not_in?: InputMaybe<Array<Scalars['String']>>;
+  collateralToken_not_starts_with?: InputMaybe<Scalars['String']>;
+  collateralToken_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  collateralToken_starts_with?: InputMaybe<Scalars['String']>;
+  collateralToken_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  loanToken?: InputMaybe<Scalars['String']>;
+  loanToken_?: InputMaybe<Token_Filter>;
+  loanToken_contains?: InputMaybe<Scalars['String']>;
+  loanToken_contains_nocase?: InputMaybe<Scalars['String']>;
+  loanToken_ends_with?: InputMaybe<Scalars['String']>;
+  loanToken_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  loanToken_gt?: InputMaybe<Scalars['String']>;
+  loanToken_gte?: InputMaybe<Scalars['String']>;
+  loanToken_in?: InputMaybe<Array<Scalars['String']>>;
+  loanToken_lt?: InputMaybe<Scalars['String']>;
+  loanToken_lte?: InputMaybe<Scalars['String']>;
+  loanToken_not?: InputMaybe<Scalars['String']>;
+  loanToken_not_contains?: InputMaybe<Scalars['String']>;
+  loanToken_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  loanToken_not_ends_with?: InputMaybe<Scalars['String']>;
+  loanToken_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  loanToken_not_in?: InputMaybe<Array<Scalars['String']>>;
+  loanToken_not_starts_with?: InputMaybe<Scalars['String']>;
+  loanToken_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  loanToken_starts_with?: InputMaybe<Scalars['String']>;
+  loanToken_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  maintenanceMargin?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_gt?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_gte?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  maintenanceMargin_lt?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_lte?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_not?: InputMaybe<Scalars['BigDecimal']>;
+  maintenanceMargin_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  maxLoanTerm?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_gt?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_gte?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_in?: InputMaybe<Array<Scalars['Int']>>;
+  maxLoanTerm_lt?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_lte?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_not?: InputMaybe<Scalars['Int']>;
+  maxLoanTerm_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  minInitialMargin?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_gt?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_gte?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  minInitialMargin_lt?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_lte?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_not?: InputMaybe<Scalars['BigDecimal']>;
+  minInitialMargin_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  owner?: InputMaybe<Scalars['Bytes']>;
+  owner_contains?: InputMaybe<Scalars['Bytes']>;
+  owner_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  owner_not?: InputMaybe<Scalars['Bytes']>;
+  owner_not_contains?: InputMaybe<Scalars['Bytes']>;
+  owner_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum LoanParamsSetup_OrderBy {
+  CollateralToken = 'collateralToken',
+  Id = 'id',
+  LoanToken = 'loanToken',
+  MaintenanceMargin = 'maintenanceMargin',
+  MaxLoanTerm = 'maxLoanTerm',
+  MinInitialMargin = 'minInitialMargin',
+  Owner = 'owner',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+}
 
 export enum LoanType {
   /**
@@ -5389,6 +5825,360 @@ export enum MarginOrderFilled_OrderBy {
   Timestamp = 'timestamp',
   Trader = 'trader',
   Transaction = 'transaction',
+}
+
+export type MultisigConfirmation = {
+  __typename?: 'MultisigConfirmation';
+  id: Scalars['ID'];
+  multisigTransaction: MultisigTransaction;
+  signer: User;
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+};
+
+export type MultisigConfirmation_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  multisigTransaction?: InputMaybe<Scalars['String']>;
+  multisigTransaction_?: InputMaybe<MultisigTransaction_Filter>;
+  multisigTransaction_contains?: InputMaybe<Scalars['String']>;
+  multisigTransaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  multisigTransaction_ends_with?: InputMaybe<Scalars['String']>;
+  multisigTransaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigTransaction_gt?: InputMaybe<Scalars['String']>;
+  multisigTransaction_gte?: InputMaybe<Scalars['String']>;
+  multisigTransaction_in?: InputMaybe<Array<Scalars['String']>>;
+  multisigTransaction_lt?: InputMaybe<Scalars['String']>;
+  multisigTransaction_lte?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_contains?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  multisigTransaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  multisigTransaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigTransaction_starts_with?: InputMaybe<Scalars['String']>;
+  multisigTransaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  signer?: InputMaybe<Scalars['String']>;
+  signer_?: InputMaybe<User_Filter>;
+  signer_contains?: InputMaybe<Scalars['String']>;
+  signer_contains_nocase?: InputMaybe<Scalars['String']>;
+  signer_ends_with?: InputMaybe<Scalars['String']>;
+  signer_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  signer_gt?: InputMaybe<Scalars['String']>;
+  signer_gte?: InputMaybe<Scalars['String']>;
+  signer_in?: InputMaybe<Array<Scalars['String']>>;
+  signer_lt?: InputMaybe<Scalars['String']>;
+  signer_lte?: InputMaybe<Scalars['String']>;
+  signer_not?: InputMaybe<Scalars['String']>;
+  signer_not_contains?: InputMaybe<Scalars['String']>;
+  signer_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  signer_not_ends_with?: InputMaybe<Scalars['String']>;
+  signer_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  signer_not_in?: InputMaybe<Array<Scalars['String']>>;
+  signer_not_starts_with?: InputMaybe<Scalars['String']>;
+  signer_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  signer_starts_with?: InputMaybe<Scalars['String']>;
+  signer_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum MultisigConfirmation_OrderBy {
+  Id = 'id',
+  MultisigTransaction = 'multisigTransaction',
+  Signer = 'signer',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+}
+
+export type MultisigContract = {
+  __typename?: 'MultisigContract';
+  id: Scalars['ID'];
+  owners: Array<User>;
+  required: Scalars['Int'];
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+  transactions: Array<MultisigTransaction>;
+};
+
+export type MultisigContractOwnersArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<User_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<User_Filter>;
+};
+
+export type MultisigContractTransactionsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigTransaction_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MultisigTransaction_Filter>;
+};
+
+export type MultisigContract_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  owners?: InputMaybe<Array<Scalars['String']>>;
+  owners_?: InputMaybe<User_Filter>;
+  owners_contains?: InputMaybe<Array<Scalars['String']>>;
+  owners_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  owners_not?: InputMaybe<Array<Scalars['String']>>;
+  owners_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  owners_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  required?: InputMaybe<Scalars['Int']>;
+  required_gt?: InputMaybe<Scalars['Int']>;
+  required_gte?: InputMaybe<Scalars['Int']>;
+  required_in?: InputMaybe<Array<Scalars['Int']>>;
+  required_lt?: InputMaybe<Scalars['Int']>;
+  required_lte?: InputMaybe<Scalars['Int']>;
+  required_not?: InputMaybe<Scalars['Int']>;
+  required_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transactions_?: InputMaybe<MultisigTransaction_Filter>;
+};
+
+export enum MultisigContract_OrderBy {
+  Id = 'id',
+  Owners = 'owners',
+  Required = 'required',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+  Transactions = 'transactions',
+}
+
+export type MultisigTransaction = {
+  __typename?: 'MultisigTransaction';
+  confirmations: Array<MultisigConfirmation>;
+  data: Scalars['Bytes'];
+  destination: Scalars['Bytes'];
+  id: Scalars['ID'];
+  multisigContract: MultisigContract;
+  status: MultisigTransactionStatus;
+  submitter: User;
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+  transactionId: Scalars['Int'];
+  value: Scalars['BigInt'];
+};
+
+export type MultisigTransactionConfirmationsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigConfirmation_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MultisigConfirmation_Filter>;
+};
+
+export enum MultisigTransactionStatus {
+  Executed = 'EXECUTED',
+  Failed = 'FAILED',
+  Submitted = 'SUBMITTED',
+}
+
+export type MultisigTransaction_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  confirmations_?: InputMaybe<MultisigConfirmation_Filter>;
+  data?: InputMaybe<Scalars['Bytes']>;
+  data_contains?: InputMaybe<Scalars['Bytes']>;
+  data_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  data_not?: InputMaybe<Scalars['Bytes']>;
+  data_not_contains?: InputMaybe<Scalars['Bytes']>;
+  data_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  destination?: InputMaybe<Scalars['Bytes']>;
+  destination_contains?: InputMaybe<Scalars['Bytes']>;
+  destination_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  destination_not?: InputMaybe<Scalars['Bytes']>;
+  destination_not_contains?: InputMaybe<Scalars['Bytes']>;
+  destination_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  multisigContract?: InputMaybe<Scalars['String']>;
+  multisigContract_?: InputMaybe<MultisigContract_Filter>;
+  multisigContract_contains?: InputMaybe<Scalars['String']>;
+  multisigContract_contains_nocase?: InputMaybe<Scalars['String']>;
+  multisigContract_ends_with?: InputMaybe<Scalars['String']>;
+  multisigContract_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigContract_gt?: InputMaybe<Scalars['String']>;
+  multisigContract_gte?: InputMaybe<Scalars['String']>;
+  multisigContract_in?: InputMaybe<Array<Scalars['String']>>;
+  multisigContract_lt?: InputMaybe<Scalars['String']>;
+  multisigContract_lte?: InputMaybe<Scalars['String']>;
+  multisigContract_not?: InputMaybe<Scalars['String']>;
+  multisigContract_not_contains?: InputMaybe<Scalars['String']>;
+  multisigContract_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  multisigContract_not_ends_with?: InputMaybe<Scalars['String']>;
+  multisigContract_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigContract_not_in?: InputMaybe<Array<Scalars['String']>>;
+  multisigContract_not_starts_with?: InputMaybe<Scalars['String']>;
+  multisigContract_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  multisigContract_starts_with?: InputMaybe<Scalars['String']>;
+  multisigContract_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<MultisigTransactionStatus>;
+  status_in?: InputMaybe<Array<MultisigTransactionStatus>>;
+  status_not?: InputMaybe<MultisigTransactionStatus>;
+  status_not_in?: InputMaybe<Array<MultisigTransactionStatus>>;
+  submitter?: InputMaybe<Scalars['String']>;
+  submitter_?: InputMaybe<User_Filter>;
+  submitter_contains?: InputMaybe<Scalars['String']>;
+  submitter_contains_nocase?: InputMaybe<Scalars['String']>;
+  submitter_ends_with?: InputMaybe<Scalars['String']>;
+  submitter_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  submitter_gt?: InputMaybe<Scalars['String']>;
+  submitter_gte?: InputMaybe<Scalars['String']>;
+  submitter_in?: InputMaybe<Array<Scalars['String']>>;
+  submitter_lt?: InputMaybe<Scalars['String']>;
+  submitter_lte?: InputMaybe<Scalars['String']>;
+  submitter_not?: InputMaybe<Scalars['String']>;
+  submitter_not_contains?: InputMaybe<Scalars['String']>;
+  submitter_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  submitter_not_ends_with?: InputMaybe<Scalars['String']>;
+  submitter_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  submitter_not_in?: InputMaybe<Array<Scalars['String']>>;
+  submitter_not_starts_with?: InputMaybe<Scalars['String']>;
+  submitter_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  submitter_starts_with?: InputMaybe<Scalars['String']>;
+  submitter_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transactionId?: InputMaybe<Scalars['Int']>;
+  transactionId_gt?: InputMaybe<Scalars['Int']>;
+  transactionId_gte?: InputMaybe<Scalars['Int']>;
+  transactionId_in?: InputMaybe<Array<Scalars['Int']>>;
+  transactionId_lt?: InputMaybe<Scalars['Int']>;
+  transactionId_lte?: InputMaybe<Scalars['Int']>;
+  transactionId_not?: InputMaybe<Scalars['Int']>;
+  transactionId_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['BigInt']>;
+  value_gt?: InputMaybe<Scalars['BigInt']>;
+  value_gte?: InputMaybe<Scalars['BigInt']>;
+  value_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  value_lt?: InputMaybe<Scalars['BigInt']>;
+  value_lte?: InputMaybe<Scalars['BigInt']>;
+  value_not?: InputMaybe<Scalars['BigInt']>;
+  value_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+};
+
+export enum MultisigTransaction_OrderBy {
+  Confirmations = 'confirmations',
+  Data = 'data',
+  Destination = 'destination',
+  Id = 'id',
+  MultisigContract = 'multisigContract',
+  Status = 'status',
+  Submitter = 'submitter',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+  TransactionId = 'transactionId',
+  Value = 'value',
 }
 
 export enum Network {
@@ -6520,6 +7310,117 @@ export enum PoolToken_OrderBy {
   UnderlyingAssets = 'underlyingAssets',
 }
 
+export type PoolVolumeItem = {
+  __typename?: 'PoolVolumeItem';
+  btcAmount: Scalars['BigDecimal'];
+  conversion: Conversion;
+  id: Scalars['ID'];
+  pool: LiquidityPool;
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+};
+
+export type PoolVolumeItem_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  btcAmount?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  btcAmount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_not?: InputMaybe<Scalars['BigDecimal']>;
+  btcAmount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  conversion?: InputMaybe<Scalars['String']>;
+  conversion_?: InputMaybe<Conversion_Filter>;
+  conversion_contains?: InputMaybe<Scalars['String']>;
+  conversion_contains_nocase?: InputMaybe<Scalars['String']>;
+  conversion_ends_with?: InputMaybe<Scalars['String']>;
+  conversion_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  conversion_gt?: InputMaybe<Scalars['String']>;
+  conversion_gte?: InputMaybe<Scalars['String']>;
+  conversion_in?: InputMaybe<Array<Scalars['String']>>;
+  conversion_lt?: InputMaybe<Scalars['String']>;
+  conversion_lte?: InputMaybe<Scalars['String']>;
+  conversion_not?: InputMaybe<Scalars['String']>;
+  conversion_not_contains?: InputMaybe<Scalars['String']>;
+  conversion_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  conversion_not_ends_with?: InputMaybe<Scalars['String']>;
+  conversion_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  conversion_not_in?: InputMaybe<Array<Scalars['String']>>;
+  conversion_not_starts_with?: InputMaybe<Scalars['String']>;
+  conversion_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  conversion_starts_with?: InputMaybe<Scalars['String']>;
+  conversion_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  pool?: InputMaybe<Scalars['String']>;
+  pool_?: InputMaybe<LiquidityPool_Filter>;
+  pool_contains?: InputMaybe<Scalars['String']>;
+  pool_contains_nocase?: InputMaybe<Scalars['String']>;
+  pool_ends_with?: InputMaybe<Scalars['String']>;
+  pool_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  pool_gt?: InputMaybe<Scalars['String']>;
+  pool_gte?: InputMaybe<Scalars['String']>;
+  pool_in?: InputMaybe<Array<Scalars['String']>>;
+  pool_lt?: InputMaybe<Scalars['String']>;
+  pool_lte?: InputMaybe<Scalars['String']>;
+  pool_not?: InputMaybe<Scalars['String']>;
+  pool_not_contains?: InputMaybe<Scalars['String']>;
+  pool_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  pool_not_ends_with?: InputMaybe<Scalars['String']>;
+  pool_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  pool_not_in?: InputMaybe<Array<Scalars['String']>>;
+  pool_not_starts_with?: InputMaybe<Scalars['String']>;
+  pool_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  pool_starts_with?: InputMaybe<Scalars['String']>;
+  pool_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum PoolVolumeItem_OrderBy {
+  BtcAmount = 'btcAmount',
+  Conversion = 'conversion',
+  Id = 'id',
+  Pool = 'pool',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+}
+
 /**
  * A Proposal is created each time a SIP (Sovryn Improvement Proposal) is proposed
  * The Proposal is created, voted on, and then executed if it passes
@@ -6528,6 +7429,7 @@ export enum PoolToken_OrderBy {
  */
 export type Proposal = {
   __typename?: 'Proposal';
+  calldatas: Array<Scalars['String']>;
   /**
    * If the proposal was canceled, the transaction that canceled it (otherwise null)
    *
@@ -6557,12 +7459,17 @@ export type Proposal = {
    * The contract that emitted this event
    *
    */
-  emittedBy: Scalars['Bytes'];
+  emittedBy: GovernorContract;
   /**
    * Block when voting ends
    *
    */
   endBlock: Scalars['Int'];
+  /**
+   * The timestamp that the proposal will be available for execution, set once the vote succeeds.
+   *
+   */
+  eta?: Maybe<Scalars['Int']>;
   /**
    * If the proposal was executed, the transaction that executed it (otherwise null)
    *
@@ -6573,6 +7480,11 @@ export type Proposal = {
    *
    */
   id: Scalars['ID'];
+  /**
+   * The majority percentage required for this proposal.
+   *
+   */
+  majorityPercentage: Scalars['BigInt'];
   proposalId: Scalars['Int'];
   /**
    * Address of the user who created this proposal
@@ -6585,6 +7497,11 @@ export type Proposal = {
    */
   queued?: Maybe<Transaction>;
   /**
+   * The quorum required for this proposal.
+   *
+   */
+  quorum: Scalars['BigInt'];
+  /**
    * Function signatures in the targeted contract that would be affected by this proposal passing
    *
    */
@@ -6594,6 +7511,7 @@ export type Proposal = {
    *
    */
   startBlock: Scalars['Int'];
+  stateChanges: Array<ProposalStateChange>;
   /**
    * Contract or contracts that this proposal targets
    *
@@ -6628,6 +7546,20 @@ export type Proposal = {
  * To see if a Proposal has been executed, see if the executed property is null or if it has a transaction
  *
  */
+export type ProposalStateChangesArgs = {
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProposalStateChange_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProposalStateChange_Filter>;
+};
+
+/**
+ * A Proposal is created each time a SIP (Sovryn Improvement Proposal) is proposed
+ * The Proposal is created, voted on, and then executed if it passes
+ * To see if a Proposal has been executed, see if the executed property is null or if it has a transaction
+ *
+ */
 export type ProposalVotesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<VoteCast_OrderBy>;
@@ -6636,9 +7568,114 @@ export type ProposalVotesArgs = {
   where?: InputMaybe<VoteCast_Filter>;
 };
 
+export enum ProposalState {
+  Canceled = 'Canceled',
+  Created = 'Created',
+  Executed = 'Executed',
+  Queued = 'Queued',
+}
+
+export type ProposalStateChange = {
+  __typename?: 'ProposalStateChange';
+  emittedBy: Scalars['Bytes'];
+  id: Scalars['ID'];
+  proposal: Proposal;
+  state: ProposalState;
+  timestamp: Scalars['Int'];
+  transaction: Transaction;
+};
+
+export type ProposalStateChange_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  emittedBy?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  emittedBy_not?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  proposal?: InputMaybe<Scalars['String']>;
+  proposal_?: InputMaybe<Proposal_Filter>;
+  proposal_contains?: InputMaybe<Scalars['String']>;
+  proposal_contains_nocase?: InputMaybe<Scalars['String']>;
+  proposal_ends_with?: InputMaybe<Scalars['String']>;
+  proposal_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  proposal_gt?: InputMaybe<Scalars['String']>;
+  proposal_gte?: InputMaybe<Scalars['String']>;
+  proposal_in?: InputMaybe<Array<Scalars['String']>>;
+  proposal_lt?: InputMaybe<Scalars['String']>;
+  proposal_lte?: InputMaybe<Scalars['String']>;
+  proposal_not?: InputMaybe<Scalars['String']>;
+  proposal_not_contains?: InputMaybe<Scalars['String']>;
+  proposal_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  proposal_not_ends_with?: InputMaybe<Scalars['String']>;
+  proposal_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  proposal_not_in?: InputMaybe<Array<Scalars['String']>>;
+  proposal_not_starts_with?: InputMaybe<Scalars['String']>;
+  proposal_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  proposal_starts_with?: InputMaybe<Scalars['String']>;
+  proposal_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  state?: InputMaybe<ProposalState>;
+  state_in?: InputMaybe<Array<ProposalState>>;
+  state_not?: InputMaybe<ProposalState>;
+  state_not_in?: InputMaybe<Array<ProposalState>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transaction?: InputMaybe<Scalars['String']>;
+  transaction_?: InputMaybe<Transaction_Filter>;
+  transaction_contains?: InputMaybe<Scalars['String']>;
+  transaction_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_gt?: InputMaybe<Scalars['String']>;
+  transaction_gte?: InputMaybe<Scalars['String']>;
+  transaction_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_lt?: InputMaybe<Scalars['String']>;
+  transaction_lte?: InputMaybe<Scalars['String']>;
+  transaction_not?: InputMaybe<Scalars['String']>;
+  transaction_not_contains?: InputMaybe<Scalars['String']>;
+  transaction_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with?: InputMaybe<Scalars['String']>;
+  transaction_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_not_in?: InputMaybe<Array<Scalars['String']>>;
+  transaction_not_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  transaction_starts_with?: InputMaybe<Scalars['String']>;
+  transaction_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum ProposalStateChange_OrderBy {
+  EmittedBy = 'emittedBy',
+  Id = 'id',
+  Proposal = 'proposal',
+  State = 'state',
+  Timestamp = 'timestamp',
+  Transaction = 'transaction',
+}
+
 export type Proposal_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  calldatas?: InputMaybe<Array<Scalars['String']>>;
+  calldatas_contains?: InputMaybe<Array<Scalars['String']>>;
+  calldatas_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  calldatas_not?: InputMaybe<Array<Scalars['String']>>;
+  calldatas_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  calldatas_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
   canceled?: InputMaybe<Scalars['String']>;
   canceled_?: InputMaybe<Transaction_Filter>;
   canceled_contains?: InputMaybe<Scalars['String']>;
@@ -6717,12 +7754,27 @@ export type Proposal_Filter = {
   description_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   description_starts_with?: InputMaybe<Scalars['String']>;
   description_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  emittedBy?: InputMaybe<Scalars['Bytes']>;
-  emittedBy_contains?: InputMaybe<Scalars['Bytes']>;
-  emittedBy_in?: InputMaybe<Array<Scalars['Bytes']>>;
-  emittedBy_not?: InputMaybe<Scalars['Bytes']>;
-  emittedBy_not_contains?: InputMaybe<Scalars['Bytes']>;
-  emittedBy_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  emittedBy?: InputMaybe<Scalars['String']>;
+  emittedBy_?: InputMaybe<GovernorContract_Filter>;
+  emittedBy_contains?: InputMaybe<Scalars['String']>;
+  emittedBy_contains_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy_ends_with?: InputMaybe<Scalars['String']>;
+  emittedBy_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy_gt?: InputMaybe<Scalars['String']>;
+  emittedBy_gte?: InputMaybe<Scalars['String']>;
+  emittedBy_in?: InputMaybe<Array<Scalars['String']>>;
+  emittedBy_lt?: InputMaybe<Scalars['String']>;
+  emittedBy_lte?: InputMaybe<Scalars['String']>;
+  emittedBy_not?: InputMaybe<Scalars['String']>;
+  emittedBy_not_contains?: InputMaybe<Scalars['String']>;
+  emittedBy_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy_not_ends_with?: InputMaybe<Scalars['String']>;
+  emittedBy_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy_not_in?: InputMaybe<Array<Scalars['String']>>;
+  emittedBy_not_starts_with?: InputMaybe<Scalars['String']>;
+  emittedBy_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy_starts_with?: InputMaybe<Scalars['String']>;
+  emittedBy_starts_with_nocase?: InputMaybe<Scalars['String']>;
   endBlock?: InputMaybe<Scalars['Int']>;
   endBlock_gt?: InputMaybe<Scalars['Int']>;
   endBlock_gte?: InputMaybe<Scalars['Int']>;
@@ -6731,6 +7783,14 @@ export type Proposal_Filter = {
   endBlock_lte?: InputMaybe<Scalars['Int']>;
   endBlock_not?: InputMaybe<Scalars['Int']>;
   endBlock_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  eta?: InputMaybe<Scalars['Int']>;
+  eta_gt?: InputMaybe<Scalars['Int']>;
+  eta_gte?: InputMaybe<Scalars['Int']>;
+  eta_in?: InputMaybe<Array<Scalars['Int']>>;
+  eta_lt?: InputMaybe<Scalars['Int']>;
+  eta_lte?: InputMaybe<Scalars['Int']>;
+  eta_not?: InputMaybe<Scalars['Int']>;
+  eta_not_in?: InputMaybe<Array<Scalars['Int']>>;
   executed?: InputMaybe<Scalars['String']>;
   executed_?: InputMaybe<Transaction_Filter>;
   executed_contains?: InputMaybe<Scalars['String']>;
@@ -6760,6 +7820,14 @@ export type Proposal_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  majorityPercentage?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_gt?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_gte?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  majorityPercentage_lt?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_lte?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_not?: InputMaybe<Scalars['BigInt']>;
+  majorityPercentage_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   proposalId?: InputMaybe<Scalars['Int']>;
   proposalId_gt?: InputMaybe<Scalars['Int']>;
   proposalId_gte?: InputMaybe<Scalars['Int']>;
@@ -6795,6 +7863,14 @@ export type Proposal_Filter = {
   queued_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   queued_starts_with?: InputMaybe<Scalars['String']>;
   queued_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  quorum?: InputMaybe<Scalars['BigInt']>;
+  quorum_gt?: InputMaybe<Scalars['BigInt']>;
+  quorum_gte?: InputMaybe<Scalars['BigInt']>;
+  quorum_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  quorum_lt?: InputMaybe<Scalars['BigInt']>;
+  quorum_lte?: InputMaybe<Scalars['BigInt']>;
+  quorum_not?: InputMaybe<Scalars['BigInt']>;
+  quorum_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   signatures?: InputMaybe<Array<Scalars['String']>>;
   signatures_contains?: InputMaybe<Array<Scalars['String']>>;
   signatures_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
@@ -6809,6 +7885,7 @@ export type Proposal_Filter = {
   startBlock_lte?: InputMaybe<Scalars['Int']>;
   startBlock_not?: InputMaybe<Scalars['Int']>;
   startBlock_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  stateChanges_?: InputMaybe<ProposalStateChange_Filter>;
   targets?: InputMaybe<Array<Scalars['String']>>;
   targets_contains?: InputMaybe<Array<Scalars['String']>>;
   targets_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
@@ -6849,6 +7926,7 @@ export type Proposal_Filter = {
 };
 
 export enum Proposal_OrderBy {
+  Calldatas = 'calldatas',
   Canceled = 'canceled',
   CountVotersAgainst = 'countVotersAgainst',
   CountVotersFor = 'countVotersFor',
@@ -6856,13 +7934,17 @@ export enum Proposal_OrderBy {
   Description = 'description',
   EmittedBy = 'emittedBy',
   EndBlock = 'endBlock',
+  Eta = 'eta',
   Executed = 'executed',
   Id = 'id',
+  MajorityPercentage = 'majorityPercentage',
   ProposalId = 'proposalId',
   Proposer = 'proposer',
   Queued = 'queued',
+  Quorum = 'quorum',
   Signatures = 'signatures',
   StartBlock = 'startBlock',
+  StateChanges = 'stateChanges',
   Targets = 'targets',
   Timestamp = 'timestamp',
   Values = 'values',
@@ -7375,6 +8457,8 @@ export type Query = {
   converterRegistry?: Maybe<ConverterRegistry>;
   crossTransfer?: Maybe<CrossTransfer>;
   crossTransfers: Array<CrossTransfer>;
+  debugItem?: Maybe<DebugItem>;
+  debugItems: Array<DebugItem>;
   deposit?: Maybe<Deposit>;
   depositCollateral?: Maybe<DepositCollateral>;
   depositCollaterals: Array<DepositCollateral>;
@@ -7385,6 +8469,8 @@ export type Query = {
   federations: Array<Federation>;
   feeSharingTokensTransferred?: Maybe<FeeSharingTokensTransferred>;
   feeSharingTokensTransferreds: Array<FeeSharingTokensTransferred>;
+  governorContract?: Maybe<GovernorContract>;
+  governorContracts: Array<GovernorContract>;
   icandleStick?: Maybe<ICandleStick>;
   icandleSticks: Array<ICandleStick>;
   lendingHistoryItem?: Maybe<LendingHistoryItem>;
@@ -7404,11 +8490,19 @@ export type Query = {
   liquidityPoolTokens: Array<LiquidityPoolToken>;
   liquidityPools: Array<LiquidityPool>;
   loan?: Maybe<Loan>;
+  loanParamsSetup?: Maybe<LoanParamsSetup>;
+  loanParamsSetups: Array<LoanParamsSetup>;
   loans: Array<Loan>;
   marginOrderCanceled?: Maybe<MarginOrderCanceled>;
   marginOrderCanceleds: Array<MarginOrderCanceled>;
   marginOrderFilled?: Maybe<MarginOrderFilled>;
   marginOrderFilleds: Array<MarginOrderFilled>;
+  multisigConfirmation?: Maybe<MultisigConfirmation>;
+  multisigConfirmations: Array<MultisigConfirmation>;
+  multisigContract?: Maybe<MultisigContract>;
+  multisigContracts: Array<MultisigContract>;
+  multisigTransaction?: Maybe<MultisigTransaction>;
+  multisigTransactions: Array<MultisigTransaction>;
   newBitcoinTransferIncoming?: Maybe<NewBitcoinTransferIncoming>;
   newBitcoinTransferIncomings: Array<NewBitcoinTransferIncoming>;
   orderCanceled?: Maybe<OrderCanceled>;
@@ -7427,7 +8521,11 @@ export type Query = {
   payTradingFees: Array<PayTradingFee>;
   poolToken?: Maybe<PoolToken>;
   poolTokens: Array<PoolToken>;
+  poolVolumeItem?: Maybe<PoolVolumeItem>;
+  poolVolumeItems: Array<PoolVolumeItem>;
   proposal?: Maybe<Proposal>;
+  proposalStateChange?: Maybe<ProposalStateChange>;
+  proposalStateChanges: Array<ProposalStateChange>;
   proposals: Array<Proposal>;
   protocolStats: Array<ProtocolStats>;
   protocolWithdrawFee?: Maybe<ProtocolWithdrawFee>;
@@ -7445,6 +8543,8 @@ export type Query = {
   stakeHistoryItems: Array<StakeHistoryItem>;
   stakes: Array<Stake>;
   swap?: Maybe<Swap>;
+  swapSetting?: Maybe<SwapSetting>;
+  swapSettings: Array<SwapSetting>;
   swaps: Array<Swap>;
   token?: Maybe<Token>;
   tokenSmartToken?: Maybe<TokenSmartToken>;
@@ -7468,6 +8568,16 @@ export type Query = {
   userTotal?: Maybe<UserTotal>;
   userTotals: Array<UserTotal>;
   users: Array<User>;
+  v2DelegateChanged?: Maybe<V2DelegateChanged>;
+  v2DelegateChangeds: Array<V2DelegateChanged>;
+  v2ExtendedStakingDuration?: Maybe<V2ExtendedStakingDuration>;
+  v2ExtendedStakingDurations: Array<V2ExtendedStakingDuration>;
+  v2Stake?: Maybe<V2Stake>;
+  v2Stakes: Array<V2Stake>;
+  v2StakingWithdrawn?: Maybe<V2StakingWithdrawn>;
+  v2StakingWithdrawns: Array<V2StakingWithdrawn>;
+  v2TokensStaked?: Maybe<V2TokensStaked>;
+  v2TokensStakeds: Array<V2TokensStaked>;
   vestingContract?: Maybe<VestingContract>;
   vestingContracts: Array<VestingContract>;
   vestingHistoryItem?: Maybe<VestingHistoryItem>;
@@ -7706,6 +8816,22 @@ export type QueryCrossTransfersArgs = {
   where?: InputMaybe<CrossTransfer_Filter>;
 };
 
+export type QueryDebugItemArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryDebugItemsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DebugItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<DebugItem_Filter>;
+};
+
 export type QueryDepositArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
@@ -7784,6 +8910,22 @@ export type QueryFeeSharingTokensTransferredsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   subgraphError?: _SubgraphErrorPolicy_;
   where?: InputMaybe<FeeSharingTokensTransferred_Filter>;
+};
+
+export type QueryGovernorContractArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryGovernorContractsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GovernorContract_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<GovernorContract_Filter>;
 };
 
 export type QueryIcandleStickArgs = {
@@ -7936,6 +9078,22 @@ export type QueryLoanArgs = {
   subgraphError?: _SubgraphErrorPolicy_;
 };
 
+export type QueryLoanParamsSetupArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryLoanParamsSetupsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LoanParamsSetup_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<LoanParamsSetup_Filter>;
+};
+
 export type QueryLoansArgs = {
   block?: InputMaybe<Block_Height>;
   first?: InputMaybe<Scalars['Int']>;
@@ -7976,6 +9134,54 @@ export type QueryMarginOrderFilledsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   subgraphError?: _SubgraphErrorPolicy_;
   where?: InputMaybe<MarginOrderFilled_Filter>;
+};
+
+export type QueryMultisigConfirmationArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryMultisigConfirmationsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigConfirmation_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigConfirmation_Filter>;
+};
+
+export type QueryMultisigContractArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryMultisigContractsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigContract_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigContract_Filter>;
+};
+
+export type QueryMultisigTransactionArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryMultisigTransactionsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigTransaction_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigTransaction_Filter>;
 };
 
 export type QueryNewBitcoinTransferIncomingArgs = {
@@ -8122,10 +9328,42 @@ export type QueryPoolTokensArgs = {
   where?: InputMaybe<PoolToken_Filter>;
 };
 
+export type QueryPoolVolumeItemArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryPoolVolumeItemsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<PoolVolumeItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<PoolVolumeItem_Filter>;
+};
+
 export type QueryProposalArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
   subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryProposalStateChangeArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryProposalStateChangesArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProposalStateChange_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<ProposalStateChange_Filter>;
 };
 
 export type QueryProposalsArgs = {
@@ -8264,6 +9502,22 @@ export type QuerySwapArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
   subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QuerySwapSettingArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QuerySwapSettingsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<SwapSetting_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<SwapSetting_Filter>;
 };
 
 export type QuerySwapsArgs = {
@@ -8450,6 +9704,86 @@ export type QueryUsersArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   subgraphError?: _SubgraphErrorPolicy_;
   where?: InputMaybe<User_Filter>;
+};
+
+export type QueryV2DelegateChangedArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryV2DelegateChangedsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2DelegateChanged_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2DelegateChanged_Filter>;
+};
+
+export type QueryV2ExtendedStakingDurationArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryV2ExtendedStakingDurationsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2ExtendedStakingDuration_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2ExtendedStakingDuration_Filter>;
+};
+
+export type QueryV2StakeArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryV2StakesArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2Stake_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2Stake_Filter>;
+};
+
+export type QueryV2StakingWithdrawnArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryV2StakingWithdrawnsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2StakingWithdrawn_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2StakingWithdrawn_Filter>;
+};
+
+export type QueryV2TokensStakedArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type QueryV2TokensStakedsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2TokensStaked_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2TokensStaked_Filter>;
 };
 
 export type QueryVestingContractArgs = {
@@ -9242,6 +10576,12 @@ export enum StakeHistoryAction {
    *
    */
   Delegate = 'Delegate',
+  DelegateVested = 'DelegateVested',
+  /**
+   * When a user make an early unstake and the staked amount is slashed
+   *
+   */
+  EarlyUnstakingPenalty = 'EarlyUnstakingPenalty',
   /**
    * Extending an existing stake. The amount of the stake remains the same, but the lockedUntil date increases.
    *
@@ -9282,6 +10622,8 @@ export type StakeHistoryItem = {
   __typename?: 'StakeHistoryItem';
   action: StakeHistoryAction;
   amount?: Maybe<Scalars['BigDecimal']>;
+  delegatee?: Maybe<User>;
+  emittedBy: Scalars['Bytes'];
   id: Scalars['ID'];
   lockedUntil?: Maybe<Scalars['Int']>;
   timestamp: Scalars['Int'];
@@ -9305,6 +10647,33 @@ export type StakeHistoryItem_Filter = {
   amount_lte?: InputMaybe<Scalars['BigDecimal']>;
   amount_not?: InputMaybe<Scalars['BigDecimal']>;
   amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  delegatee?: InputMaybe<Scalars['String']>;
+  delegatee_?: InputMaybe<User_Filter>;
+  delegatee_contains?: InputMaybe<Scalars['String']>;
+  delegatee_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_ends_with?: InputMaybe<Scalars['String']>;
+  delegatee_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_gt?: InputMaybe<Scalars['String']>;
+  delegatee_gte?: InputMaybe<Scalars['String']>;
+  delegatee_in?: InputMaybe<Array<Scalars['String']>>;
+  delegatee_lt?: InputMaybe<Scalars['String']>;
+  delegatee_lte?: InputMaybe<Scalars['String']>;
+  delegatee_not?: InputMaybe<Scalars['String']>;
+  delegatee_not_contains?: InputMaybe<Scalars['String']>;
+  delegatee_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_not_ends_with?: InputMaybe<Scalars['String']>;
+  delegatee_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_not_in?: InputMaybe<Array<Scalars['String']>>;
+  delegatee_not_starts_with?: InputMaybe<Scalars['String']>;
+  delegatee_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_starts_with?: InputMaybe<Scalars['String']>;
+  delegatee_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  emittedBy?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  emittedBy_not?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_contains?: InputMaybe<Scalars['Bytes']>;
+  emittedBy_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
   id?: InputMaybe<Scalars['ID']>;
   id_gt?: InputMaybe<Scalars['ID']>;
   id_gte?: InputMaybe<Scalars['ID']>;
@@ -9396,6 +10765,8 @@ export type StakeHistoryItem_Filter = {
 export enum StakeHistoryItem_OrderBy {
   Action = 'action',
   Amount = 'amount',
+  Delegatee = 'delegatee',
+  EmittedBy = 'emittedBy',
   Id = 'id',
   LockedUntil = 'lockedUntil',
   Timestamp = 'timestamp',
@@ -9511,6 +10882,8 @@ export type Subscription = {
   converterRegistry?: Maybe<ConverterRegistry>;
   crossTransfer?: Maybe<CrossTransfer>;
   crossTransfers: Array<CrossTransfer>;
+  debugItem?: Maybe<DebugItem>;
+  debugItems: Array<DebugItem>;
   deposit?: Maybe<Deposit>;
   depositCollateral?: Maybe<DepositCollateral>;
   depositCollaterals: Array<DepositCollateral>;
@@ -9521,6 +10894,8 @@ export type Subscription = {
   federations: Array<Federation>;
   feeSharingTokensTransferred?: Maybe<FeeSharingTokensTransferred>;
   feeSharingTokensTransferreds: Array<FeeSharingTokensTransferred>;
+  governorContract?: Maybe<GovernorContract>;
+  governorContracts: Array<GovernorContract>;
   icandleStick?: Maybe<ICandleStick>;
   icandleSticks: Array<ICandleStick>;
   lendingHistoryItem?: Maybe<LendingHistoryItem>;
@@ -9540,11 +10915,19 @@ export type Subscription = {
   liquidityPoolTokens: Array<LiquidityPoolToken>;
   liquidityPools: Array<LiquidityPool>;
   loan?: Maybe<Loan>;
+  loanParamsSetup?: Maybe<LoanParamsSetup>;
+  loanParamsSetups: Array<LoanParamsSetup>;
   loans: Array<Loan>;
   marginOrderCanceled?: Maybe<MarginOrderCanceled>;
   marginOrderCanceleds: Array<MarginOrderCanceled>;
   marginOrderFilled?: Maybe<MarginOrderFilled>;
   marginOrderFilleds: Array<MarginOrderFilled>;
+  multisigConfirmation?: Maybe<MultisigConfirmation>;
+  multisigConfirmations: Array<MultisigConfirmation>;
+  multisigContract?: Maybe<MultisigContract>;
+  multisigContracts: Array<MultisigContract>;
+  multisigTransaction?: Maybe<MultisigTransaction>;
+  multisigTransactions: Array<MultisigTransaction>;
   newBitcoinTransferIncoming?: Maybe<NewBitcoinTransferIncoming>;
   newBitcoinTransferIncomings: Array<NewBitcoinTransferIncoming>;
   orderCanceled?: Maybe<OrderCanceled>;
@@ -9563,7 +10946,11 @@ export type Subscription = {
   payTradingFees: Array<PayTradingFee>;
   poolToken?: Maybe<PoolToken>;
   poolTokens: Array<PoolToken>;
+  poolVolumeItem?: Maybe<PoolVolumeItem>;
+  poolVolumeItems: Array<PoolVolumeItem>;
   proposal?: Maybe<Proposal>;
+  proposalStateChange?: Maybe<ProposalStateChange>;
+  proposalStateChanges: Array<ProposalStateChange>;
   proposals: Array<Proposal>;
   protocolStats: Array<ProtocolStats>;
   protocolWithdrawFee?: Maybe<ProtocolWithdrawFee>;
@@ -9581,6 +10968,8 @@ export type Subscription = {
   stakeHistoryItems: Array<StakeHistoryItem>;
   stakes: Array<Stake>;
   swap?: Maybe<Swap>;
+  swapSetting?: Maybe<SwapSetting>;
+  swapSettings: Array<SwapSetting>;
   swaps: Array<Swap>;
   token?: Maybe<Token>;
   tokenSmartToken?: Maybe<TokenSmartToken>;
@@ -9604,6 +10993,16 @@ export type Subscription = {
   userTotal?: Maybe<UserTotal>;
   userTotals: Array<UserTotal>;
   users: Array<User>;
+  v2DelegateChanged?: Maybe<V2DelegateChanged>;
+  v2DelegateChangeds: Array<V2DelegateChanged>;
+  v2ExtendedStakingDuration?: Maybe<V2ExtendedStakingDuration>;
+  v2ExtendedStakingDurations: Array<V2ExtendedStakingDuration>;
+  v2Stake?: Maybe<V2Stake>;
+  v2Stakes: Array<V2Stake>;
+  v2StakingWithdrawn?: Maybe<V2StakingWithdrawn>;
+  v2StakingWithdrawns: Array<V2StakingWithdrawn>;
+  v2TokensStaked?: Maybe<V2TokensStaked>;
+  v2TokensStakeds: Array<V2TokensStaked>;
   vestingContract?: Maybe<VestingContract>;
   vestingContracts: Array<VestingContract>;
   vestingHistoryItem?: Maybe<VestingHistoryItem>;
@@ -9842,6 +11241,22 @@ export type SubscriptionCrossTransfersArgs = {
   where?: InputMaybe<CrossTransfer_Filter>;
 };
 
+export type SubscriptionDebugItemArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionDebugItemsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DebugItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<DebugItem_Filter>;
+};
+
 export type SubscriptionDepositArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
@@ -9920,6 +11335,22 @@ export type SubscriptionFeeSharingTokensTransferredsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   subgraphError?: _SubgraphErrorPolicy_;
   where?: InputMaybe<FeeSharingTokensTransferred_Filter>;
+};
+
+export type SubscriptionGovernorContractArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionGovernorContractsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GovernorContract_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<GovernorContract_Filter>;
 };
 
 export type SubscriptionIcandleStickArgs = {
@@ -10072,6 +11503,22 @@ export type SubscriptionLoanArgs = {
   subgraphError?: _SubgraphErrorPolicy_;
 };
 
+export type SubscriptionLoanParamsSetupArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionLoanParamsSetupsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LoanParamsSetup_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<LoanParamsSetup_Filter>;
+};
+
 export type SubscriptionLoansArgs = {
   block?: InputMaybe<Block_Height>;
   first?: InputMaybe<Scalars['Int']>;
@@ -10112,6 +11559,54 @@ export type SubscriptionMarginOrderFilledsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   subgraphError?: _SubgraphErrorPolicy_;
   where?: InputMaybe<MarginOrderFilled_Filter>;
+};
+
+export type SubscriptionMultisigConfirmationArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionMultisigConfirmationsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigConfirmation_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigConfirmation_Filter>;
+};
+
+export type SubscriptionMultisigContractArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionMultisigContractsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigContract_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigContract_Filter>;
+};
+
+export type SubscriptionMultisigTransactionArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionMultisigTransactionsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<MultisigTransaction_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<MultisigTransaction_Filter>;
 };
 
 export type SubscriptionNewBitcoinTransferIncomingArgs = {
@@ -10258,10 +11753,42 @@ export type SubscriptionPoolTokensArgs = {
   where?: InputMaybe<PoolToken_Filter>;
 };
 
+export type SubscriptionPoolVolumeItemArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionPoolVolumeItemsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<PoolVolumeItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<PoolVolumeItem_Filter>;
+};
+
 export type SubscriptionProposalArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
   subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionProposalStateChangeArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionProposalStateChangesArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProposalStateChange_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<ProposalStateChange_Filter>;
 };
 
 export type SubscriptionProposalsArgs = {
@@ -10400,6 +11927,22 @@ export type SubscriptionSwapArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
   subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionSwapSettingArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionSwapSettingsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<SwapSetting_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<SwapSetting_Filter>;
 };
 
 export type SubscriptionSwapsArgs = {
@@ -10588,6 +12131,86 @@ export type SubscriptionUsersArgs = {
   where?: InputMaybe<User_Filter>;
 };
 
+export type SubscriptionV2DelegateChangedArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionV2DelegateChangedsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2DelegateChanged_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2DelegateChanged_Filter>;
+};
+
+export type SubscriptionV2ExtendedStakingDurationArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionV2ExtendedStakingDurationsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2ExtendedStakingDuration_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2ExtendedStakingDuration_Filter>;
+};
+
+export type SubscriptionV2StakeArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionV2StakesArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2Stake_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2Stake_Filter>;
+};
+
+export type SubscriptionV2StakingWithdrawnArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionV2StakingWithdrawnsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2StakingWithdrawn_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2StakingWithdrawn_Filter>;
+};
+
+export type SubscriptionV2TokensStakedArgs = {
+  block?: InputMaybe<Block_Height>;
+  id: Scalars['ID'];
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type SubscriptionV2TokensStakedsArgs = {
+  block?: InputMaybe<Block_Height>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<V2TokensStaked_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  skip?: InputMaybe<Scalars['Int']>;
+  subgraphError?: _SubgraphErrorPolicy_;
+  where?: InputMaybe<V2TokensStaked_Filter>;
+};
+
 export type SubscriptionVestingContractArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
@@ -10703,6 +12326,48 @@ export type Swap = {
    */
   user?: Maybe<User>;
 };
+
+export type SwapSetting = {
+  __typename?: 'SwapSetting';
+  id: Scalars['ID'];
+  protocolFee: Scalars['Int'];
+  timestamp: Scalars['Int'];
+};
+
+export type SwapSetting_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  protocolFee?: InputMaybe<Scalars['Int']>;
+  protocolFee_gt?: InputMaybe<Scalars['Int']>;
+  protocolFee_gte?: InputMaybe<Scalars['Int']>;
+  protocolFee_in?: InputMaybe<Array<Scalars['Int']>>;
+  protocolFee_lt?: InputMaybe<Scalars['Int']>;
+  protocolFee_lte?: InputMaybe<Scalars['Int']>;
+  protocolFee_not?: InputMaybe<Scalars['Int']>;
+  protocolFee_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export enum SwapSetting_OrderBy {
+  Id = 'id',
+  ProtocolFee = 'protocolFee',
+  Timestamp = 'timestamp',
+}
 
 export enum SwapType {
   Limit = 'Limit',
@@ -12937,6 +14602,631 @@ export enum User_OrderBy {
 }
 
 /**
+ * Event is emitted when stake owner delegates voting power to another user
+ *
+ */
+export type V2DelegateChanged = {
+  __typename?: 'V2DelegateChanged';
+  /**
+   * Address of the new delegatee
+   *
+   */
+  delegate?: Maybe<User>;
+  id: Scalars['ID'];
+  /**
+   * lockedUntil date of the stake
+   *
+   */
+  lockedUntil: Scalars['Int'];
+  /**
+   * Address of the previous delegatee
+   *
+   */
+  previousDelegate?: Maybe<User>;
+  /**
+   * Timestamp of the transaction
+   *
+   */
+  timestamp: Scalars['Int'];
+  /**
+   * The user who staked the tokens
+   *
+   */
+  user: User;
+};
+
+export type V2DelegateChanged_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  delegate?: InputMaybe<Scalars['String']>;
+  delegate_?: InputMaybe<User_Filter>;
+  delegate_contains?: InputMaybe<Scalars['String']>;
+  delegate_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_gt?: InputMaybe<Scalars['String']>;
+  delegate_gte?: InputMaybe<Scalars['String']>;
+  delegate_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_lt?: InputMaybe<Scalars['String']>;
+  delegate_lte?: InputMaybe<Scalars['String']>;
+  delegate_not?: InputMaybe<Scalars['String']>;
+  delegate_not_contains?: InputMaybe<Scalars['String']>;
+  delegate_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_not_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lockedUntil?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_in?: InputMaybe<Array<Scalars['Int']>>;
+  lockedUntil_lt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_lte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  previousDelegate?: InputMaybe<Scalars['String']>;
+  previousDelegate_?: InputMaybe<User_Filter>;
+  previousDelegate_contains?: InputMaybe<Scalars['String']>;
+  previousDelegate_contains_nocase?: InputMaybe<Scalars['String']>;
+  previousDelegate_ends_with?: InputMaybe<Scalars['String']>;
+  previousDelegate_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  previousDelegate_gt?: InputMaybe<Scalars['String']>;
+  previousDelegate_gte?: InputMaybe<Scalars['String']>;
+  previousDelegate_in?: InputMaybe<Array<Scalars['String']>>;
+  previousDelegate_lt?: InputMaybe<Scalars['String']>;
+  previousDelegate_lte?: InputMaybe<Scalars['String']>;
+  previousDelegate_not?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_contains?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_ends_with?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_in?: InputMaybe<Array<Scalars['String']>>;
+  previousDelegate_not_starts_with?: InputMaybe<Scalars['String']>;
+  previousDelegate_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  previousDelegate_starts_with?: InputMaybe<Scalars['String']>;
+  previousDelegate_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_?: InputMaybe<User_Filter>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum V2DelegateChanged_OrderBy {
+  Delegate = 'delegate',
+  Id = 'id',
+  LockedUntil = 'lockedUntil',
+  PreviousDelegate = 'previousDelegate',
+  Timestamp = 'timestamp',
+  User = 'user',
+}
+
+/**
+ * Event is emitted when voluntary staked token lockedUntil date is extended
+ *
+ */
+export type V2ExtendedStakingDuration = {
+  __typename?: 'V2ExtendedStakingDuration';
+  /**
+   * Amount that was moved to the new lockedUntil date
+   *
+   */
+  amountStaked: Scalars['BigDecimal'];
+  id: Scalars['ID'];
+  /**
+   * New lockedUntil date
+   *
+   */
+  newDate: Scalars['Int'];
+  /**
+   * LockedUntil date of original stake
+   *
+   */
+  previousDate: Scalars['Int'];
+  /**
+   * Timestamp of the transaction
+   *
+   */
+  timestamp: Scalars['Int'];
+  /**
+   * The user who staked the tokens
+   *
+   */
+  user: User;
+};
+
+export type V2ExtendedStakingDuration_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  amountStaked?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_gt?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_gte?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  amountStaked_lt?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_lte?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_not?: InputMaybe<Scalars['BigDecimal']>;
+  amountStaked_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  newDate?: InputMaybe<Scalars['Int']>;
+  newDate_gt?: InputMaybe<Scalars['Int']>;
+  newDate_gte?: InputMaybe<Scalars['Int']>;
+  newDate_in?: InputMaybe<Array<Scalars['Int']>>;
+  newDate_lt?: InputMaybe<Scalars['Int']>;
+  newDate_lte?: InputMaybe<Scalars['Int']>;
+  newDate_not?: InputMaybe<Scalars['Int']>;
+  newDate_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  previousDate?: InputMaybe<Scalars['Int']>;
+  previousDate_gt?: InputMaybe<Scalars['Int']>;
+  previousDate_gte?: InputMaybe<Scalars['Int']>;
+  previousDate_in?: InputMaybe<Array<Scalars['Int']>>;
+  previousDate_lt?: InputMaybe<Scalars['Int']>;
+  previousDate_lte?: InputMaybe<Scalars['Int']>;
+  previousDate_not?: InputMaybe<Scalars['Int']>;
+  previousDate_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_?: InputMaybe<User_Filter>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum V2ExtendedStakingDuration_OrderBy {
+  AmountStaked = 'amountStaked',
+  Id = 'id',
+  NewDate = 'newDate',
+  PreviousDate = 'previousDate',
+  Timestamp = 'timestamp',
+  User = 'user',
+}
+
+/**
+ * Voluntary staked tokens grouped by lockedUntil date
+ *
+ */
+export type V2Stake = {
+  __typename?: 'V2Stake';
+  /**
+   * The total amount staked for this specific user until this specific lockedUntil date
+   *
+   */
+  amount: Scalars['BigDecimal'];
+  /**
+   * If tokens delegated to another user, this is the address of the delegatee
+   *
+   */
+  delegate?: Maybe<User>;
+  /**
+   * ID is the user address + lockedUntil date.
+   *
+   */
+  id: Scalars['ID'];
+  /**
+   * The date when these tokens will unlock
+   *
+   */
+  lockedUntil: Scalars['Int'];
+  /**
+   * Timestamp of a date when the stake was created
+   *
+   */
+  timestamp: Scalars['Int'];
+  /**
+   * The user who staked the tokens
+   *
+   */
+  user: User;
+};
+
+export type V2Stake_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  amount?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  amount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  delegate?: InputMaybe<Scalars['String']>;
+  delegate_?: InputMaybe<User_Filter>;
+  delegate_contains?: InputMaybe<Scalars['String']>;
+  delegate_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_gt?: InputMaybe<Scalars['String']>;
+  delegate_gte?: InputMaybe<Scalars['String']>;
+  delegate_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_lt?: InputMaybe<Scalars['String']>;
+  delegate_lte?: InputMaybe<Scalars['String']>;
+  delegate_not?: InputMaybe<Scalars['String']>;
+  delegate_not_contains?: InputMaybe<Scalars['String']>;
+  delegate_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_not_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lockedUntil?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_in?: InputMaybe<Array<Scalars['Int']>>;
+  lockedUntil_lt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_lte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_?: InputMaybe<User_Filter>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum V2Stake_OrderBy {
+  Amount = 'amount',
+  Delegate = 'delegate',
+  Id = 'id',
+  LockedUntil = 'lockedUntil',
+  Timestamp = 'timestamp',
+  User = 'user',
+}
+
+/**
+ * Event is emitted when voluntary or vested staked tokens are withdrawn
+ *
+ */
+export type V2StakingWithdrawn = {
+  __typename?: 'V2StakingWithdrawn';
+  /**
+   * Amount of tokens withdrawn (does not include slashed amount)
+   *
+   */
+  amount: Scalars['BigDecimal'];
+  id: Scalars['ID'];
+  /**
+   * If this is true, tokens were withdrawn by governance (eg revoked vesting contract)
+   *
+   */
+  isGovernance: Scalars['Boolean'];
+  /**
+   * Address who received the tokens
+   *
+   */
+  receiver?: Maybe<User>;
+  /**
+   * Slashed amount when tokens are withdrawn before lockedUntil date
+   *
+   */
+  slashedAmount: Scalars['BigDecimal'];
+  /**
+   * Timestamp of the transaction
+   *
+   */
+  timestamp: Scalars['Int'];
+  /**
+   * lockedUntil date of the stake from which tokens were withdrawn
+   *
+   */
+  until: Scalars['Int'];
+  /**
+   * The user who staked the tokens (owner of tokens)
+   *
+   */
+  user: User;
+};
+
+export type V2StakingWithdrawn_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  amount?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  amount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  isGovernance?: InputMaybe<Scalars['Boolean']>;
+  isGovernance_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  isGovernance_not?: InputMaybe<Scalars['Boolean']>;
+  isGovernance_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  receiver?: InputMaybe<Scalars['String']>;
+  receiver_?: InputMaybe<User_Filter>;
+  receiver_contains?: InputMaybe<Scalars['String']>;
+  receiver_contains_nocase?: InputMaybe<Scalars['String']>;
+  receiver_ends_with?: InputMaybe<Scalars['String']>;
+  receiver_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  receiver_gt?: InputMaybe<Scalars['String']>;
+  receiver_gte?: InputMaybe<Scalars['String']>;
+  receiver_in?: InputMaybe<Array<Scalars['String']>>;
+  receiver_lt?: InputMaybe<Scalars['String']>;
+  receiver_lte?: InputMaybe<Scalars['String']>;
+  receiver_not?: InputMaybe<Scalars['String']>;
+  receiver_not_contains?: InputMaybe<Scalars['String']>;
+  receiver_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  receiver_not_ends_with?: InputMaybe<Scalars['String']>;
+  receiver_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  receiver_not_in?: InputMaybe<Array<Scalars['String']>>;
+  receiver_not_starts_with?: InputMaybe<Scalars['String']>;
+  receiver_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  receiver_starts_with?: InputMaybe<Scalars['String']>;
+  receiver_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  slashedAmount?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  slashedAmount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_not?: InputMaybe<Scalars['BigDecimal']>;
+  slashedAmount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  until?: InputMaybe<Scalars['Int']>;
+  until_gt?: InputMaybe<Scalars['Int']>;
+  until_gte?: InputMaybe<Scalars['Int']>;
+  until_in?: InputMaybe<Array<Scalars['Int']>>;
+  until_lt?: InputMaybe<Scalars['Int']>;
+  until_lte?: InputMaybe<Scalars['Int']>;
+  until_not?: InputMaybe<Scalars['Int']>;
+  until_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_?: InputMaybe<User_Filter>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum V2StakingWithdrawn_OrderBy {
+  Amount = 'amount',
+  Id = 'id',
+  IsGovernance = 'isGovernance',
+  Receiver = 'receiver',
+  SlashedAmount = 'slashedAmount',
+  Timestamp = 'timestamp',
+  Until = 'until',
+  User = 'user',
+}
+
+/**
+ * This event is emitted when tokens are staked, either by a user or by a vesting contract.
+ *
+ */
+export type V2TokensStaked = {
+  __typename?: 'V2TokensStaked';
+  /**
+   * Amount of SOV staked in this event
+   *
+   */
+  amount: Scalars['BigDecimal'];
+  id: Scalars['ID'];
+  /**
+   * The date when these tokens will unlock
+   *
+   */
+  lockedUntil: Scalars['Int'];
+  /**
+   * Timestamp of the transaction
+   *
+   */
+  timestamp: Scalars['Int'];
+  /**
+   * The total amount staked for this specific user until this specific lockedUntil date. As of the time of this event.
+   *
+   */
+  totalStaked: Scalars['BigDecimal'];
+  /**
+   * The user who staked the tokens (if tokens were staked by a vesting contract, user will be staking contract)
+   *
+   */
+  user: User;
+};
+
+export type V2TokensStaked_Filter = {
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  amount?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_gte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  amount_lt?: InputMaybe<Scalars['BigDecimal']>;
+  amount_lte?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not?: InputMaybe<Scalars['BigDecimal']>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  id?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lockedUntil?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_gte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_in?: InputMaybe<Array<Scalars['Int']>>;
+  lockedUntil_lt?: InputMaybe<Scalars['Int']>;
+  lockedUntil_lte?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not?: InputMaybe<Scalars['Int']>;
+  lockedUntil_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  timestamp_gt?: InputMaybe<Scalars['Int']>;
+  timestamp_gte?: InputMaybe<Scalars['Int']>;
+  timestamp_in?: InputMaybe<Array<Scalars['Int']>>;
+  timestamp_lt?: InputMaybe<Scalars['Int']>;
+  timestamp_lte?: InputMaybe<Scalars['Int']>;
+  timestamp_not?: InputMaybe<Scalars['Int']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  totalStaked?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_gt?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_gte?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  totalStaked_lt?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_lte?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_not?: InputMaybe<Scalars['BigDecimal']>;
+  totalStaked_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_?: InputMaybe<User_Filter>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+};
+
+export enum V2TokensStaked_OrderBy {
+  Amount = 'amount',
+  Id = 'id',
+  LockedUntil = 'lockedUntil',
+  Timestamp = 'timestamp',
+  TotalStaked = 'totalStaked',
+  User = 'user',
+}
+
+/**
  * This entity represents one vesting contract
  * A User can have multiple vesting contracts
  *
@@ -12961,6 +15251,11 @@ export type VestingContract = {
    */
   currentBalance: Scalars['BigDecimal'];
   /**
+   * Delegated too
+   *
+   */
+  delegate?: Maybe<User>;
+  /**
    * The total duration of the vesting contract, including the cliff, in seconds.
    * For example, a 9 month vesting contract with a 1 month cliff would have a duration of 26280000 (10 months in seconds)
    *
@@ -12978,10 +15273,20 @@ export type VestingContract = {
    */
   stakeHistory?: Maybe<Array<VestingHistoryItem>>;
   /**
+   * Staking contract address
+   *
+   */
+  staking: Scalars['Bytes'];
+  /**
    * The initial balance when this contract was created. This is often 0, as tokens can be added to the contract after contract creation
    *
    */
   startingBalance: Scalars['BigDecimal'];
+  /**
+   * Token staked in this vesting contract
+   *
+   */
+  token: Scalars['Bytes'];
   /**
    * Type of contract (see VestingContractType docs for more details)
    *
@@ -13098,6 +15403,27 @@ export type VestingContract_Filter = {
   currentBalance_lte?: InputMaybe<Scalars['BigDecimal']>;
   currentBalance_not?: InputMaybe<Scalars['BigDecimal']>;
   currentBalance_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  delegate?: InputMaybe<Scalars['String']>;
+  delegate_?: InputMaybe<User_Filter>;
+  delegate_contains?: InputMaybe<Scalars['String']>;
+  delegate_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_gt?: InputMaybe<Scalars['String']>;
+  delegate_gte?: InputMaybe<Scalars['String']>;
+  delegate_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_lt?: InputMaybe<Scalars['String']>;
+  delegate_lte?: InputMaybe<Scalars['String']>;
+  delegate_not?: InputMaybe<Scalars['String']>;
+  delegate_not_contains?: InputMaybe<Scalars['String']>;
+  delegate_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with?: InputMaybe<Scalars['String']>;
+  delegate_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_not_in?: InputMaybe<Array<Scalars['String']>>;
+  delegate_not_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  delegate_starts_with?: InputMaybe<Scalars['String']>;
+  delegate_starts_with_nocase?: InputMaybe<Scalars['String']>;
   duration?: InputMaybe<Scalars['Int']>;
   duration_gt?: InputMaybe<Scalars['Int']>;
   duration_gte?: InputMaybe<Scalars['Int']>;
@@ -13121,6 +15447,12 @@ export type VestingContract_Filter = {
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
   stakeHistory_?: InputMaybe<VestingHistoryItem_Filter>;
+  staking?: InputMaybe<Scalars['Bytes']>;
+  staking_contains?: InputMaybe<Scalars['Bytes']>;
+  staking_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  staking_not?: InputMaybe<Scalars['Bytes']>;
+  staking_not_contains?: InputMaybe<Scalars['Bytes']>;
+  staking_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
   startingBalance?: InputMaybe<Scalars['BigDecimal']>;
   startingBalance_gt?: InputMaybe<Scalars['BigDecimal']>;
   startingBalance_gte?: InputMaybe<Scalars['BigDecimal']>;
@@ -13129,6 +15461,12 @@ export type VestingContract_Filter = {
   startingBalance_lte?: InputMaybe<Scalars['BigDecimal']>;
   startingBalance_not?: InputMaybe<Scalars['BigDecimal']>;
   startingBalance_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  token?: InputMaybe<Scalars['Bytes']>;
+  token_contains?: InputMaybe<Scalars['Bytes']>;
+  token_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  token_not?: InputMaybe<Scalars['Bytes']>;
+  token_not_contains?: InputMaybe<Scalars['Bytes']>;
+  token_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
   type?: InputMaybe<VestingContractType>;
   type_in?: InputMaybe<Array<VestingContractType>>;
   type_not?: InputMaybe<VestingContractType>;
@@ -13161,11 +15499,14 @@ export enum VestingContract_OrderBy {
   CreatedAtTimestamp = 'createdAtTimestamp',
   CreatedAtTransaction = 'createdAtTransaction',
   CurrentBalance = 'currentBalance',
+  Delegate = 'delegate',
   Duration = 'duration',
   EmittedBy = 'emittedBy',
   Id = 'id',
   StakeHistory = 'stakeHistory',
+  Staking = 'staking',
   StartingBalance = 'startingBalance',
+  Token = 'token',
   Type = 'type',
   User = 'user',
 }
@@ -13182,6 +15523,11 @@ export type VestingHistoryItem = {
    *
    */
   amount: Scalars['BigDecimal'];
+  /**
+   * Delegated too
+   *
+   */
+  delegatee?: Maybe<User>;
   emittedBy: Scalars['Bytes'];
   /**
    * ID is transaction hash + "-" + log index
@@ -13209,6 +15555,11 @@ export type VestingHistoryItem = {
 };
 
 export enum VestingHistoryItemAction {
+  /**
+   * When a user delegates their vesting contract to another user
+   *
+   */
+  DelegateChanged = 'DelegateChanged',
   /**
    * This is only relevant to Team tokens. For Team contracts, a vesting contract can be revoked by governance if a team member leaves the project.
    * If this happens, all tokens still locked are returned to the exchequer.
@@ -13243,6 +15594,27 @@ export type VestingHistoryItem_Filter = {
   amount_lte?: InputMaybe<Scalars['BigDecimal']>;
   amount_not?: InputMaybe<Scalars['BigDecimal']>;
   amount_not_in?: InputMaybe<Array<Scalars['BigDecimal']>>;
+  delegatee?: InputMaybe<Scalars['String']>;
+  delegatee_?: InputMaybe<User_Filter>;
+  delegatee_contains?: InputMaybe<Scalars['String']>;
+  delegatee_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_ends_with?: InputMaybe<Scalars['String']>;
+  delegatee_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_gt?: InputMaybe<Scalars['String']>;
+  delegatee_gte?: InputMaybe<Scalars['String']>;
+  delegatee_in?: InputMaybe<Array<Scalars['String']>>;
+  delegatee_lt?: InputMaybe<Scalars['String']>;
+  delegatee_lte?: InputMaybe<Scalars['String']>;
+  delegatee_not?: InputMaybe<Scalars['String']>;
+  delegatee_not_contains?: InputMaybe<Scalars['String']>;
+  delegatee_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_not_ends_with?: InputMaybe<Scalars['String']>;
+  delegatee_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_not_in?: InputMaybe<Array<Scalars['String']>>;
+  delegatee_not_starts_with?: InputMaybe<Scalars['String']>;
+  delegatee_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  delegatee_starts_with?: InputMaybe<Scalars['String']>;
+  delegatee_starts_with_nocase?: InputMaybe<Scalars['String']>;
   emittedBy?: InputMaybe<Scalars['Bytes']>;
   emittedBy_contains?: InputMaybe<Scalars['Bytes']>;
   emittedBy_in?: InputMaybe<Array<Scalars['Bytes']>>;
@@ -13328,6 +15700,7 @@ export type VestingHistoryItem_Filter = {
 export enum VestingHistoryItem_OrderBy {
   Action = 'action',
   Amount = 'amount',
+  Delegatee = 'delegatee',
   EmittedBy = 'emittedBy',
   Id = 'id',
   LockedUntil = 'lockedUntil',
@@ -13609,6 +15982,36 @@ export enum _SubgraphErrorPolicy_ {
   Deny = 'deny',
 }
 
+export type GetActiveLoansQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetActiveLoansQuery = {
+  __typename?: 'Query';
+  loans: Array<{
+    __typename?: 'Loan';
+    id: string;
+    borrowedAmount: string;
+    positionSize: string;
+    nextRollover?: number | null;
+    loanToken: {
+      __typename?: 'Token';
+      id: string;
+      lastPriceBtc: string;
+      lastPriceUsd: string;
+      symbol?: string | null;
+    };
+    collateralToken: {
+      __typename?: 'Token';
+      id: string;
+      lastPriceBtc: string;
+      lastPriceUsd: string;
+      symbol?: string | null;
+    };
+    borrow?: Array<{ __typename?: 'Borrow'; interestRate: string }> | null;
+  }>;
+};
+
 export type GetBitcoinTxIdQueryVariables = Exact<{
   createdAtTx?: InputMaybe<Scalars['String']>;
 }>;
@@ -13618,6 +16021,187 @@ export type GetBitcoinTxIdQuery = {
   bitcoinTransfers: Array<{
     __typename?: 'BitcoinTransfer';
     bitcoinTxHash?: string | null;
+  }>;
+};
+
+export type GetBorrowHistoryQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<Borrow_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetBorrowHistoryQuery = {
+  __typename?: 'Query';
+  borrows: Array<{
+    __typename?: 'Borrow';
+    loanToken: string;
+    collateralToken: string;
+    newPrincipal: string;
+    newCollateral: string;
+    interestRate: string;
+    interestDuration: string;
+    collateralToLoanRate: string;
+    timestamp: number;
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetCloseWithDepositsQueryVariables = Exact<{
+  loanIds?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<CloseWithDeposit_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetCloseWithDepositsQuery = {
+  __typename?: 'Query';
+  closeWithDeposits: Array<{
+    __typename?: 'CloseWithDeposit';
+    collateralToken: string;
+    loanToken: string;
+    repayAmount: string;
+    collateralWithdrawAmount: string;
+    timestamp: number;
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetCloseWithSwapsQueryVariables = Exact<{
+  loanIds?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<CloseWithSwap_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetCloseWithSwapsQuery = {
+  __typename?: 'Query';
+  closeWithSwaps: Array<{
+    __typename?: 'CloseWithSwap';
+    collateralToken: string;
+    loanToken: string;
+    positionCloseSize: string;
+    loanCloseAmount: string;
+    timestamp: number;
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetConversionFeeQueryVariables = Exact<{
+  smartToken?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetConversionFeeQuery = {
+  __typename?: 'Query';
+  liquidityPools: Array<{
+    __typename?: 'LiquidityPool';
+    conversionFee?: string | null;
+    maxConversionFee?: string | null;
+  }>;
+};
+
+export type GetDelegateChangesQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<V2DelegateChanged_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetDelegateChangesQuery = {
+  __typename?: 'Query';
+  v2DelegateChangeds: Array<{
+    __typename?: 'V2DelegateChanged';
+    id: string;
+    timestamp: number;
+    lockedUntil: number;
+    delegate?: { __typename?: 'User'; id: string } | null;
+    previousDelegate?: { __typename?: 'User'; id: string } | null;
+    user: { __typename?: 'User'; id: string };
+  }>;
+};
+
+export type GetDepositCollateralsQueryVariables = Exact<{
+  loanIds?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<DepositCollateral_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetDepositCollateralsQuery = {
+  __typename?: 'Query';
+  depositCollaterals: Array<{
+    __typename?: 'DepositCollateral';
+    depositAmount: string;
+    rate?: string | null;
+    timestamp: number;
+    emittedBy: string;
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetExtendedStakingDurationsQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<V2ExtendedStakingDuration_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetExtendedStakingDurationsQuery = {
+  __typename?: 'Query';
+  v2ExtendedStakingDurations: Array<{
+    __typename?: 'V2ExtendedStakingDuration';
+    id: string;
+    amountStaked: string;
+    newDate: number;
+    previousDate: number;
+    timestamp: number;
+    user: { __typename?: 'User'; id: string };
   }>;
 };
 
@@ -13657,6 +16241,339 @@ export type GetFundingQuery = {
   }>;
 };
 
+export type GetLastVestingWithdrawQueryVariables = Exact<{
+  vestingAddress?: InputMaybe<Scalars['ID']>;
+}>;
+
+export type GetLastVestingWithdrawQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{
+    __typename?: 'VestingContract';
+    id: string;
+    stakeHistory?: Array<{
+      __typename?: 'VestingHistoryItem';
+      timestamp: number;
+    }> | null;
+  }>;
+};
+
+export type GetLendHistoryQueryVariables = Exact<{
+  user: Scalars['ID'];
+}>;
+
+export type GetLendHistoryQuery = {
+  __typename?: 'Query';
+  user?: {
+    __typename?: 'User';
+    lendingHistory?: Array<{
+      __typename?: 'UserLendingHistory';
+      lendingHistory?: Array<{
+        __typename?: 'LendingHistoryItem';
+        type: LendingHistoryType;
+        timestamp: number;
+        amount: string;
+        loanTokenAmount: string;
+        emittedBy: string;
+        asset?: {
+          __typename?: 'Token';
+          id: string;
+          symbol?: string | null;
+        } | null;
+        transaction: {
+          __typename?: 'Transaction';
+          id: string;
+          timestamp: number;
+        };
+      }> | null;
+    }> | null;
+  } | null;
+};
+
+export type GetLiquidatesQueryVariables = Exact<{
+  loanIds?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<Liquidate_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetLiquidatesQuery = {
+  __typename?: 'Query';
+  liquidates: Array<{
+    __typename?: 'Liquidate';
+    collateralToken: string;
+    loanToken: string;
+    repayAmount: string;
+    collateralWithdrawAmount: string;
+    timestamp: number;
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetLiquidityHistoryQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetLiquidityHistoryQuery = {
+  __typename?: 'Query';
+  liquidityHistoryItems: Array<{
+    __typename?: 'LiquidityHistoryItem';
+    amount: string;
+    type: LiquidityHistoryType;
+    emittedBy: string;
+    timestamp: number;
+    reserveToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    transaction: { __typename?: 'Transaction'; id: string };
+    liquidityPool: { __typename?: 'LiquidityPool'; id: string };
+  }>;
+};
+
+export type GetLiquidityMiningAllocationPointsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetLiquidityMiningAllocationPointsQuery = {
+  __typename?: 'Query';
+  liquidityMiningAllocationPoints: Array<{
+    __typename?: 'LiquidityMiningAllocationPoint';
+    id: string;
+    rewardPerBlock: string;
+    ammPoolToken?: {
+      __typename?: 'SmartToken';
+      id: string;
+      symbol?: string | null;
+    } | null;
+    lendingPoolToken?: { __typename?: 'LendingPool'; id: string } | null;
+  }>;
+};
+
+export type GetLoanParamsSetupsQueryVariables = Exact<{
+  loanToken?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetLoanParamsSetupsQuery = {
+  __typename?: 'Query';
+  loanParamsSetups: Array<{
+    __typename?: 'LoanParamsSetup';
+    id: string;
+    maintenanceMargin: string;
+    minInitialMargin: string;
+    maxLoanTerm: number;
+    owner: string;
+    timestamp: number;
+    collateralToken: { __typename?: 'Token'; id: string };
+    loanToken: { __typename?: 'Token'; id: string };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetLoansQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetLoansQuery = {
+  __typename?: 'Query';
+  loans: Array<{
+    __typename?: 'Loan';
+    id: string;
+    borrowedAmount: string;
+    positionSize: string;
+    nextRollover?: number | null;
+    loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    collateralToken: {
+      __typename?: 'Token';
+      id: string;
+      symbol?: string | null;
+    };
+    borrow?: Array<{ __typename?: 'Borrow'; interestRate: string }> | null;
+  }>;
+};
+
+export type GetProposalQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+export type GetProposalQuery = {
+  __typename?: 'Query';
+  proposal?: {
+    __typename?: 'Proposal';
+    id: string;
+    votesFor: string;
+    votesAgainst: string;
+    countVotersFor: number;
+    countVotersAgainst: number;
+    quorum: string;
+    proposer: string;
+    majorityPercentage: string;
+    eta?: number | null;
+    proposalId: number;
+    targets: Array<string>;
+    values: Array<string>;
+    signatures: Array<string>;
+    calldatas: Array<string>;
+    startBlock: number;
+    endBlock: number;
+    description: string;
+    timestamp: number;
+    canceled?: { __typename?: 'Transaction'; id: string } | null;
+    executed?: { __typename?: 'Transaction'; id: string } | null;
+    queued?: { __typename?: 'Transaction'; id: string } | null;
+    created: { __typename?: 'Transaction'; id: string };
+    votes?: Array<{
+      __typename?: 'VoteCast';
+      votes: string;
+      support: boolean;
+      timestamp: number;
+      voter: { __typename?: 'User'; id: string };
+      transaction: { __typename?: 'Transaction'; id: string };
+    }> | null;
+    emittedBy: {
+      __typename?: 'GovernorContract';
+      id: string;
+      votingDelay: number;
+      votingPeriod: number;
+      quorumPercentageVotes: number;
+      majorityPercentageVotes: number;
+    };
+    stateChanges: Array<{
+      __typename?: 'ProposalStateChange';
+      id: string;
+      state: ProposalState;
+      timestamp: number;
+    }>;
+  } | null;
+};
+
+export type GetProposalsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProposalsQuery = {
+  __typename?: 'Query';
+  proposals: Array<{
+    __typename?: 'Proposal';
+    id: string;
+    votesFor: string;
+    votesAgainst: string;
+    countVotersFor: number;
+    countVotersAgainst: number;
+    quorum: string;
+    majorityPercentage: string;
+    eta?: number | null;
+    proposalId: number;
+    proposer: string;
+    targets: Array<string>;
+    values: Array<string>;
+    signatures: Array<string>;
+    calldatas: Array<string>;
+    startBlock: number;
+    endBlock: number;
+    description: string;
+    timestamp: number;
+    canceled?: { __typename?: 'Transaction'; id: string } | null;
+    executed?: { __typename?: 'Transaction'; id: string } | null;
+    queued?: { __typename?: 'Transaction'; id: string } | null;
+    created: { __typename?: 'Transaction'; id: string };
+    votes?: Array<{
+      __typename?: 'VoteCast';
+      votes: string;
+      support: boolean;
+      voter: { __typename?: 'User'; id: string };
+      transaction: { __typename?: 'Transaction'; id: string };
+    }> | null;
+    emittedBy: {
+      __typename?: 'GovernorContract';
+      id: string;
+      votingDelay: number;
+      votingPeriod: number;
+      quorumPercentageVotes: number;
+      majorityPercentageVotes: number;
+    };
+    stateChanges: Array<{
+      __typename?: 'ProposalStateChange';
+      id: string;
+      state: ProposalState;
+      timestamp: number;
+    }>;
+  }>;
+};
+
+export type GetProtocolFeeQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProtocolFeeQuery = {
+  __typename?: 'Query';
+  swapSettings: Array<{ __typename?: 'SwapSetting'; protocolFee: number }>;
+};
+
+export type GetRewardsEarnedHistoryQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<RewardsEarnedHistoryItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  actions?: InputMaybe<Array<RewardsEarnedAction> | RewardsEarnedAction>;
+}>;
+
+export type GetRewardsEarnedHistoryQuery = {
+  __typename?: 'Query';
+  rewardsEarnedHistoryItems: Array<{
+    __typename?: 'RewardsEarnedHistoryItem';
+    id: string;
+    action: RewardsEarnedAction;
+    amount: string;
+    token?: string | null;
+    timestamp: number;
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetRolloversQueryVariables = Exact<{
+  loanIds?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<Rollover_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetRolloversQuery = {
+  __typename?: 'Query';
+  rollovers: Array<{
+    __typename?: 'Rollover';
+    id: string;
+    lender: string;
+    principal: string;
+    collateral: string;
+    endTimestamp: number;
+    reward: string;
+    timestamp: number;
+    emittedBy: string;
+    user: { __typename?: 'User'; id: string };
+    loanId: {
+      __typename?: 'Loan';
+      id: string;
+      collateralToken: {
+        __typename?: 'Token';
+        id: string;
+        symbol?: string | null;
+      };
+      loanToken: { __typename?: 'Token'; id: string; symbol?: string | null };
+    };
+    rewardReceiver: { __typename?: 'User'; id: string };
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
 export type GetSmartTokensQueryVariables = Exact<{
   skip: Scalars['Int'];
   pageSize: Scalars['Int'];
@@ -13675,6 +16592,50 @@ export type GetSmartTokensQuery = {
     symbol?: string | null;
     owner: string;
     addedToRegistryBlockNumber?: number | null;
+  }>;
+};
+
+export type GetStakeHistoryQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<V2TokensStaked_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetStakeHistoryQuery = {
+  __typename?: 'Query';
+  v2TokensStakeds: Array<{
+    __typename?: 'V2TokensStaked';
+    id: string;
+    amount: string;
+    totalStaked: string;
+    timestamp: number;
+    lockedUntil: number;
+    user: { __typename?: 'User'; id: string };
+  }>;
+};
+
+export type GetStakingWithdrawsQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<V2StakingWithdrawn_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetStakingWithdrawsQuery = {
+  __typename?: 'Query';
+  v2StakingWithdrawns: Array<{
+    __typename?: 'V2StakingWithdrawn';
+    id: string;
+    amount: string;
+    slashedAmount: string;
+    isGovernance: boolean;
+    timestamp: number;
+    until: number;
+    receiver?: { __typename?: 'User'; id: string } | null;
+    user: { __typename?: 'User'; id: string };
   }>;
 };
 
@@ -13700,6 +16661,19 @@ export type GetSwapHistoryQuery = {
   }>;
 };
 
+export type GetTokenQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+export type GetTokenQuery = {
+  __typename?: 'Query';
+  token?: {
+    __typename?: 'Token';
+    lastPriceUsd: string;
+    lastPriceBtc: string;
+  } | null;
+};
+
 export type GetTokenRatesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetTokenRatesQuery = {
@@ -13711,6 +16685,33 @@ export type GetTokenRatesQuery = {
     lastPriceBtc: string;
     lastPriceUsd: string;
   }>;
+};
+
+export type GetTradeVolumeQueryVariables = Exact<{
+  pool?: InputMaybe<Scalars['String']>;
+  timestamp: Scalars['Int'];
+}>;
+
+export type GetTradeVolumeQuery = {
+  __typename?: 'Query';
+  poolVolumeItems: Array<{ __typename?: 'PoolVolumeItem'; btcAmount: string }>;
+};
+
+export type GetTradingRewardsQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+export type GetTradingRewardsQuery = {
+  __typename?: 'Query';
+  userRewardsEarnedHistory?: {
+    __typename?: 'UserRewardsEarnedHistory';
+    availableTradingRewards: string;
+    totalTradingRewards: string;
+    totalLendingRewards: string;
+    totalLiquidityRewards: string;
+    totalStakingRewards: string;
+    totalFeeWithdrawn: string;
+  } | null;
 };
 
 export type GetTransactionsQueryVariables = Exact<{
@@ -13731,6 +16732,228 @@ export type GetTransactionsQuery = {
   }>;
 };
 
+export type GetUserRewardsEarnedHistoryQueryVariables = Exact<{
+  user: Scalars['ID'];
+}>;
+
+export type GetUserRewardsEarnedHistoryQuery = {
+  __typename?: 'Query';
+  userRewardsEarnedHistory?: {
+    __typename?: 'UserRewardsEarnedHistory';
+    totalFeeWithdrawn: string;
+  } | null;
+};
+
+export type GetVestingContractsQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+}>;
+
+export type GetVestingContractsQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{
+    __typename?: 'VestingContract';
+    id: string;
+    cliff?: number | null;
+    duration?: number | null;
+    currentBalance: string;
+    type: VestingContractType;
+    createdAtTimestamp: number;
+  }>;
+};
+
+export type GetVestingContractsIdQueryVariables = Exact<{
+  user?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetVestingContractsIdQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{ __typename?: 'VestingContract'; id: string }>;
+};
+
+export type GetUserVestingContractsQueryVariables = Exact<{
+  userAddress: Scalars['String'];
+}>;
+
+export type GetUserVestingContractsQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{ __typename?: 'VestingContract'; id: string }>;
+};
+
+export type GetDelegateChangesForVestingsQueryVariables = Exact<{
+  vestingContracts?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<VestingHistoryItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetDelegateChangesForVestingsQuery = {
+  __typename?: 'Query';
+  vestingHistoryItems: Array<{
+    __typename?: 'VestingHistoryItem';
+    id: string;
+    amount: string;
+    timestamp: number;
+    delegatee?: { __typename?: 'User'; id: string } | null;
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetVestingHistoryQueryVariables = Exact<{
+  vestingAddress?: InputMaybe<Scalars['ID']>;
+}>;
+
+export type GetVestingHistoryQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{
+    __typename?: 'VestingContract';
+    id: string;
+    stakeHistory?: Array<{
+      __typename?: 'VestingHistoryItem';
+      id: string;
+      amount: string;
+      lockedUntil?: number | null;
+    }> | null;
+  }>;
+};
+
+export type GetVestingHistoryItemsQueryVariables = Exact<{
+  stakers?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  skip: Scalars['Int'];
+  pageSize: Scalars['Int'];
+  orderBy?: InputMaybe<VestingHistoryItem_OrderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+}>;
+
+export type GetVestingHistoryItemsQuery = {
+  __typename?: 'Query';
+  vestingHistoryItems: Array<{
+    __typename?: 'VestingHistoryItem';
+    timestamp: number;
+    action: VestingHistoryItemAction;
+    amount: string;
+    transaction: { __typename?: 'Transaction'; id: string };
+  }>;
+};
+
+export type GetVestingUnlockBalanceQueryVariables = Exact<{
+  vestingAddress?: InputMaybe<Scalars['ID']>;
+  timestamp?: InputMaybe<Scalars['Int']>;
+  currentTimestamp?: InputMaybe<Scalars['Int']>;
+}>;
+
+export type GetVestingUnlockBalanceQuery = {
+  __typename?: 'Query';
+  vestingContracts: Array<{
+    __typename?: 'VestingContract';
+    id: string;
+    stakeHistory?: Array<{
+      __typename?: 'VestingHistoryItem';
+      timestamp: number;
+      amount: string;
+      lockedUntil?: number | null;
+    }> | null;
+  }>;
+};
+
+export type GetVoteQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']>;
+  voter?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetVoteQuery = {
+  __typename?: 'Query';
+  voteCasts: Array<{
+    __typename?: 'VoteCast';
+    emittedBy: string;
+    id: string;
+    proposalId: number;
+    support: boolean;
+    timestamp: number;
+    votes: string;
+    transaction: { __typename?: 'Transaction'; id: string };
+    voter: { __typename?: 'User'; id: string };
+  }>;
+};
+
+export const GetActiveLoansDocument = gql`
+  query getActiveLoans($user: String) {
+    loans(where: { user: $user, type: Borrow }) {
+      id
+      loanToken {
+        id
+        lastPriceBtc
+        lastPriceUsd
+        symbol
+      }
+      collateralToken {
+        id
+        lastPriceBtc
+        lastPriceUsd
+        symbol
+      }
+      borrowedAmount
+      positionSize
+      nextRollover
+      borrow(first: 1, orderBy: timestamp, orderDirection: desc) {
+        interestRate
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetActiveLoansQuery__
+ *
+ * To run a query within a React component, call `useGetActiveLoansQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetActiveLoansQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetActiveLoansQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetActiveLoansQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetActiveLoansQuery,
+    GetActiveLoansQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetActiveLoansQuery, GetActiveLoansQueryVariables>(
+    GetActiveLoansDocument,
+    options,
+  );
+}
+export function useGetActiveLoansLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetActiveLoansQuery,
+    GetActiveLoansQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetActiveLoansQuery, GetActiveLoansQueryVariables>(
+    GetActiveLoansDocument,
+    options,
+  );
+}
+export type GetActiveLoansQueryHookResult = ReturnType<
+  typeof useGetActiveLoansQuery
+>;
+export type GetActiveLoansLazyQueryHookResult = ReturnType<
+  typeof useGetActiveLoansLazyQuery
+>;
+export type GetActiveLoansQueryResult = Apollo.QueryResult<
+  GetActiveLoansQuery,
+  GetActiveLoansQueryVariables
+>;
 export const GetBitcoinTxIdDocument = gql`
   query getBitcoinTxId($createdAtTx: String) {
     bitcoinTransfers(where: { createdAtTx: $createdAtTx }, first: 1) {
@@ -13788,6 +17011,601 @@ export type GetBitcoinTxIdLazyQueryHookResult = ReturnType<
 export type GetBitcoinTxIdQueryResult = Apollo.QueryResult<
   GetBitcoinTxIdQuery,
   GetBitcoinTxIdQueryVariables
+>;
+export const GetBorrowHistoryDocument = gql`
+  query getBorrowHistory(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: Borrow_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    borrows(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      loanToken
+      collateralToken
+      newPrincipal
+      newCollateral
+      interestRate
+      interestDuration
+      collateralToLoanRate
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetBorrowHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetBorrowHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBorrowHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBorrowHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetBorrowHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetBorrowHistoryQuery,
+    GetBorrowHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetBorrowHistoryQuery, GetBorrowHistoryQueryVariables>(
+    GetBorrowHistoryDocument,
+    options,
+  );
+}
+export function useGetBorrowHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetBorrowHistoryQuery,
+    GetBorrowHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetBorrowHistoryQuery,
+    GetBorrowHistoryQueryVariables
+  >(GetBorrowHistoryDocument, options);
+}
+export type GetBorrowHistoryQueryHookResult = ReturnType<
+  typeof useGetBorrowHistoryQuery
+>;
+export type GetBorrowHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetBorrowHistoryLazyQuery
+>;
+export type GetBorrowHistoryQueryResult = Apollo.QueryResult<
+  GetBorrowHistoryQuery,
+  GetBorrowHistoryQueryVariables
+>;
+export const GetCloseWithDepositsDocument = gql`
+  query getCloseWithDeposits(
+    $loanIds: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: CloseWithDeposit_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    closeWithDeposits(
+      where: { loanId_in: $loanIds }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      collateralToken
+      loanToken
+      repayAmount
+      collateralWithdrawAmount
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetCloseWithDepositsQuery__
+ *
+ * To run a query within a React component, call `useGetCloseWithDepositsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCloseWithDepositsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCloseWithDepositsQuery({
+ *   variables: {
+ *      loanIds: // value for 'loanIds'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetCloseWithDepositsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetCloseWithDepositsQuery,
+    GetCloseWithDepositsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetCloseWithDepositsQuery,
+    GetCloseWithDepositsQueryVariables
+  >(GetCloseWithDepositsDocument, options);
+}
+export function useGetCloseWithDepositsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCloseWithDepositsQuery,
+    GetCloseWithDepositsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetCloseWithDepositsQuery,
+    GetCloseWithDepositsQueryVariables
+  >(GetCloseWithDepositsDocument, options);
+}
+export type GetCloseWithDepositsQueryHookResult = ReturnType<
+  typeof useGetCloseWithDepositsQuery
+>;
+export type GetCloseWithDepositsLazyQueryHookResult = ReturnType<
+  typeof useGetCloseWithDepositsLazyQuery
+>;
+export type GetCloseWithDepositsQueryResult = Apollo.QueryResult<
+  GetCloseWithDepositsQuery,
+  GetCloseWithDepositsQueryVariables
+>;
+export const GetCloseWithSwapsDocument = gql`
+  query getCloseWithSwaps(
+    $loanIds: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: CloseWithSwap_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    closeWithSwaps(
+      where: { loanId_in: $loanIds }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      collateralToken
+      loanToken
+      positionCloseSize
+      loanCloseAmount
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetCloseWithSwapsQuery__
+ *
+ * To run a query within a React component, call `useGetCloseWithSwapsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCloseWithSwapsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCloseWithSwapsQuery({
+ *   variables: {
+ *      loanIds: // value for 'loanIds'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetCloseWithSwapsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetCloseWithSwapsQuery,
+    GetCloseWithSwapsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetCloseWithSwapsQuery,
+    GetCloseWithSwapsQueryVariables
+  >(GetCloseWithSwapsDocument, options);
+}
+export function useGetCloseWithSwapsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCloseWithSwapsQuery,
+    GetCloseWithSwapsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetCloseWithSwapsQuery,
+    GetCloseWithSwapsQueryVariables
+  >(GetCloseWithSwapsDocument, options);
+}
+export type GetCloseWithSwapsQueryHookResult = ReturnType<
+  typeof useGetCloseWithSwapsQuery
+>;
+export type GetCloseWithSwapsLazyQueryHookResult = ReturnType<
+  typeof useGetCloseWithSwapsLazyQuery
+>;
+export type GetCloseWithSwapsQueryResult = Apollo.QueryResult<
+  GetCloseWithSwapsQuery,
+  GetCloseWithSwapsQueryVariables
+>;
+export const GetConversionFeeDocument = gql`
+  query getConversionFee($smartToken: String) {
+    liquidityPools(where: { smartToken_contains: $smartToken }) {
+      conversionFee
+      maxConversionFee
+    }
+  }
+`;
+
+/**
+ * __useGetConversionFeeQuery__
+ *
+ * To run a query within a React component, call `useGetConversionFeeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetConversionFeeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetConversionFeeQuery({
+ *   variables: {
+ *      smartToken: // value for 'smartToken'
+ *   },
+ * });
+ */
+export function useGetConversionFeeQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetConversionFeeQuery,
+    GetConversionFeeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetConversionFeeQuery, GetConversionFeeQueryVariables>(
+    GetConversionFeeDocument,
+    options,
+  );
+}
+export function useGetConversionFeeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetConversionFeeQuery,
+    GetConversionFeeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetConversionFeeQuery,
+    GetConversionFeeQueryVariables
+  >(GetConversionFeeDocument, options);
+}
+export type GetConversionFeeQueryHookResult = ReturnType<
+  typeof useGetConversionFeeQuery
+>;
+export type GetConversionFeeLazyQueryHookResult = ReturnType<
+  typeof useGetConversionFeeLazyQuery
+>;
+export type GetConversionFeeQueryResult = Apollo.QueryResult<
+  GetConversionFeeQuery,
+  GetConversionFeeQueryVariables
+>;
+export const GetDelegateChangesDocument = gql`
+  query getDelegateChanges(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: V2DelegateChanged_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    v2DelegateChangeds(
+      where: { user: $user, previousDelegate_not: null }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      delegate {
+        id
+      }
+      timestamp
+      previousDelegate {
+        id
+      }
+      user {
+        id
+      }
+      lockedUntil
+    }
+  }
+`;
+
+/**
+ * __useGetDelegateChangesQuery__
+ *
+ * To run a query within a React component, call `useGetDelegateChangesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDelegateChangesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDelegateChangesQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetDelegateChangesQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetDelegateChangesQuery,
+    GetDelegateChangesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetDelegateChangesQuery,
+    GetDelegateChangesQueryVariables
+  >(GetDelegateChangesDocument, options);
+}
+export function useGetDelegateChangesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDelegateChangesQuery,
+    GetDelegateChangesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDelegateChangesQuery,
+    GetDelegateChangesQueryVariables
+  >(GetDelegateChangesDocument, options);
+}
+export type GetDelegateChangesQueryHookResult = ReturnType<
+  typeof useGetDelegateChangesQuery
+>;
+export type GetDelegateChangesLazyQueryHookResult = ReturnType<
+  typeof useGetDelegateChangesLazyQuery
+>;
+export type GetDelegateChangesQueryResult = Apollo.QueryResult<
+  GetDelegateChangesQuery,
+  GetDelegateChangesQueryVariables
+>;
+export const GetDepositCollateralsDocument = gql`
+  query getDepositCollaterals(
+    $loanIds: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: DepositCollateral_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    depositCollaterals(
+      where: { loanId_in: $loanIds }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      depositAmount
+      rate
+      timestamp
+      emittedBy
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetDepositCollateralsQuery__
+ *
+ * To run a query within a React component, call `useGetDepositCollateralsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDepositCollateralsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDepositCollateralsQuery({
+ *   variables: {
+ *      loanIds: // value for 'loanIds'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetDepositCollateralsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetDepositCollateralsQuery,
+    GetDepositCollateralsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetDepositCollateralsQuery,
+    GetDepositCollateralsQueryVariables
+  >(GetDepositCollateralsDocument, options);
+}
+export function useGetDepositCollateralsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDepositCollateralsQuery,
+    GetDepositCollateralsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDepositCollateralsQuery,
+    GetDepositCollateralsQueryVariables
+  >(GetDepositCollateralsDocument, options);
+}
+export type GetDepositCollateralsQueryHookResult = ReturnType<
+  typeof useGetDepositCollateralsQuery
+>;
+export type GetDepositCollateralsLazyQueryHookResult = ReturnType<
+  typeof useGetDepositCollateralsLazyQuery
+>;
+export type GetDepositCollateralsQueryResult = Apollo.QueryResult<
+  GetDepositCollateralsQuery,
+  GetDepositCollateralsQueryVariables
+>;
+export const GetExtendedStakingDurationsDocument = gql`
+  query getExtendedStakingDurations(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: V2ExtendedStakingDuration_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    v2ExtendedStakingDurations(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      amountStaked
+      newDate
+      previousDate
+      timestamp
+      user {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetExtendedStakingDurationsQuery__
+ *
+ * To run a query within a React component, call `useGetExtendedStakingDurationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetExtendedStakingDurationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetExtendedStakingDurationsQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetExtendedStakingDurationsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetExtendedStakingDurationsQuery,
+    GetExtendedStakingDurationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetExtendedStakingDurationsQuery,
+    GetExtendedStakingDurationsQueryVariables
+  >(GetExtendedStakingDurationsDocument, options);
+}
+export function useGetExtendedStakingDurationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetExtendedStakingDurationsQuery,
+    GetExtendedStakingDurationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetExtendedStakingDurationsQuery,
+    GetExtendedStakingDurationsQueryVariables
+  >(GetExtendedStakingDurationsDocument, options);
+}
+export type GetExtendedStakingDurationsQueryHookResult = ReturnType<
+  typeof useGetExtendedStakingDurationsQuery
+>;
+export type GetExtendedStakingDurationsLazyQueryHookResult = ReturnType<
+  typeof useGetExtendedStakingDurationsLazyQuery
+>;
+export type GetExtendedStakingDurationsQueryResult = Apollo.QueryResult<
+  GetExtendedStakingDurationsQuery,
+  GetExtendedStakingDurationsQueryVariables
 >;
 export const GetFastBtcDepositRskTransactionDocument = gql`
   query getFastBtcDepositRskTransaction($bitcoinTxHash: String, $user: String) {
@@ -13933,6 +17751,988 @@ export type GetFundingQueryResult = Apollo.QueryResult<
   GetFundingQuery,
   GetFundingQueryVariables
 >;
+export const GetLastVestingWithdrawDocument = gql`
+  query getLastVestingWithdraw($vestingAddress: ID) {
+    vestingContracts(where: { id: $vestingAddress }) {
+      id
+      stakeHistory(
+        where: { action: TokensWithdrawn }
+        orderBy: timestamp
+        orderDirection: desc
+        first: 1
+      ) {
+        timestamp
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLastVestingWithdrawQuery__
+ *
+ * To run a query within a React component, call `useGetLastVestingWithdrawQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLastVestingWithdrawQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLastVestingWithdrawQuery({
+ *   variables: {
+ *      vestingAddress: // value for 'vestingAddress'
+ *   },
+ * });
+ */
+export function useGetLastVestingWithdrawQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLastVestingWithdrawQuery,
+    GetLastVestingWithdrawQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLastVestingWithdrawQuery,
+    GetLastVestingWithdrawQueryVariables
+  >(GetLastVestingWithdrawDocument, options);
+}
+export function useGetLastVestingWithdrawLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLastVestingWithdrawQuery,
+    GetLastVestingWithdrawQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLastVestingWithdrawQuery,
+    GetLastVestingWithdrawQueryVariables
+  >(GetLastVestingWithdrawDocument, options);
+}
+export type GetLastVestingWithdrawQueryHookResult = ReturnType<
+  typeof useGetLastVestingWithdrawQuery
+>;
+export type GetLastVestingWithdrawLazyQueryHookResult = ReturnType<
+  typeof useGetLastVestingWithdrawLazyQuery
+>;
+export type GetLastVestingWithdrawQueryResult = Apollo.QueryResult<
+  GetLastVestingWithdrawQuery,
+  GetLastVestingWithdrawQueryVariables
+>;
+export const GetLendHistoryDocument = gql`
+  query getLendHistory($user: ID!) {
+    user(id: $user) {
+      lendingHistory {
+        lendingHistory(orderBy: timestamp) {
+          type
+          timestamp
+          asset {
+            id
+            symbol
+          }
+          amount
+          loanTokenAmount
+          emittedBy
+          transaction {
+            id
+            timestamp
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLendHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetLendHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLendHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLendHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetLendHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetLendHistoryQuery,
+    GetLendHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetLendHistoryQuery, GetLendHistoryQueryVariables>(
+    GetLendHistoryDocument,
+    options,
+  );
+}
+export function useGetLendHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLendHistoryQuery,
+    GetLendHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetLendHistoryQuery, GetLendHistoryQueryVariables>(
+    GetLendHistoryDocument,
+    options,
+  );
+}
+export type GetLendHistoryQueryHookResult = ReturnType<
+  typeof useGetLendHistoryQuery
+>;
+export type GetLendHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetLendHistoryLazyQuery
+>;
+export type GetLendHistoryQueryResult = Apollo.QueryResult<
+  GetLendHistoryQuery,
+  GetLendHistoryQueryVariables
+>;
+export const GetLiquidatesDocument = gql`
+  query getLiquidates(
+    $loanIds: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: Liquidate_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    liquidates(
+      where: { loanId_in: $loanIds }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      collateralToken
+      loanToken
+      repayAmount
+      collateralWithdrawAmount
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLiquidatesQuery__
+ *
+ * To run a query within a React component, call `useGetLiquidatesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLiquidatesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLiquidatesQuery({
+ *   variables: {
+ *      loanIds: // value for 'loanIds'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetLiquidatesQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetLiquidatesQuery,
+    GetLiquidatesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetLiquidatesQuery, GetLiquidatesQueryVariables>(
+    GetLiquidatesDocument,
+    options,
+  );
+}
+export function useGetLiquidatesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLiquidatesQuery,
+    GetLiquidatesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetLiquidatesQuery, GetLiquidatesQueryVariables>(
+    GetLiquidatesDocument,
+    options,
+  );
+}
+export type GetLiquidatesQueryHookResult = ReturnType<
+  typeof useGetLiquidatesQuery
+>;
+export type GetLiquidatesLazyQueryHookResult = ReturnType<
+  typeof useGetLiquidatesLazyQuery
+>;
+export type GetLiquidatesQueryResult = Apollo.QueryResult<
+  GetLiquidatesQuery,
+  GetLiquidatesQueryVariables
+>;
+export const GetLiquidityHistoryDocument = gql`
+  query getLiquidityHistory(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderDirection: OrderDirection
+  ) {
+    liquidityHistoryItems(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: timestamp
+      orderDirection: $orderDirection
+    ) {
+      amount
+      type
+      emittedBy
+      timestamp
+      reserveToken {
+        id
+        symbol
+      }
+      transaction {
+        id
+      }
+      liquidityPool {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLiquidityHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetLiquidityHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLiquidityHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLiquidityHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetLiquidityHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetLiquidityHistoryQuery,
+    GetLiquidityHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLiquidityHistoryQuery,
+    GetLiquidityHistoryQueryVariables
+  >(GetLiquidityHistoryDocument, options);
+}
+export function useGetLiquidityHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLiquidityHistoryQuery,
+    GetLiquidityHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLiquidityHistoryQuery,
+    GetLiquidityHistoryQueryVariables
+  >(GetLiquidityHistoryDocument, options);
+}
+export type GetLiquidityHistoryQueryHookResult = ReturnType<
+  typeof useGetLiquidityHistoryQuery
+>;
+export type GetLiquidityHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetLiquidityHistoryLazyQuery
+>;
+export type GetLiquidityHistoryQueryResult = Apollo.QueryResult<
+  GetLiquidityHistoryQuery,
+  GetLiquidityHistoryQueryVariables
+>;
+export const GetLiquidityMiningAllocationPointsDocument = gql`
+  query getLiquidityMiningAllocationPoints {
+    liquidityMiningAllocationPoints {
+      id
+      rewardPerBlock
+      ammPoolToken {
+        id
+        symbol
+      }
+      lendingPoolToken {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLiquidityMiningAllocationPointsQuery__
+ *
+ * To run a query within a React component, call `useGetLiquidityMiningAllocationPointsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLiquidityMiningAllocationPointsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLiquidityMiningAllocationPointsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetLiquidityMiningAllocationPointsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLiquidityMiningAllocationPointsQuery,
+    GetLiquidityMiningAllocationPointsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLiquidityMiningAllocationPointsQuery,
+    GetLiquidityMiningAllocationPointsQueryVariables
+  >(GetLiquidityMiningAllocationPointsDocument, options);
+}
+export function useGetLiquidityMiningAllocationPointsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLiquidityMiningAllocationPointsQuery,
+    GetLiquidityMiningAllocationPointsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLiquidityMiningAllocationPointsQuery,
+    GetLiquidityMiningAllocationPointsQueryVariables
+  >(GetLiquidityMiningAllocationPointsDocument, options);
+}
+export type GetLiquidityMiningAllocationPointsQueryHookResult = ReturnType<
+  typeof useGetLiquidityMiningAllocationPointsQuery
+>;
+export type GetLiquidityMiningAllocationPointsLazyQueryHookResult = ReturnType<
+  typeof useGetLiquidityMiningAllocationPointsLazyQuery
+>;
+export type GetLiquidityMiningAllocationPointsQueryResult = Apollo.QueryResult<
+  GetLiquidityMiningAllocationPointsQuery,
+  GetLiquidityMiningAllocationPointsQueryVariables
+>;
+export const GetLoanParamsSetupsDocument = gql`
+  query getLoanParamsSetups($loanToken: String) {
+    loanParamsSetups(
+      orderBy: timestamp
+      orderDirection: desc
+      where: { loanToken: $loanToken }
+    ) {
+      collateralToken {
+        id
+      }
+      id
+      loanToken {
+        id
+      }
+      maintenanceMargin
+      minInitialMargin
+      maxLoanTerm
+      owner
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLoanParamsSetupsQuery__
+ *
+ * To run a query within a React component, call `useGetLoanParamsSetupsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLoanParamsSetupsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLoanParamsSetupsQuery({
+ *   variables: {
+ *      loanToken: // value for 'loanToken'
+ *   },
+ * });
+ */
+export function useGetLoanParamsSetupsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLoanParamsSetupsQuery,
+    GetLoanParamsSetupsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLoanParamsSetupsQuery,
+    GetLoanParamsSetupsQueryVariables
+  >(GetLoanParamsSetupsDocument, options);
+}
+export function useGetLoanParamsSetupsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLoanParamsSetupsQuery,
+    GetLoanParamsSetupsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLoanParamsSetupsQuery,
+    GetLoanParamsSetupsQueryVariables
+  >(GetLoanParamsSetupsDocument, options);
+}
+export type GetLoanParamsSetupsQueryHookResult = ReturnType<
+  typeof useGetLoanParamsSetupsQuery
+>;
+export type GetLoanParamsSetupsLazyQueryHookResult = ReturnType<
+  typeof useGetLoanParamsSetupsLazyQuery
+>;
+export type GetLoanParamsSetupsQueryResult = Apollo.QueryResult<
+  GetLoanParamsSetupsQuery,
+  GetLoanParamsSetupsQueryVariables
+>;
+export const GetLoansDocument = gql`
+  query getLoans($user: String) {
+    loans(where: { user: $user, type: Borrow }) {
+      id
+      loanToken {
+        id
+        symbol
+      }
+      collateralToken {
+        id
+        symbol
+      }
+      borrowedAmount
+      positionSize
+      nextRollover
+      borrow(first: 1, orderBy: timestamp, orderDirection: desc) {
+        interestRate
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetLoansQuery__
+ *
+ * To run a query within a React component, call `useGetLoansQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLoansQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLoansQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetLoansQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetLoansQuery, GetLoansQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetLoansQuery, GetLoansQueryVariables>(
+    GetLoansDocument,
+    options,
+  );
+}
+export function useGetLoansLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLoansQuery,
+    GetLoansQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetLoansQuery, GetLoansQueryVariables>(
+    GetLoansDocument,
+    options,
+  );
+}
+export type GetLoansQueryHookResult = ReturnType<typeof useGetLoansQuery>;
+export type GetLoansLazyQueryHookResult = ReturnType<
+  typeof useGetLoansLazyQuery
+>;
+export type GetLoansQueryResult = Apollo.QueryResult<
+  GetLoansQuery,
+  GetLoansQueryVariables
+>;
+export const GetProposalDocument = gql`
+  query getProposal($id: ID!) {
+    proposal(id: $id) {
+      id
+      canceled {
+        id
+      }
+      executed {
+        id
+      }
+      queued {
+        id
+      }
+      created {
+        id
+      }
+      votesFor
+      votesAgainst
+      countVotersFor
+      countVotersAgainst
+      quorum
+      proposer
+      majorityPercentage
+      eta
+      proposalId
+      targets
+      values
+      signatures
+      calldatas
+      startBlock
+      endBlock
+      description
+      timestamp
+      votes {
+        voter {
+          id
+        }
+        votes
+        support
+        transaction {
+          id
+        }
+        timestamp
+      }
+      emittedBy {
+        id
+        votingDelay
+        votingPeriod
+        quorumPercentageVotes
+        majorityPercentageVotes
+      }
+      stateChanges {
+        id
+        state
+        timestamp
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProposalQuery__
+ *
+ * To run a query within a React component, call `useGetProposalQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProposalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProposalQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetProposalQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetProposalQuery,
+    GetProposalQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProposalQuery, GetProposalQueryVariables>(
+    GetProposalDocument,
+    options,
+  );
+}
+export function useGetProposalLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProposalQuery,
+    GetProposalQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetProposalQuery, GetProposalQueryVariables>(
+    GetProposalDocument,
+    options,
+  );
+}
+export type GetProposalQueryHookResult = ReturnType<typeof useGetProposalQuery>;
+export type GetProposalLazyQueryHookResult = ReturnType<
+  typeof useGetProposalLazyQuery
+>;
+export type GetProposalQueryResult = Apollo.QueryResult<
+  GetProposalQuery,
+  GetProposalQueryVariables
+>;
+export const GetProposalsDocument = gql`
+  query getProposals {
+    proposals(orderBy: timestamp, orderDirection: desc) {
+      id
+      canceled {
+        id
+      }
+      executed {
+        id
+      }
+      queued {
+        id
+      }
+      created {
+        id
+      }
+      votesFor
+      votesAgainst
+      countVotersFor
+      countVotersAgainst
+      quorum
+      majorityPercentage
+      eta
+      proposalId
+      proposer
+      targets
+      values
+      signatures
+      calldatas
+      startBlock
+      endBlock
+      description
+      timestamp
+      votes {
+        voter {
+          id
+        }
+        votes
+        support
+        transaction {
+          id
+        }
+      }
+      emittedBy {
+        id
+        votingDelay
+        votingPeriod
+        quorumPercentageVotes
+        majorityPercentageVotes
+      }
+      stateChanges {
+        id
+        state
+        timestamp
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProposalsQuery__
+ *
+ * To run a query within a React component, call `useGetProposalsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProposalsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProposalsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetProposalsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetProposalsQuery,
+    GetProposalsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProposalsQuery, GetProposalsQueryVariables>(
+    GetProposalsDocument,
+    options,
+  );
+}
+export function useGetProposalsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProposalsQuery,
+    GetProposalsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetProposalsQuery, GetProposalsQueryVariables>(
+    GetProposalsDocument,
+    options,
+  );
+}
+export type GetProposalsQueryHookResult = ReturnType<
+  typeof useGetProposalsQuery
+>;
+export type GetProposalsLazyQueryHookResult = ReturnType<
+  typeof useGetProposalsLazyQuery
+>;
+export type GetProposalsQueryResult = Apollo.QueryResult<
+  GetProposalsQuery,
+  GetProposalsQueryVariables
+>;
+export const GetProtocolFeeDocument = gql`
+  query getProtocolFee {
+    swapSettings {
+      protocolFee
+    }
+  }
+`;
+
+/**
+ * __useGetProtocolFeeQuery__
+ *
+ * To run a query within a React component, call `useGetProtocolFeeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProtocolFeeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProtocolFeeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetProtocolFeeQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetProtocolFeeQuery,
+    GetProtocolFeeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProtocolFeeQuery, GetProtocolFeeQueryVariables>(
+    GetProtocolFeeDocument,
+    options,
+  );
+}
+export function useGetProtocolFeeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProtocolFeeQuery,
+    GetProtocolFeeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetProtocolFeeQuery, GetProtocolFeeQueryVariables>(
+    GetProtocolFeeDocument,
+    options,
+  );
+}
+export type GetProtocolFeeQueryHookResult = ReturnType<
+  typeof useGetProtocolFeeQuery
+>;
+export type GetProtocolFeeLazyQueryHookResult = ReturnType<
+  typeof useGetProtocolFeeLazyQuery
+>;
+export type GetProtocolFeeQueryResult = Apollo.QueryResult<
+  GetProtocolFeeQuery,
+  GetProtocolFeeQueryVariables
+>;
+export const GetRewardsEarnedHistoryDocument = gql`
+  query getRewardsEarnedHistory(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: RewardsEarnedHistoryItem_orderBy
+    $orderDirection: OrderDirection
+    $actions: [RewardsEarnedAction!]
+  ) {
+    rewardsEarnedHistoryItems(
+      where: { user: $user, amount_gt: 0, action_in: $actions }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      action
+      amount
+      token
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetRewardsEarnedHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetRewardsEarnedHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRewardsEarnedHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRewardsEarnedHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *      actions: // value for 'actions'
+ *   },
+ * });
+ */
+export function useGetRewardsEarnedHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetRewardsEarnedHistoryQuery,
+    GetRewardsEarnedHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetRewardsEarnedHistoryQuery,
+    GetRewardsEarnedHistoryQueryVariables
+  >(GetRewardsEarnedHistoryDocument, options);
+}
+export function useGetRewardsEarnedHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetRewardsEarnedHistoryQuery,
+    GetRewardsEarnedHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetRewardsEarnedHistoryQuery,
+    GetRewardsEarnedHistoryQueryVariables
+  >(GetRewardsEarnedHistoryDocument, options);
+}
+export type GetRewardsEarnedHistoryQueryHookResult = ReturnType<
+  typeof useGetRewardsEarnedHistoryQuery
+>;
+export type GetRewardsEarnedHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetRewardsEarnedHistoryLazyQuery
+>;
+export type GetRewardsEarnedHistoryQueryResult = Apollo.QueryResult<
+  GetRewardsEarnedHistoryQuery,
+  GetRewardsEarnedHistoryQueryVariables
+>;
+export const GetRolloversDocument = gql`
+  query getRollovers(
+    $loanIds: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: Rollover_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    rollovers(
+      where: { loanId_in: $loanIds }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      user {
+        id
+      }
+      loanId {
+        id
+        collateralToken {
+          id
+          symbol
+        }
+        loanToken {
+          id
+          symbol
+        }
+      }
+      lender
+      principal
+      collateral
+      endTimestamp
+      rewardReceiver {
+        id
+      }
+      reward
+      timestamp
+      emittedBy
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetRolloversQuery__
+ *
+ * To run a query within a React component, call `useGetRolloversQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRolloversQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRolloversQuery({
+ *   variables: {
+ *      loanIds: // value for 'loanIds'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetRolloversQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetRolloversQuery,
+    GetRolloversQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetRolloversQuery, GetRolloversQueryVariables>(
+    GetRolloversDocument,
+    options,
+  );
+}
+export function useGetRolloversLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetRolloversQuery,
+    GetRolloversQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetRolloversQuery, GetRolloversQueryVariables>(
+    GetRolloversDocument,
+    options,
+  );
+}
+export type GetRolloversQueryHookResult = ReturnType<
+  typeof useGetRolloversQuery
+>;
+export type GetRolloversLazyQueryHookResult = ReturnType<
+  typeof useGetRolloversLazyQuery
+>;
+export type GetRolloversQueryResult = Apollo.QueryResult<
+  GetRolloversQuery,
+  GetRolloversQueryVariables
+>;
 export const GetSmartTokensDocument = gql`
   query getSmartTokens(
     $skip: Int!
@@ -14011,6 +18811,172 @@ export type GetSmartTokensLazyQueryHookResult = ReturnType<
 export type GetSmartTokensQueryResult = Apollo.QueryResult<
   GetSmartTokensQuery,
   GetSmartTokensQueryVariables
+>;
+export const GetStakeHistoryDocument = gql`
+  query getStakeHistory(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: V2TokensStaked_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    v2TokensStakeds(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      amount
+      totalStaked
+      timestamp
+      lockedUntil
+      user {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetStakeHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetStakeHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetStakeHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetStakeHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetStakeHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetStakeHistoryQuery,
+    GetStakeHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetStakeHistoryQuery, GetStakeHistoryQueryVariables>(
+    GetStakeHistoryDocument,
+    options,
+  );
+}
+export function useGetStakeHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetStakeHistoryQuery,
+    GetStakeHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetStakeHistoryQuery,
+    GetStakeHistoryQueryVariables
+  >(GetStakeHistoryDocument, options);
+}
+export type GetStakeHistoryQueryHookResult = ReturnType<
+  typeof useGetStakeHistoryQuery
+>;
+export type GetStakeHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetStakeHistoryLazyQuery
+>;
+export type GetStakeHistoryQueryResult = Apollo.QueryResult<
+  GetStakeHistoryQuery,
+  GetStakeHistoryQueryVariables
+>;
+export const GetStakingWithdrawsDocument = gql`
+  query getStakingWithdraws(
+    $user: String
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: V2StakingWithdrawn_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    v2StakingWithdrawns(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      id
+      amount
+      slashedAmount
+      isGovernance
+      receiver {
+        id
+      }
+      user {
+        id
+      }
+      timestamp
+      until
+    }
+  }
+`;
+
+/**
+ * __useGetStakingWithdrawsQuery__
+ *
+ * To run a query within a React component, call `useGetStakingWithdrawsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetStakingWithdrawsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetStakingWithdrawsQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetStakingWithdrawsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetStakingWithdrawsQuery,
+    GetStakingWithdrawsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetStakingWithdrawsQuery,
+    GetStakingWithdrawsQueryVariables
+  >(GetStakingWithdrawsDocument, options);
+}
+export function useGetStakingWithdrawsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetStakingWithdrawsQuery,
+    GetStakingWithdrawsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetStakingWithdrawsQuery,
+    GetStakingWithdrawsQueryVariables
+  >(GetStakingWithdrawsDocument, options);
+}
+export type GetStakingWithdrawsQueryHookResult = ReturnType<
+  typeof useGetStakingWithdrawsQuery
+>;
+export type GetStakingWithdrawsLazyQueryHookResult = ReturnType<
+  typeof useGetStakingWithdrawsLazyQuery
+>;
+export type GetStakingWithdrawsQueryResult = Apollo.QueryResult<
+  GetStakingWithdrawsQuery,
+  GetStakingWithdrawsQueryVariables
 >;
 export const GetSwapHistoryDocument = gql`
   query getSwapHistory(
@@ -14101,6 +19067,60 @@ export type GetSwapHistoryQueryResult = Apollo.QueryResult<
   GetSwapHistoryQuery,
   GetSwapHistoryQueryVariables
 >;
+export const GetTokenDocument = gql`
+  query getToken($id: ID!) {
+    token(id: $id) {
+      lastPriceUsd
+      lastPriceBtc
+    }
+  }
+`;
+
+/**
+ * __useGetTokenQuery__
+ *
+ * To run a query within a React component, call `useGetTokenQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTokenQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetTokenQuery(
+  baseOptions: Apollo.QueryHookOptions<GetTokenQuery, GetTokenQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetTokenQuery, GetTokenQueryVariables>(
+    GetTokenDocument,
+    options,
+  );
+}
+export function useGetTokenLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTokenQuery,
+    GetTokenQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetTokenQuery, GetTokenQueryVariables>(
+    GetTokenDocument,
+    options,
+  );
+}
+export type GetTokenQueryHookResult = ReturnType<typeof useGetTokenQuery>;
+export type GetTokenLazyQueryHookResult = ReturnType<
+  typeof useGetTokenLazyQuery
+>;
+export type GetTokenQueryResult = Apollo.QueryResult<
+  GetTokenQuery,
+  GetTokenQueryVariables
+>;
 export const GetTokenRatesDocument = gql`
   query getTokenRates {
     tokens {
@@ -14160,6 +19180,128 @@ export type GetTokenRatesLazyQueryHookResult = ReturnType<
 export type GetTokenRatesQueryResult = Apollo.QueryResult<
   GetTokenRatesQuery,
   GetTokenRatesQueryVariables
+>;
+export const GetTradeVolumeDocument = gql`
+  query getTradeVolume($pool: String, $timestamp: Int!) {
+    poolVolumeItems(where: { pool: $pool, timestamp_gt: $timestamp }) {
+      btcAmount
+    }
+  }
+`;
+
+/**
+ * __useGetTradeVolumeQuery__
+ *
+ * To run a query within a React component, call `useGetTradeVolumeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTradeVolumeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTradeVolumeQuery({
+ *   variables: {
+ *      pool: // value for 'pool'
+ *      timestamp: // value for 'timestamp'
+ *   },
+ * });
+ */
+export function useGetTradeVolumeQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetTradeVolumeQuery,
+    GetTradeVolumeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetTradeVolumeQuery, GetTradeVolumeQueryVariables>(
+    GetTradeVolumeDocument,
+    options,
+  );
+}
+export function useGetTradeVolumeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTradeVolumeQuery,
+    GetTradeVolumeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetTradeVolumeQuery, GetTradeVolumeQueryVariables>(
+    GetTradeVolumeDocument,
+    options,
+  );
+}
+export type GetTradeVolumeQueryHookResult = ReturnType<
+  typeof useGetTradeVolumeQuery
+>;
+export type GetTradeVolumeLazyQueryHookResult = ReturnType<
+  typeof useGetTradeVolumeLazyQuery
+>;
+export type GetTradeVolumeQueryResult = Apollo.QueryResult<
+  GetTradeVolumeQuery,
+  GetTradeVolumeQueryVariables
+>;
+export const GetTradingRewardsDocument = gql`
+  query getTradingRewards($id: ID!) {
+    userRewardsEarnedHistory(id: $id) {
+      availableTradingRewards
+      totalTradingRewards
+      totalLendingRewards
+      totalLiquidityRewards
+      totalStakingRewards
+      totalFeeWithdrawn
+    }
+  }
+`;
+
+/**
+ * __useGetTradingRewardsQuery__
+ *
+ * To run a query within a React component, call `useGetTradingRewardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTradingRewardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTradingRewardsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetTradingRewardsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetTradingRewardsQuery,
+    GetTradingRewardsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetTradingRewardsQuery,
+    GetTradingRewardsQueryVariables
+  >(GetTradingRewardsDocument, options);
+}
+export function useGetTradingRewardsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTradingRewardsQuery,
+    GetTradingRewardsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetTradingRewardsQuery,
+    GetTradingRewardsQueryVariables
+  >(GetTradingRewardsDocument, options);
+}
+export type GetTradingRewardsQueryHookResult = ReturnType<
+  typeof useGetTradingRewardsQuery
+>;
+export type GetTradingRewardsLazyQueryHookResult = ReturnType<
+  typeof useGetTradingRewardsLazyQuery
+>;
+export type GetTradingRewardsQueryResult = Apollo.QueryResult<
+  GetTradingRewardsQuery,
+  GetTradingRewardsQueryVariables
 >;
 export const GetTransactionsDocument = gql`
   query getTransactions($limit: Int!) {
@@ -14226,4 +19368,619 @@ export type GetTransactionsLazyQueryHookResult = ReturnType<
 export type GetTransactionsQueryResult = Apollo.QueryResult<
   GetTransactionsQuery,
   GetTransactionsQueryVariables
+>;
+export const GetUserRewardsEarnedHistoryDocument = gql`
+  query getUserRewardsEarnedHistory($user: ID!) {
+    userRewardsEarnedHistory(id: $user) {
+      totalFeeWithdrawn
+    }
+  }
+`;
+
+/**
+ * __useGetUserRewardsEarnedHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetUserRewardsEarnedHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserRewardsEarnedHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserRewardsEarnedHistoryQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetUserRewardsEarnedHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetUserRewardsEarnedHistoryQuery,
+    GetUserRewardsEarnedHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetUserRewardsEarnedHistoryQuery,
+    GetUserRewardsEarnedHistoryQueryVariables
+  >(GetUserRewardsEarnedHistoryDocument, options);
+}
+export function useGetUserRewardsEarnedHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUserRewardsEarnedHistoryQuery,
+    GetUserRewardsEarnedHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetUserRewardsEarnedHistoryQuery,
+    GetUserRewardsEarnedHistoryQueryVariables
+  >(GetUserRewardsEarnedHistoryDocument, options);
+}
+export type GetUserRewardsEarnedHistoryQueryHookResult = ReturnType<
+  typeof useGetUserRewardsEarnedHistoryQuery
+>;
+export type GetUserRewardsEarnedHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetUserRewardsEarnedHistoryLazyQuery
+>;
+export type GetUserRewardsEarnedHistoryQueryResult = Apollo.QueryResult<
+  GetUserRewardsEarnedHistoryQuery,
+  GetUserRewardsEarnedHistoryQueryVariables
+>;
+export const GetVestingContractsDocument = gql`
+  query getVestingContracts($user: String, $skip: Int!, $pageSize: Int!) {
+    vestingContracts(
+      where: { user: $user }
+      first: $pageSize
+      skip: $skip
+      orderBy: currentBalance
+      orderDirection: desc
+    ) {
+      id
+      cliff
+      duration
+      currentBalance
+      type
+      createdAtTimestamp
+    }
+  }
+`;
+
+/**
+ * __useGetVestingContractsQuery__
+ *
+ * To run a query within a React component, call `useGetVestingContractsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingContractsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingContractsQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *   },
+ * });
+ */
+export function useGetVestingContractsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >(GetVestingContractsDocument, options);
+}
+export function useGetVestingContractsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingContractsQuery,
+    GetVestingContractsQueryVariables
+  >(GetVestingContractsDocument, options);
+}
+export type GetVestingContractsQueryHookResult = ReturnType<
+  typeof useGetVestingContractsQuery
+>;
+export type GetVestingContractsLazyQueryHookResult = ReturnType<
+  typeof useGetVestingContractsLazyQuery
+>;
+export type GetVestingContractsQueryResult = Apollo.QueryResult<
+  GetVestingContractsQuery,
+  GetVestingContractsQueryVariables
+>;
+export const GetVestingContractsIdDocument = gql`
+  query getVestingContractsId($user: String) {
+    vestingContracts(where: { user: $user }) {
+      id
+    }
+  }
+`;
+
+/**
+ * __useGetVestingContractsIdQuery__
+ *
+ * To run a query within a React component, call `useGetVestingContractsIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingContractsIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingContractsIdQuery({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useGetVestingContractsIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetVestingContractsIdQuery,
+    GetVestingContractsIdQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingContractsIdQuery,
+    GetVestingContractsIdQueryVariables
+  >(GetVestingContractsIdDocument, options);
+}
+export function useGetVestingContractsIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingContractsIdQuery,
+    GetVestingContractsIdQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingContractsIdQuery,
+    GetVestingContractsIdQueryVariables
+  >(GetVestingContractsIdDocument, options);
+}
+export type GetVestingContractsIdQueryHookResult = ReturnType<
+  typeof useGetVestingContractsIdQuery
+>;
+export type GetVestingContractsIdLazyQueryHookResult = ReturnType<
+  typeof useGetVestingContractsIdLazyQuery
+>;
+export type GetVestingContractsIdQueryResult = Apollo.QueryResult<
+  GetVestingContractsIdQuery,
+  GetVestingContractsIdQueryVariables
+>;
+export const GetUserVestingContractsDocument = gql`
+  query getUserVestingContracts($userAddress: String!) {
+    vestingContracts(where: { user: $userAddress }) {
+      id
+    }
+  }
+`;
+
+/**
+ * __useGetUserVestingContractsQuery__
+ *
+ * To run a query within a React component, call `useGetUserVestingContractsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserVestingContractsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserVestingContractsQuery({
+ *   variables: {
+ *      userAddress: // value for 'userAddress'
+ *   },
+ * });
+ */
+export function useGetUserVestingContractsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetUserVestingContractsQuery,
+    GetUserVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetUserVestingContractsQuery,
+    GetUserVestingContractsQueryVariables
+  >(GetUserVestingContractsDocument, options);
+}
+export function useGetUserVestingContractsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUserVestingContractsQuery,
+    GetUserVestingContractsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetUserVestingContractsQuery,
+    GetUserVestingContractsQueryVariables
+  >(GetUserVestingContractsDocument, options);
+}
+export type GetUserVestingContractsQueryHookResult = ReturnType<
+  typeof useGetUserVestingContractsQuery
+>;
+export type GetUserVestingContractsLazyQueryHookResult = ReturnType<
+  typeof useGetUserVestingContractsLazyQuery
+>;
+export type GetUserVestingContractsQueryResult = Apollo.QueryResult<
+  GetUserVestingContractsQuery,
+  GetUserVestingContractsQueryVariables
+>;
+export const GetDelegateChangesForVestingsDocument = gql`
+  query getDelegateChangesForVestings(
+    $vestingContracts: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: VestingHistoryItem_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    vestingHistoryItems(
+      where: { staker_in: $vestingContracts, action: DelegateChanged }
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+      first: $pageSize
+      skip: $skip
+    ) {
+      id
+      delegatee {
+        id
+      }
+      amount
+      timestamp
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetDelegateChangesForVestingsQuery__
+ *
+ * To run a query within a React component, call `useGetDelegateChangesForVestingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDelegateChangesForVestingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDelegateChangesForVestingsQuery({
+ *   variables: {
+ *      vestingContracts: // value for 'vestingContracts'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetDelegateChangesForVestingsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetDelegateChangesForVestingsQuery,
+    GetDelegateChangesForVestingsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetDelegateChangesForVestingsQuery,
+    GetDelegateChangesForVestingsQueryVariables
+  >(GetDelegateChangesForVestingsDocument, options);
+}
+export function useGetDelegateChangesForVestingsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDelegateChangesForVestingsQuery,
+    GetDelegateChangesForVestingsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDelegateChangesForVestingsQuery,
+    GetDelegateChangesForVestingsQueryVariables
+  >(GetDelegateChangesForVestingsDocument, options);
+}
+export type GetDelegateChangesForVestingsQueryHookResult = ReturnType<
+  typeof useGetDelegateChangesForVestingsQuery
+>;
+export type GetDelegateChangesForVestingsLazyQueryHookResult = ReturnType<
+  typeof useGetDelegateChangesForVestingsLazyQuery
+>;
+export type GetDelegateChangesForVestingsQueryResult = Apollo.QueryResult<
+  GetDelegateChangesForVestingsQuery,
+  GetDelegateChangesForVestingsQueryVariables
+>;
+export const GetVestingHistoryDocument = gql`
+  query getVestingHistory($vestingAddress: ID) {
+    vestingContracts(where: { id: $vestingAddress }) {
+      id
+      stakeHistory(
+        where: { action: TokensStaked }
+        orderBy: lockedUntil
+        orderDirection: desc
+        first: 250
+      ) {
+        id
+        amount
+        lockedUntil
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetVestingHistoryQuery__
+ *
+ * To run a query within a React component, call `useGetVestingHistoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingHistoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingHistoryQuery({
+ *   variables: {
+ *      vestingAddress: // value for 'vestingAddress'
+ *   },
+ * });
+ */
+export function useGetVestingHistoryQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetVestingHistoryQuery,
+    GetVestingHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingHistoryQuery,
+    GetVestingHistoryQueryVariables
+  >(GetVestingHistoryDocument, options);
+}
+export function useGetVestingHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingHistoryQuery,
+    GetVestingHistoryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingHistoryQuery,
+    GetVestingHistoryQueryVariables
+  >(GetVestingHistoryDocument, options);
+}
+export type GetVestingHistoryQueryHookResult = ReturnType<
+  typeof useGetVestingHistoryQuery
+>;
+export type GetVestingHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetVestingHistoryLazyQuery
+>;
+export type GetVestingHistoryQueryResult = Apollo.QueryResult<
+  GetVestingHistoryQuery,
+  GetVestingHistoryQueryVariables
+>;
+export const GetVestingHistoryItemsDocument = gql`
+  query getVestingHistoryItems(
+    $stakers: [String!]
+    $skip: Int!
+    $pageSize: Int!
+    $orderBy: VestingHistoryItem_orderBy
+    $orderDirection: OrderDirection
+  ) {
+    vestingHistoryItems(
+      where: { action: TokensWithdrawn, staker_in: $stakers }
+      first: $pageSize
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
+      timestamp
+      action
+      amount
+      transaction {
+        id
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetVestingHistoryItemsQuery__
+ *
+ * To run a query within a React component, call `useGetVestingHistoryItemsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingHistoryItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingHistoryItemsQuery({
+ *   variables: {
+ *      stakers: // value for 'stakers'
+ *      skip: // value for 'skip'
+ *      pageSize: // value for 'pageSize'
+ *      orderBy: // value for 'orderBy'
+ *      orderDirection: // value for 'orderDirection'
+ *   },
+ * });
+ */
+export function useGetVestingHistoryItemsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetVestingHistoryItemsQuery,
+    GetVestingHistoryItemsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingHistoryItemsQuery,
+    GetVestingHistoryItemsQueryVariables
+  >(GetVestingHistoryItemsDocument, options);
+}
+export function useGetVestingHistoryItemsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingHistoryItemsQuery,
+    GetVestingHistoryItemsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingHistoryItemsQuery,
+    GetVestingHistoryItemsQueryVariables
+  >(GetVestingHistoryItemsDocument, options);
+}
+export type GetVestingHistoryItemsQueryHookResult = ReturnType<
+  typeof useGetVestingHistoryItemsQuery
+>;
+export type GetVestingHistoryItemsLazyQueryHookResult = ReturnType<
+  typeof useGetVestingHistoryItemsLazyQuery
+>;
+export type GetVestingHistoryItemsQueryResult = Apollo.QueryResult<
+  GetVestingHistoryItemsQuery,
+  GetVestingHistoryItemsQueryVariables
+>;
+export const GetVestingUnlockBalanceDocument = gql`
+  query getVestingUnlockBalance(
+    $vestingAddress: ID
+    $timestamp: Int
+    $currentTimestamp: Int
+  ) {
+    vestingContracts(where: { id: $vestingAddress }) {
+      id
+      stakeHistory(
+        where: {
+          action: TokensStaked
+          lockedUntil_gt: $timestamp
+          lockedUntil_lte: $currentTimestamp
+        }
+        orderBy: lockedUntil
+        orderDirection: asc
+        first: 250
+      ) {
+        timestamp
+        amount
+        lockedUntil
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetVestingUnlockBalanceQuery__
+ *
+ * To run a query within a React component, call `useGetVestingUnlockBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVestingUnlockBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVestingUnlockBalanceQuery({
+ *   variables: {
+ *      vestingAddress: // value for 'vestingAddress'
+ *      timestamp: // value for 'timestamp'
+ *      currentTimestamp: // value for 'currentTimestamp'
+ *   },
+ * });
+ */
+export function useGetVestingUnlockBalanceQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetVestingUnlockBalanceQuery,
+    GetVestingUnlockBalanceQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetVestingUnlockBalanceQuery,
+    GetVestingUnlockBalanceQueryVariables
+  >(GetVestingUnlockBalanceDocument, options);
+}
+export function useGetVestingUnlockBalanceLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVestingUnlockBalanceQuery,
+    GetVestingUnlockBalanceQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVestingUnlockBalanceQuery,
+    GetVestingUnlockBalanceQueryVariables
+  >(GetVestingUnlockBalanceDocument, options);
+}
+export type GetVestingUnlockBalanceQueryHookResult = ReturnType<
+  typeof useGetVestingUnlockBalanceQuery
+>;
+export type GetVestingUnlockBalanceLazyQueryHookResult = ReturnType<
+  typeof useGetVestingUnlockBalanceLazyQuery
+>;
+export type GetVestingUnlockBalanceQueryResult = Apollo.QueryResult<
+  GetVestingUnlockBalanceQuery,
+  GetVestingUnlockBalanceQueryVariables
+>;
+export const GetVoteDocument = gql`
+  query getVote($id: String, $voter: String) {
+    voteCasts(where: { proposal: $id, voter: $voter }) {
+      emittedBy
+      id
+      proposalId
+      support
+      timestamp
+      transaction {
+        id
+      }
+      voter {
+        id
+      }
+      votes
+    }
+  }
+`;
+
+/**
+ * __useGetVoteQuery__
+ *
+ * To run a query within a React component, call `useGetVoteQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVoteQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVoteQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      voter: // value for 'voter'
+ *   },
+ * });
+ */
+export function useGetVoteQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetVoteQuery, GetVoteQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetVoteQuery, GetVoteQueryVariables>(
+    GetVoteDocument,
+    options,
+  );
+}
+export function useGetVoteLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVoteQuery,
+    GetVoteQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetVoteQuery, GetVoteQueryVariables>(
+    GetVoteDocument,
+    options,
+  );
+}
+export type GetVoteQueryHookResult = ReturnType<typeof useGetVoteQuery>;
+export type GetVoteLazyQueryHookResult = ReturnType<typeof useGetVoteLazyQuery>;
+export type GetVoteQueryResult = Apollo.QueryResult<
+  GetVoteQuery,
+  GetVoteQueryVariables
 >;
